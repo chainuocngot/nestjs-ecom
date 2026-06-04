@@ -5,9 +5,7 @@ import 'dotenv/config';
 
 const envFilePath = path.resolve('.env');
 if (!fs.existsSync(envFilePath)) {
-  console.error(
-    'Không tìm thấy file .env. Vui lòng tạo file .env với các biến môi trường cần thiết.',
-  );
+  console.error('Không tìm thấy file .env. Vui lòng tạo file .env với các biến môi trường cần thiết.');
   process.exit(1);
 }
 

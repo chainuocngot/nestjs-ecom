@@ -8,8 +8,7 @@ export class TokenService {
   async signAccessToken(payload: { userId: number }): Promise<string> {
     return this.jwtService.signAsync(payload, {
       secret: process.env.ACCESS_TOKEN_SECRET,
-      expiresIn: process.env
-        .ACCESS_TOKEN_EXPIRES_IN as JwtSignOptions['expiresIn'],
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN as JwtSignOptions['expiresIn'],
       algorithm: 'HS256',
     });
   }
@@ -17,8 +16,7 @@ export class TokenService {
   async signRefreshToken(payload: { userId: number }): Promise<string> {
     return this.jwtService.signAsync(payload, {
       secret: process.env.REFRESH_TOKEN_SECRET,
-      expiresIn: process.env
-        .REFRESH_TOKEN_EXPIRATION as JwtSignOptions['expiresIn'],
+      expiresIn: process.env.REFRESH_TOKEN_EXPIRATION as JwtSignOptions['expiresIn'],
       algorithm: 'HS256',
     });
   }
