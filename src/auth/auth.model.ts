@@ -1,0 +1,39 @@
+import { UserStatus } from 'src/shared/constants/auth.constant';
+import { z } from 'zod';
+
+export const UserSchema = z.object({
+  id: z.number().int(),
+  email: z.email(),
+  name: z.string(),
+  phoneNumber: z.string(),
+  avatar: z.string().nullable(),
+  status: z.enum(UserStatus),
+  roleId: z.number().int(),
+  totpSecret: z.string().nullable(),
+  password: z.string().min(6).max(255),
+  createdById: z.number().int().nullable(),
+  updatedById: z.number().int().nullable(),
+  deletedAt: z.date().nullable(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+});
+
+export type UserType = z.infer<typeof UserSchema>;
+
+export const RegisterBodySchema = UserSchema.pick({
+  email: true,
+  password: true,
+  name: true,
+  phoneNumber: true,
+}).extend({
+  confirmPassword: z.string().min(6).max(255),
+});
+
+export type RegisterBodyType = z.infer<typeof RegisterBodySchema>;
+
+export const RegisterResSchema = UserSchema.omit({
+  password: true,
+  totpSecret: true,
+});
+
+export type RegisterResType = z.infer<typeof RegisterResSchema>;
