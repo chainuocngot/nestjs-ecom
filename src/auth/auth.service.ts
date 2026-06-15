@@ -7,6 +7,7 @@ import { RoleService } from 'src/auth/role.service';
 import { envConfig } from 'src/shared/config';
 import { VerificationCode } from 'src/shared/constants/auth.constant';
 import { SharedUserRepository } from 'src/shared/repositories/shared-user.repository';
+import { EmailService } from 'src/shared/services/email.service';
 import { HashingService } from 'src/shared/services/hashing.service';
 import { TokenService } from 'src/shared/services/token.service';
 import { generateOtp, isUniqueConstraintPrismaError } from 'src/shared/utils';
@@ -19,6 +20,7 @@ export class AuthService {
     private readonly hashingService: HashingService,
     private readonly authRepository: AuthRepository,
     private readonly sharedUserRepository: SharedUserRepository,
+    private readonly emailService: EmailService,
   ) {}
 
   async register(body: RegisterBodyType) {
@@ -88,6 +90,18 @@ export class AuthService {
       code: otpCode,
       expiresAt: addMilliseconds(new Date(), ms(envConfig.OTP_EXPIRES_IN as StringValue)),
     });
+
+    const { error } = await this.emailService.sendOTP({
+      code: otpCode,
+      email: body.email,
+    });
+
+    if (error) {
+      throw new UnprocessableEntityException({
+        message: 'Gửi mã OTP thất bại',
+        path: 'code',
+      });
+    }
 
     return verificationCode;
   }

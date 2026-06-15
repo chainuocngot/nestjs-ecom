@@ -20,6 +20,7 @@ const envConfigSchema = z.object({
   ADMIN_NAME: z.string(),
   ADMIN_PHONE_NUMBER: z.string(),
   OTP_EXPIRES_IN: z.string(),
+  RESEND_API_KEY: z.string(),
 });
 
 const parsedEnvConfig = envConfigSchema.safeParse(process.env);
