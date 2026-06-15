@@ -1,20 +1,23 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { addMilliseconds } from 'date-fns';
+import ms, { StringValue } from 'ms';
 import { RegisterBodyType, SendOtpBodyType } from 'src/auth/auth.model';
 import { AuthRepository } from 'src/auth/auth.repository';
 import { RoleService } from 'src/auth/role.service';
+import { envConfig } from 'src/shared/config';
+import { SharedUserRepository } from 'src/shared/repositories/shared-user.repository';
 import { HashingService } from 'src/shared/services/hashing.service';
-import { PrismaService } from 'src/shared/services/prisma.service';
 import { TokenService } from 'src/shared/services/token.service';
-import { isUniqueConstraintPrismaError } from 'src/shared/utils';
+import { generateOtp, isUniqueConstraintPrismaError } from 'src/shared/utils';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly tokenService: TokenService,
     private readonly roleService: RoleService,
-    private readonly prismaService: PrismaService,
     private readonly hashingService: HashingService,
     private readonly authRepository: AuthRepository,
+    private readonly sharedUserRepository: SharedUserRepository,
   ) {}
 
   async register(body: RegisterBodyType) {
@@ -35,15 +38,37 @@ export class AuthService {
       return user;
     } catch (error) {
       if (isUniqueConstraintPrismaError(error)) {
-        throw new ConflictException('Email đã tồn tại');
+        throw new UnprocessableEntityException({
+          message: 'Email đã tồn tại',
+          path: 'email',
+        });
       }
 
       throw error;
     }
   }
 
-  sendOtp(body: SendOtpBodyType) {
-    return body;
+  async sendOtp(body: SendOtpBodyType) {
+    const user = await this.sharedUserRepository.findUnique({
+      email: body.email,
+    });
+
+    if (user) {
+      throw new UnprocessableEntityException({
+        message: 'Email đã tồn tại',
+        path: 'email',
+      });
+    }
+
+    const otpCode = generateOtp();
+    const verificationCode = this.authRepository.createVerificationCode({
+      email: body.email,
+      type: body.type,
+      code: otpCode,
+      expiresAt: addMilliseconds(new Date(), ms(envConfig.OTP_EXPIRES_IN as StringValue)),
+    });
+
+    return verificationCode;
   }
 
   private _signTokens(userId: number): [Promise<string>, Promise<string>] {
