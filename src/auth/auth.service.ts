@@ -1,5 +1,5 @@
 import { ConflictException, Injectable } from '@nestjs/common';
-import { RegisterBodyDto } from 'src/auth/auth.dto';
+import { RegisterBodyType, SendOtpBodyType } from 'src/auth/auth.model';
 import { AuthRepository } from 'src/auth/auth.repository';
 import { RoleService } from 'src/auth/role.service';
 import { HashingService } from 'src/shared/services/hashing.service';
@@ -17,7 +17,7 @@ export class AuthService {
     private readonly authRepository: AuthRepository,
   ) {}
 
-  async register(body: RegisterBodyDto) {
+  async register(body: RegisterBodyType) {
     try {
       const [clientRoleId, hashedPassword] = await Promise.all([
         this.roleService.getClientRoleId(),
@@ -40,6 +40,10 @@ export class AuthService {
 
       throw error;
     }
+  }
+
+  sendOtp(body: SendOtpBodyType) {
+    return body;
   }
 
   private _signTokens(userId: number): [Promise<string>, Promise<string>] {

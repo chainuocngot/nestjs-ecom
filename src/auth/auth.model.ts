@@ -1,4 +1,4 @@
-import { UserStatus } from 'src/shared/constants/auth.constant';
+import { UserStatus, VerificationCode } from 'src/shared/constants/auth.constant';
 import { z } from 'zod';
 
 export const UserSchema = z.object({
@@ -37,3 +37,21 @@ export const RegisterResSchema = UserSchema.omit({
 });
 
 export type RegisterResType = z.infer<typeof RegisterResSchema>;
+
+export const VerificationCodeSchema = z.object({
+  id: z.number().int(),
+  email: z.email(),
+  code: z.string().max(50),
+  type: z.enum(VerificationCode),
+  expiresAt: z.date(),
+  createdAt: z.date(),
+});
+
+export type VerificationCodeType = z.infer<typeof VerificationCodeSchema>;
+
+export const SendOtpBodySchema = VerificationCodeSchema.pick({
+  email: true,
+  type: true,
+}).strict();
+
+export type SendOtpBodyType = z.infer<typeof SendOtpBodySchema>;
