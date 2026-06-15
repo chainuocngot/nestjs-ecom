@@ -5,6 +5,7 @@ import { RegisterBodyType, SendOtpBodyType } from 'src/auth/auth.model';
 import { AuthRepository } from 'src/auth/auth.repository';
 import { RoleService } from 'src/auth/role.service';
 import { envConfig } from 'src/shared/config';
+import { VerificationCode } from 'src/shared/constants/auth.constant';
 import { SharedUserRepository } from 'src/shared/repositories/shared-user.repository';
 import { HashingService } from 'src/shared/services/hashing.service';
 import { TokenService } from 'src/shared/services/token.service';
@@ -22,6 +23,26 @@ export class AuthService {
 
   async register(body: RegisterBodyType) {
     try {
+      const verificationCode = await this.authRepository.findUniqueVerificationCode({
+        code: body.code,
+        email: body.email,
+        type: VerificationCode.REGISTER,
+      });
+
+      if (!verificationCode) {
+        throw new UnprocessableEntityException({
+          message: 'Mã OTP không hợp lệ',
+          path: 'code',
+        });
+      }
+
+      if (verificationCode.expiresAt < new Date()) {
+        throw new UnprocessableEntityException({
+          message: 'Mã OTP đã hết hạn',
+          path: 'code',
+        });
+      }
+
       const [clientRoleId, hashedPassword] = await Promise.all([
         this.roleService.getClientRoleId(),
         this.hashingService.hash(body.password),
