@@ -38,3 +38,41 @@ export const SendOtpBodySchema = VerificationCodeSchema.pick({
 }).strict();
 
 export type SendOtpBodyType = z.infer<typeof SendOtpBodySchema>;
+
+export const LoginBodySchema = RegisterBodySchema.pick({
+  email: true,
+  password: true,
+}).strict();
+
+export type LoginBodyType = z.infer<typeof LoginBodySchema>;
+
+export const LoginResSchema = z.object({
+  accessToken: z.jwt(),
+  refreshToken: z.jwt(),
+});
+
+export type LoginResType = z.infer<typeof LoginResSchema>;
+
+export const RefreshTokenBodySchema = z
+  .object({
+    refreshToken: z.jwt(),
+  })
+  .strict();
+
+export type RefreshTokenBodyType = z.infer<typeof RefreshTokenBodySchema>;
+
+export const RefreshTokenResSchema = LoginResSchema;
+
+export type RefreshTokenResType = z.infer<typeof RefreshTokenResSchema>;
+
+export const DeviceSchema = z.object({
+  id: z.number().int(),
+  userId: z.number().int(),
+  userAgent: z.string(),
+  ip: z.string(),
+  lastActive: z.date(),
+  createdAt: z.date(),
+  isActive: z.boolean(),
+});
+
+export type DeviceType = z.infer<typeof DeviceSchema>;

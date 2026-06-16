@@ -149,3 +149,8 @@ export type PaymentTransaction = Prisma.PaymentTransactionModel
  * 
  */
 export type Message = Prisma.MessageModel
+/**
+ * Model Device
+ * 
+ */
+export type Device = Prisma.DeviceModel

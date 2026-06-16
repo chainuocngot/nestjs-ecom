@@ -1,7 +1,7 @@
-import { Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
 import { addMilliseconds } from 'date-fns';
 import ms, { StringValue } from 'ms';
-import { RegisterBodyType, SendOtpBodyType } from 'src/auth/auth.model';
+import { LoginBodyType, RegisterBodyType, SendOtpBodyType } from 'src/auth/auth.model';
 import { AuthRepository } from 'src/auth/auth.repository';
 import { RoleService } from 'src/auth/role.service';
 import { envConfig } from 'src/shared/config';
@@ -106,7 +106,68 @@ export class AuthService {
     return verificationCode;
   }
 
-  private _signTokens(userId: number): [Promise<string>, Promise<string>] {
-    return [this.tokenService.signAccessToken({ userId }), this.tokenService.signRefreshToken({ userId })] as const;
+  async login(
+    body: LoginBodyType & {
+      userAgent: string;
+      ip: string;
+    },
+  ) {
+    const user = await this.sharedUserRepository.findUniqueIncludeRole({
+      email: body.email,
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('Tài khoản không tồn tại');
+    }
+
+    const isPasswordMatch = await this.hashingService.compare(body.password, user.password);
+    if (!isPasswordMatch) {
+      throw new UnprocessableEntityException([
+        {
+          field: 'password',
+          error: 'Mật khẩu không đúng',
+        },
+      ]);
+    }
+
+    const device = await this.authRepository.createDevice({
+      userId: user.id,
+      userAgent: body.userAgent,
+      ip: body.ip,
+    });
+
+    const [accessToken, refreshToken] = await this._signTokens({
+      userId: user.id,
+      deviceId: device.id,
+      roleId: user.roleId,
+      roleName: user.role.name,
+    });
+    const decodedRefreshToken = await this.tokenService.verifyRefreshToken(refreshToken);
+    await this.authRepository.createRefreshToken({
+      token: refreshToken,
+      expiresAt: new Date(decodedRefreshToken.exp * 1000),
+      userId: user.id,
+    });
+
+    return { accessToken, refreshToken };
+  }
+
+  private _signTokens(payload: {
+    userId: number;
+    deviceId: number;
+    roleId: number;
+    roleName: string;
+  }): Promise<[string, string]> {
+    return Promise.all([
+      this.tokenService.signAccessToken({
+        userId: payload.userId,
+        deviceId: payload.deviceId,
+        roleId: payload.roleId,
+        roleName: payload.roleName,
+      }),
+      this.tokenService.signRefreshToken({
+        userId: payload.userId,
+      }),
+    ]);
   }
 }
