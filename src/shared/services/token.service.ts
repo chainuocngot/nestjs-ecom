@@ -6,25 +6,32 @@ import {
   RefreshTokenPayload,
   RefreshTokenPayloadCreate,
 } from 'src/shared/types/jwt.type';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class TokenService {
   constructor(private readonly jwtService: JwtService) {}
 
   async signAccessToken(payload: AccessTokenPayloadCreate): Promise<string> {
-    return this.jwtService.signAsync(payload, {
-      secret: process.env.ACCESS_TOKEN_SECRET,
-      expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN as JwtSignOptions['expiresIn'],
-      algorithm: 'HS256',
-    });
+    return this.jwtService.signAsync(
+      { ...payload, uuid: uuidv4() },
+      {
+        secret: process.env.ACCESS_TOKEN_SECRET,
+        expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN as JwtSignOptions['expiresIn'],
+        algorithm: 'HS256',
+      },
+    );
   }
 
   async signRefreshToken(payload: RefreshTokenPayloadCreate): Promise<string> {
-    return this.jwtService.signAsync(payload, {
-      secret: process.env.REFRESH_TOKEN_SECRET,
-      expiresIn: process.env.REFRESH_TOKEN_EXPIRATION as JwtSignOptions['expiresIn'],
-      algorithm: 'HS256',
-    });
+    return this.jwtService.signAsync(
+      { ...payload, uuid: uuidv4() },
+      {
+        secret: process.env.REFRESH_TOKEN_SECRET,
+        expiresIn: process.env.REFRESH_TOKEN_EXPIRATION as JwtSignOptions['expiresIn'],
+        algorithm: 'HS256',
+      },
+    );
   }
 
   async verifyAccessToken(token: string): Promise<AccessTokenPayload> {
