@@ -31,6 +31,8 @@ export const SendOtpBodySchema = VerificationCodeSchema.pick({
   type: true,
 }).strict();
 
+export const SendOtpResSchema = VerificationCodeSchema;
+
 export const LoginBodySchema = RegisterBodySchema.pick({
   email: true,
   password: true,
@@ -76,6 +78,8 @@ export type RegisterResType = z.infer<typeof RegisterResSchema>;
 export type VerificationCodeType = z.infer<typeof VerificationCodeSchema>;
 
 export type SendOtpBodyType = z.infer<typeof SendOtpBodySchema>;
+
+export type SendOtpResType = z.infer<typeof SendOtpResSchema>;
 
 export type LoginBodyType = z.infer<typeof LoginBodySchema>;
 

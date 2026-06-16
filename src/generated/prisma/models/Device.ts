@@ -375,9 +375,9 @@ export type DeviceOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type DeviceNullableScalarRelationFilter = {
-  is?: Prisma.DeviceWhereInput | null
-  isNot?: Prisma.DeviceWhereInput | null
+export type DeviceScalarRelationFilter = {
+  is?: Prisma.DeviceWhereInput
+  isNot?: Prisma.DeviceWhereInput
 }
 
 export type DeviceCountOrderByAggregateInput = {
@@ -468,12 +468,10 @@ export type DeviceCreateNestedOneWithoutRefreshTokensInput = {
   connect?: Prisma.DeviceWhereUniqueInput
 }
 
-export type DeviceUpdateOneWithoutRefreshTokensNestedInput = {
+export type DeviceUpdateOneRequiredWithoutRefreshTokensNestedInput = {
   create?: Prisma.XOR<Prisma.DeviceCreateWithoutRefreshTokensInput, Prisma.DeviceUncheckedCreateWithoutRefreshTokensInput>
   connectOrCreate?: Prisma.DeviceCreateOrConnectWithoutRefreshTokensInput
   upsert?: Prisma.DeviceUpsertWithoutRefreshTokensInput
-  disconnect?: Prisma.DeviceWhereInput | boolean
-  delete?: Prisma.DeviceWhereInput | boolean
   connect?: Prisma.DeviceWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.DeviceUpdateToOneWithWhereWithoutRefreshTokensInput, Prisma.DeviceUpdateWithoutRefreshTokensInput>, Prisma.DeviceUncheckedUpdateWithoutRefreshTokensInput>
 }

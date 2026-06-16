@@ -1,6 +1,15 @@
-import { Body, Controller, Ip, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Ip, Post } from '@nestjs/common';
 import { ZodSerializerDto } from 'nestjs-zod';
-import { LoginBodyDto, LoginResDto, RegisterBodyDto, RegisterResDto, SendOtpBodyDto } from 'src/auth/auth.dto';
+import {
+  LoginBodyDto,
+  LoginResDto,
+  RefreshTokenBodyDto,
+  RefreshTokenResDto,
+  RegisterBodyDto,
+  RegisterResDto,
+  SendOtpBodyDto,
+  SendOtpResDto,
+} from 'src/auth/auth.dto';
 import { AuthService } from 'src/auth/auth.service';
 import { UserAgent } from 'src/shared/decorators/user-agent.decorator';
 
@@ -15,6 +24,7 @@ export class AuthController {
   }
 
   @Post('otp')
+  @ZodSerializerDto(SendOtpResDto)
   sendOtp(@Body() body: SendOtpBodyDto) {
     return this.authService.sendOtp(body);
   }
@@ -23,5 +33,12 @@ export class AuthController {
   @ZodSerializerDto(LoginResDto)
   login(@Body() body: LoginBodyDto, @UserAgent() userAgent: string, @Ip() ip: string) {
     return this.authService.login({ ...body, userAgent, ip });
+  }
+
+  @Post('refresh-token')
+  @HttpCode(HttpStatus.OK)
+  @ZodSerializerDto(RefreshTokenResDto)
+  refreshToken(@Body() body: RefreshTokenBodyDto, @UserAgent() userAgent: string, @Ip() ip: string) {
+    return this.authService.refreshToken({ ...body, userAgent, ip });
   }
 }

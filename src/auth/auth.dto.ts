@@ -8,6 +8,7 @@ import {
   RegisterBodySchema,
   RegisterResSchema,
   SendOtpBodySchema,
+  SendOtpResSchema,
 } from 'src/auth/auth.model';
 
 export class RegisterBodyDto extends createZodDto(RegisterBodySchema) {}
@@ -15,6 +16,8 @@ export class RegisterBodyDto extends createZodDto(RegisterBodySchema) {}
 export class RegisterResDto extends createZodDto(RegisterResSchema) {}
 
 export class SendOtpBodyDto extends createZodDto(SendOtpBodySchema) {}
+
+export class SendOtpResDto extends createZodDto(SendOtpResSchema) {}
 
 export class LoginBodyDto extends createZodDto(LoginBodySchema) {}
 

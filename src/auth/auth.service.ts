@@ -1,7 +1,7 @@
-import { Injectable, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
+import { HttpException, Injectable, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
 import { addMilliseconds } from 'date-fns';
 import ms, { StringValue } from 'ms';
-import { LoginBodyType, RegisterBodyType, SendOtpBodyType } from 'src/auth/auth.model';
+import { LoginBodyType, RefreshTokenBodyType, RegisterBodyType, SendOtpBodyType } from 'src/auth/auth.model';
 import { AuthRepository } from 'src/auth/auth.repository';
 import { RoleService } from 'src/auth/role.service';
 import { envConfig } from 'src/shared/config';
@@ -147,9 +147,56 @@ export class AuthService {
       token: refreshToken,
       expiresAt: new Date(decodedRefreshToken.exp * 1000),
       userId: user.id,
+      deviceId: device.id,
     });
 
     return { accessToken, refreshToken };
+  }
+
+  async refreshToken(
+    body: RefreshTokenBodyType & {
+      userAgent: string;
+      ip: string;
+    },
+  ) {
+    try {
+      const { userId } = await this.tokenService.verifyRefreshToken(body.refreshToken);
+
+      const refreshTokenIncludeRole = await this.authRepository.findUniqueRefreshTokenIncludeRole(body.refreshToken);
+      if (!refreshTokenIncludeRole) {
+        throw new UnauthorizedException('Refresh token đã bị vô hiệu hoá');
+      }
+
+      const [tokens] = await Promise.all([
+        this._signTokens({
+          deviceId: refreshTokenIncludeRole.deviceId,
+          roleId: refreshTokenIncludeRole.user.roleId,
+          roleName: refreshTokenIncludeRole.user.role.name,
+          userId,
+        }),
+        this.authRepository.updateDevice(refreshTokenIncludeRole.deviceId, { ip: body.ip, userAgent: body.userAgent }),
+        this.authRepository.deleteRefreshToken(refreshTokenIncludeRole.token),
+      ]);
+
+      const [accessToken, refreshToken] = tokens;
+      const decodedRefreshToken = await this.tokenService.verifyRefreshToken(refreshToken);
+      await this.authRepository.createRefreshToken({
+        token: refreshToken,
+        expiresAt: new Date(decodedRefreshToken.exp * 1000),
+        userId,
+        deviceId: refreshTokenIncludeRole.deviceId,
+      });
+
+      return {
+        accessToken,
+        refreshToken,
+      };
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      throw new UnauthorizedException();
+    }
   }
 
   private _signTokens(payload: {
