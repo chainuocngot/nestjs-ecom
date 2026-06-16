@@ -1,0 +1,26 @@
+import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from '@nestjs/common';
+import { Request } from 'express';
+import { REQUEST_USER_KEY } from 'src/shared/constants/auth.constant';
+import { TokenService } from 'src/shared/services/token.service';
+
+@Injectable()
+export class AccessTokenGuard implements CanActivate {
+  constructor(private readonly tokenService: TokenService) {}
+
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const request = context.switchToHttp().getRequest<Request>();
+
+    const accessToken = request.headers['authorization']?.split(' ')[1] as string;
+    if (!accessToken) {
+      throw new UnauthorizedException('Access token is missing');
+    }
+
+    try {
+      const decodedAccessToken = await this.tokenService.verifyAccessToken(accessToken);
+      request[REQUEST_USER_KEY] = decodedAccessToken;
+      return true;
+    } catch {
+      throw new UnauthorizedException('Invalid access token');
+    }
+  }
+}
