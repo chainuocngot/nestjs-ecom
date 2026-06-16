@@ -10,7 +10,7 @@ import { SharedUserRepository } from 'src/shared/repositories/shared-user.reposi
 import { EmailService } from 'src/shared/services/email.service';
 import { HashingService } from 'src/shared/services/hashing.service';
 import { TokenService } from 'src/shared/services/token.service';
-import { generateOtp, isUniqueConstraintPrismaError } from 'src/shared/utils';
+import { generateOtp, isNotFoundPrismaError, isUniqueConstraintPrismaError } from 'src/shared/utils';
 
 @Injectable()
 export class AuthService {
@@ -194,6 +194,25 @@ export class AuthService {
     } catch (error) {
       if (error instanceof HttpException) {
         throw error;
+      }
+      throw new UnauthorizedException();
+    }
+  }
+
+  async logout(refreshToken: string) {
+    try {
+      await this.tokenService.verifyRefreshToken(refreshToken);
+
+      const deletedRefreshToken = await this.authRepository.deleteRefreshToken(refreshToken);
+
+      await this.authRepository.updateDevice(deletedRefreshToken.deviceId, {
+        isActive: false,
+      });
+
+      return { message: 'Đăng xuất thành công' };
+    } catch (error) {
+      if (isNotFoundPrismaError(error)) {
+        throw new UnauthorizedException('Refresh token đã bị vô hiệu hoá');
       }
       throw new UnauthorizedException();
     }
