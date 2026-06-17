@@ -308,6 +308,7 @@ export type UserWhereInput = {
   reviews?: Prisma.ReviewListRelationFilter
   createdPermissions?: Prisma.PermissionListRelationFilter
   updatedPermissions?: Prisma.PermissionListRelationFilter
+  deletedPermissions?: Prisma.PermissionListRelationFilter
   createdRoles?: Prisma.RoleListRelationFilter
   updatedRoles?: Prisma.RoleListRelationFilter
   createdProducts?: Prisma.ProductListRelationFilter
@@ -366,6 +367,7 @@ export type UserOrderByWithRelationInput = {
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
   createdPermissions?: Prisma.PermissionOrderByRelationAggregateInput
   updatedPermissions?: Prisma.PermissionOrderByRelationAggregateInput
+  deletedPermissions?: Prisma.PermissionOrderByRelationAggregateInput
   createdRoles?: Prisma.RoleOrderByRelationAggregateInput
   updatedRoles?: Prisma.RoleOrderByRelationAggregateInput
   createdProducts?: Prisma.ProductOrderByRelationAggregateInput
@@ -427,6 +429,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   reviews?: Prisma.ReviewListRelationFilter
   createdPermissions?: Prisma.PermissionListRelationFilter
   updatedPermissions?: Prisma.PermissionListRelationFilter
+  deletedPermissions?: Prisma.PermissionListRelationFilter
   createdRoles?: Prisma.RoleListRelationFilter
   updatedRoles?: Prisma.RoleListRelationFilter
   createdProducts?: Prisma.ProductListRelationFilter
@@ -523,6 +526,7 @@ export type UserCreateInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -580,6 +584,7 @@ export type UserUncheckedCreateInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -632,6 +637,7 @@ export type UserUpdateInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -689,6 +695,7 @@ export type UserUncheckedUpdateInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -1082,6 +1089,12 @@ export type UserCreateNestedOneWithoutUpdatedPermissionsInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
+export type UserCreateNestedOneWithoutDeletedPermissionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedPermissionsInput, Prisma.UserUncheckedCreateWithoutDeletedPermissionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedPermissionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
 export type UserUpdateOneWithoutCreatedPermissionsNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedPermissionsInput, Prisma.UserUncheckedCreateWithoutCreatedPermissionsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedPermissionsInput
@@ -1100,6 +1113,16 @@ export type UserUpdateOneWithoutUpdatedPermissionsNestedInput = {
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUpdatedPermissionsInput, Prisma.UserUpdateWithoutUpdatedPermissionsInput>, Prisma.UserUncheckedUpdateWithoutUpdatedPermissionsInput>
+}
+
+export type UserUpdateOneWithoutDeletedPermissionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedPermissionsInput, Prisma.UserUncheckedCreateWithoutDeletedPermissionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedPermissionsInput
+  upsert?: Prisma.UserUpsertWithoutDeletedPermissionsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDeletedPermissionsInput, Prisma.UserUpdateWithoutDeletedPermissionsInput>, Prisma.UserUncheckedUpdateWithoutDeletedPermissionsInput>
 }
 
 export type UserCreateNestedManyWithoutRoleInput = {
@@ -1599,6 +1622,7 @@ export type UserCreateWithoutCreatedLanguagesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -1655,6 +1679,7 @@ export type UserUncheckedCreateWithoutCreatedLanguagesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -1711,6 +1736,7 @@ export type UserCreateWithoutUpdatedLanguagesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -1767,6 +1793,7 @@ export type UserUncheckedCreateWithoutUpdatedLanguagesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -1834,6 +1861,7 @@ export type UserUpdateWithoutCreatedLanguagesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -1890,6 +1918,7 @@ export type UserUncheckedUpdateWithoutCreatedLanguagesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -1952,6 +1981,7 @@ export type UserUpdateWithoutUpdatedLanguagesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -2008,6 +2038,7 @@ export type UserUncheckedUpdateWithoutUpdatedLanguagesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -2059,6 +2090,7 @@ export type UserCreateWithoutCreatedUsersInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -2115,6 +2147,7 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2171,6 +2204,7 @@ export type UserCreateWithoutCreatedByInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -2226,6 +2260,7 @@ export type UserUncheckedCreateWithoutCreatedByInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2288,6 +2323,7 @@ export type UserCreateWithoutUpdatedUsersInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -2344,6 +2380,7 @@ export type UserUncheckedCreateWithoutUpdatedUsersInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2400,6 +2437,7 @@ export type UserCreateWithoutUpdatedByInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -2455,6 +2493,7 @@ export type UserUncheckedCreateWithoutUpdatedByInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2528,6 +2567,7 @@ export type UserUpdateWithoutCreatedUsersInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -2584,6 +2624,7 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -2682,6 +2723,7 @@ export type UserUpdateWithoutUpdatedUsersInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -2738,6 +2780,7 @@ export type UserUncheckedUpdateWithoutUpdatedUsersInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -2805,6 +2848,7 @@ export type UserCreateWithoutUserTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -2861,6 +2905,7 @@ export type UserUncheckedCreateWithoutUserTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2917,6 +2962,7 @@ export type UserCreateWithoutCreatedUserTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -2973,6 +3019,7 @@ export type UserUncheckedCreateWithoutCreatedUserTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -3029,6 +3076,7 @@ export type UserCreateWithoutUpdatedUserTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -3085,6 +3133,7 @@ export type UserUncheckedCreateWithoutUpdatedUserTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -3152,6 +3201,7 @@ export type UserUpdateWithoutUserTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -3208,6 +3258,7 @@ export type UserUncheckedUpdateWithoutUserTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3270,6 +3321,7 @@ export type UserUpdateWithoutCreatedUserTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -3326,6 +3378,7 @@ export type UserUncheckedUpdateWithoutCreatedUserTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3388,6 +3441,7 @@ export type UserUpdateWithoutUpdatedUserTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -3444,6 +3498,7 @@ export type UserUncheckedUpdateWithoutUpdatedUserTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3494,6 +3549,7 @@ export type UserCreateWithoutRefreshTokensInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -3550,6 +3606,7 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -3617,6 +3674,7 @@ export type UserUpdateWithoutRefreshTokensInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -3673,6 +3731,7 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3724,6 +3783,7 @@ export type UserCreateWithoutCreatedPermissionsInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -3780,6 +3840,7 @@ export type UserUncheckedCreateWithoutCreatedPermissionsInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -3836,6 +3897,7 @@ export type UserCreateWithoutUpdatedPermissionsInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -3892,6 +3954,7 @@ export type UserUncheckedCreateWithoutUpdatedPermissionsInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -3930,6 +3993,120 @@ export type UserCreateOrConnectWithoutUpdatedPermissionsInput = {
   create: Prisma.XOR<Prisma.UserCreateWithoutUpdatedPermissionsInput, Prisma.UserUncheckedCreateWithoutUpdatedPermissionsInput>
 }
 
+export type UserCreateWithoutDeletedPermissionsInput = {
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
+  createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutToUserInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
+  updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
+  updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+}
+
+export type UserUncheckedCreateWithoutDeletedPermissionsInput = {
+  id?: number
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  roleId: number
+  createdById?: number | null
+  updatedById?: number | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+}
+
+export type UserCreateOrConnectWithoutDeletedPermissionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedPermissionsInput, Prisma.UserUncheckedCreateWithoutDeletedPermissionsInput>
+}
+
 export type UserUpsertWithoutCreatedPermissionsInput = {
   update: Prisma.XOR<Prisma.UserUpdateWithoutCreatedPermissionsInput, Prisma.UserUncheckedUpdateWithoutCreatedPermissionsInput>
   create: Prisma.XOR<Prisma.UserCreateWithoutCreatedPermissionsInput, Prisma.UserUncheckedCreateWithoutCreatedPermissionsInput>
@@ -3959,6 +4136,7 @@ export type UserUpdateWithoutCreatedPermissionsInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -4015,6 +4193,7 @@ export type UserUncheckedUpdateWithoutCreatedPermissionsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -4077,6 +4256,7 @@ export type UserUpdateWithoutUpdatedPermissionsInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -4133,6 +4313,127 @@ export type UserUncheckedUpdateWithoutUpdatedPermissionsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+}
+
+export type UserUpsertWithoutDeletedPermissionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDeletedPermissionsInput, Prisma.UserUncheckedUpdateWithoutDeletedPermissionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedPermissionsInput, Prisma.UserUncheckedCreateWithoutDeletedPermissionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDeletedPermissionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDeletedPermissionsInput, Prisma.UserUncheckedUpdateWithoutDeletedPermissionsInput>
+}
+
+export type UserUpdateWithoutDeletedPermissionsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
+  createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUpdateManyWithoutToUserNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
+  updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
+  updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDeletedPermissionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -4184,6 +4485,7 @@ export type UserCreateWithoutRoleInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -4240,6 +4542,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -4302,6 +4605,7 @@ export type UserCreateWithoutCreatedRolesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
   updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
@@ -4358,6 +4662,7 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
@@ -4414,6 +4719,7 @@ export type UserCreateWithoutUpdatedRolesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
   updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
@@ -4470,6 +4776,7 @@ export type UserUncheckedCreateWithoutUpdatedRolesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
@@ -4553,6 +4860,7 @@ export type UserUpdateWithoutCreatedRolesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
   updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
@@ -4609,6 +4917,7 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
@@ -4671,6 +4980,7 @@ export type UserUpdateWithoutUpdatedRolesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
   updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
@@ -4727,6 +5037,7 @@ export type UserUncheckedUpdateWithoutUpdatedRolesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
@@ -4778,6 +5089,7 @@ export type UserCreateWithoutCreatedProductsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
@@ -4834,6 +5146,7 @@ export type UserUncheckedCreateWithoutCreatedProductsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
@@ -4890,6 +5203,7 @@ export type UserCreateWithoutUpdatedProductsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -4946,6 +5260,7 @@ export type UserUncheckedCreateWithoutUpdatedProductsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5013,6 +5328,7 @@ export type UserUpdateWithoutCreatedProductsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
@@ -5069,6 +5385,7 @@ export type UserUncheckedUpdateWithoutCreatedProductsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
@@ -5131,6 +5448,7 @@ export type UserUpdateWithoutUpdatedProductsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -5187,6 +5505,7 @@ export type UserUncheckedUpdateWithoutUpdatedProductsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -5238,6 +5557,7 @@ export type UserCreateWithoutCreatedProductTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -5294,6 +5614,7 @@ export type UserUncheckedCreateWithoutCreatedProductTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5350,6 +5671,7 @@ export type UserCreateWithoutUpdatedProductTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -5406,6 +5728,7 @@ export type UserUncheckedCreateWithoutUpdatedProductTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5473,6 +5796,7 @@ export type UserUpdateWithoutCreatedProductTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -5529,6 +5853,7 @@ export type UserUncheckedUpdateWithoutCreatedProductTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -5591,6 +5916,7 @@ export type UserUpdateWithoutUpdatedProductTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -5647,6 +5973,7 @@ export type UserUncheckedUpdateWithoutUpdatedProductTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -5698,6 +6025,7 @@ export type UserCreateWithoutCreatedCategoriesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -5754,6 +6082,7 @@ export type UserUncheckedCreateWithoutCreatedCategoriesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5810,6 +6139,7 @@ export type UserCreateWithoutUpdatedCategoriesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -5866,6 +6196,7 @@ export type UserUncheckedCreateWithoutUpdatedCategoriesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5933,6 +6264,7 @@ export type UserUpdateWithoutCreatedCategoriesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -5989,6 +6321,7 @@ export type UserUncheckedUpdateWithoutCreatedCategoriesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -6051,6 +6384,7 @@ export type UserUpdateWithoutUpdatedCategoriesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -6107,6 +6441,7 @@ export type UserUncheckedUpdateWithoutUpdatedCategoriesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -6158,6 +6493,7 @@ export type UserCreateWithoutCreatedCategoryTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -6214,6 +6550,7 @@ export type UserUncheckedCreateWithoutCreatedCategoryTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -6270,6 +6607,7 @@ export type UserCreateWithoutUpdatedCategoryTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -6326,6 +6664,7 @@ export type UserUncheckedCreateWithoutUpdatedCategoryTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -6393,6 +6732,7 @@ export type UserUpdateWithoutCreatedCategoryTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -6449,6 +6789,7 @@ export type UserUncheckedUpdateWithoutCreatedCategoryTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -6511,6 +6852,7 @@ export type UserUpdateWithoutUpdatedCategoryTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -6567,6 +6909,7 @@ export type UserUncheckedUpdateWithoutUpdatedCategoryTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -6618,6 +6961,7 @@ export type UserCreateWithoutCreatedVariantsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -6674,6 +7018,7 @@ export type UserUncheckedCreateWithoutCreatedVariantsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -6730,6 +7075,7 @@ export type UserCreateWithoutUpdatedVariantsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -6786,6 +7132,7 @@ export type UserUncheckedCreateWithoutUpdatedVariantsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -6853,6 +7200,7 @@ export type UserUpdateWithoutCreatedVariantsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -6909,6 +7257,7 @@ export type UserUncheckedUpdateWithoutCreatedVariantsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -6971,6 +7320,7 @@ export type UserUpdateWithoutUpdatedVariantsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -7027,6 +7377,7 @@ export type UserUncheckedUpdateWithoutUpdatedVariantsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -7078,6 +7429,7 @@ export type UserCreateWithoutCreatedVariantOptionsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -7134,6 +7486,7 @@ export type UserUncheckedCreateWithoutCreatedVariantOptionsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -7190,6 +7543,7 @@ export type UserCreateWithoutUpdatedVariantOptionsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -7246,6 +7600,7 @@ export type UserUncheckedCreateWithoutUpdatedVariantOptionsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -7313,6 +7668,7 @@ export type UserUpdateWithoutCreatedVariantOptionsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -7369,6 +7725,7 @@ export type UserUncheckedUpdateWithoutCreatedVariantOptionsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -7431,6 +7788,7 @@ export type UserUpdateWithoutUpdatedVariantOptionsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -7487,6 +7845,7 @@ export type UserUncheckedUpdateWithoutUpdatedVariantOptionsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -7538,6 +7897,7 @@ export type UserCreateWithoutCreatedSKUSInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -7594,6 +7954,7 @@ export type UserUncheckedCreateWithoutCreatedSKUSInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -7650,6 +8011,7 @@ export type UserCreateWithoutUpdatedSKUSInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -7706,6 +8068,7 @@ export type UserUncheckedCreateWithoutUpdatedSKUSInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -7773,6 +8136,7 @@ export type UserUpdateWithoutCreatedSKUSInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -7829,6 +8193,7 @@ export type UserUncheckedUpdateWithoutCreatedSKUSInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -7891,6 +8256,7 @@ export type UserUpdateWithoutUpdatedSKUSInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -7947,6 +8313,7 @@ export type UserUncheckedUpdateWithoutUpdatedSKUSInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -7998,6 +8365,7 @@ export type UserCreateWithoutCreatedBrandsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -8054,6 +8422,7 @@ export type UserUncheckedCreateWithoutCreatedBrandsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -8110,6 +8479,7 @@ export type UserCreateWithoutUpdatedBrandsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -8166,6 +8536,7 @@ export type UserUncheckedCreateWithoutUpdatedBrandsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -8233,6 +8604,7 @@ export type UserUpdateWithoutCreatedBrandsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -8289,6 +8661,7 @@ export type UserUncheckedUpdateWithoutCreatedBrandsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -8351,6 +8724,7 @@ export type UserUpdateWithoutUpdatedBrandsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -8407,6 +8781,7 @@ export type UserUncheckedUpdateWithoutUpdatedBrandsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -8458,6 +8833,7 @@ export type UserCreateWithoutCreatedBrandTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -8514,6 +8890,7 @@ export type UserUncheckedCreateWithoutCreatedBrandTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -8570,6 +8947,7 @@ export type UserCreateWithoutUpdatedBrandTranslationsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -8626,6 +9004,7 @@ export type UserUncheckedCreateWithoutUpdatedBrandTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -8693,6 +9072,7 @@ export type UserUpdateWithoutCreatedBrandTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -8749,6 +9129,7 @@ export type UserUncheckedUpdateWithoutCreatedBrandTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -8811,6 +9192,7 @@ export type UserUpdateWithoutUpdatedBrandTranslationsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -8867,6 +9249,7 @@ export type UserUncheckedUpdateWithoutUpdatedBrandTranslationsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -8917,6 +9300,7 @@ export type UserCreateWithoutCartsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -8973,6 +9357,7 @@ export type UserUncheckedCreateWithoutCartsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9040,6 +9425,7 @@ export type UserUpdateWithoutCartsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -9096,6 +9482,7 @@ export type UserUncheckedUpdateWithoutCartsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -9147,6 +9534,7 @@ export type UserCreateWithoutOrdersInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -9203,6 +9591,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9260,6 +9649,7 @@ export type UserCreateWithoutCreatedOrdersInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -9316,6 +9706,7 @@ export type UserUncheckedCreateWithoutCreatedOrdersInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9372,6 +9763,7 @@ export type UserCreateWithoutUpdatedOrdersInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -9428,6 +9820,7 @@ export type UserUncheckedCreateWithoutUpdatedOrdersInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9494,6 +9887,7 @@ export type UserUpdateWithoutOrdersInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -9550,6 +9944,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -9613,6 +10008,7 @@ export type UserUpdateWithoutCreatedOrdersInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -9669,6 +10065,7 @@ export type UserUncheckedUpdateWithoutCreatedOrdersInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -9731,6 +10128,7 @@ export type UserUpdateWithoutUpdatedOrdersInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -9787,6 +10185,7 @@ export type UserUncheckedUpdateWithoutUpdatedOrdersInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -9837,6 +10236,7 @@ export type UserCreateWithoutReviewsInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -9893,6 +10293,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9960,6 +10361,7 @@ export type UserUpdateWithoutReviewsInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -10016,6 +10418,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -10068,6 +10471,7 @@ export type UserCreateWithoutSentMessagesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -10124,6 +10528,7 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -10180,6 +10585,7 @@ export type UserCreateWithoutReceivedMessagesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -10236,6 +10642,7 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -10303,6 +10710,7 @@ export type UserUpdateWithoutSentMessagesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -10359,6 +10767,7 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -10421,6 +10830,7 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -10477,6 +10887,7 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -10527,6 +10938,7 @@ export type UserCreateWithoutDevicesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
@@ -10583,6 +10995,7 @@ export type UserUncheckedCreateWithoutDevicesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
   updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
   createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
   updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
   createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
@@ -10650,6 +11063,7 @@ export type UserUpdateWithoutDevicesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -10706,6 +11120,7 @@ export type UserUncheckedUpdateWithoutDevicesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -10790,6 +11205,7 @@ export type UserUpdateWithoutCreatedByInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -10845,6 +11261,7 @@ export type UserUncheckedUpdateWithoutCreatedByInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -10913,6 +11330,7 @@ export type UserUpdateWithoutUpdatedByInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -10968,6 +11386,7 @@ export type UserUncheckedUpdateWithoutUpdatedByInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -11051,6 +11470,7 @@ export type UserUpdateWithoutRoleInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
@@ -11107,6 +11527,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -11169,6 +11590,7 @@ export type UserCountOutputType = {
   reviews: number
   createdPermissions: number
   updatedPermissions: number
+  deletedPermissions: number
   createdRoles: number
   updatedRoles: number
   createdProducts: number
@@ -11210,6 +11632,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   reviews?: boolean | UserCountOutputTypeCountReviewsArgs
   createdPermissions?: boolean | UserCountOutputTypeCountCreatedPermissionsArgs
   updatedPermissions?: boolean | UserCountOutputTypeCountUpdatedPermissionsArgs
+  deletedPermissions?: boolean | UserCountOutputTypeCountDeletedPermissionsArgs
   createdRoles?: boolean | UserCountOutputTypeCountCreatedRolesArgs
   updatedRoles?: boolean | UserCountOutputTypeCountUpdatedRolesArgs
   createdProducts?: boolean | UserCountOutputTypeCountCreatedProductsArgs
@@ -11299,6 +11722,13 @@ export type UserCountOutputTypeCountCreatedPermissionsArgs<ExtArgs extends runti
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountUpdatedPermissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PermissionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDeletedPermissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PermissionWhereInput
 }
 
@@ -11543,6 +11973,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
   createdPermissions?: boolean | Prisma.User$createdPermissionsArgs<ExtArgs>
   updatedPermissions?: boolean | Prisma.User$updatedPermissionsArgs<ExtArgs>
+  deletedPermissions?: boolean | Prisma.User$deletedPermissionsArgs<ExtArgs>
   createdRoles?: boolean | Prisma.User$createdRolesArgs<ExtArgs>
   updatedRoles?: boolean | Prisma.User$updatedRolesArgs<ExtArgs>
   createdProducts?: boolean | Prisma.User$createdProductsArgs<ExtArgs>
@@ -11646,6 +12077,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
   createdPermissions?: boolean | Prisma.User$createdPermissionsArgs<ExtArgs>
   updatedPermissions?: boolean | Prisma.User$updatedPermissionsArgs<ExtArgs>
+  deletedPermissions?: boolean | Prisma.User$deletedPermissionsArgs<ExtArgs>
   createdRoles?: boolean | Prisma.User$createdRolesArgs<ExtArgs>
   updatedRoles?: boolean | Prisma.User$updatedRolesArgs<ExtArgs>
   createdProducts?: boolean | Prisma.User$createdProductsArgs<ExtArgs>
@@ -11703,6 +12135,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
     createdPermissions: Prisma.$PermissionPayload<ExtArgs>[]
     updatedPermissions: Prisma.$PermissionPayload<ExtArgs>[]
+    deletedPermissions: Prisma.$PermissionPayload<ExtArgs>[]
     createdRoles: Prisma.$RolePayload<ExtArgs>[]
     updatedRoles: Prisma.$RolePayload<ExtArgs>[]
     createdProducts: Prisma.$ProductPayload<ExtArgs>[]
@@ -12154,6 +12587,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   reviews<T extends Prisma.User$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdPermissions<T extends Prisma.User$createdPermissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdPermissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   updatedPermissions<T extends Prisma.User$updatedPermissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedPermissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  deletedPermissions<T extends Prisma.User$deletedPermissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deletedPermissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdRoles<T extends Prisma.User$createdRolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdRolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   updatedRoles<T extends Prisma.User$updatedRolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedRolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdProducts<T extends Prisma.User$createdProductsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdProductsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -12778,6 +13212,30 @@ export type User$createdPermissionsArgs<ExtArgs extends runtime.Types.Extensions
  * User.updatedPermissions
  */
 export type User$updatedPermissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Permission
+   */
+  select?: Prisma.PermissionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Permission
+   */
+  omit?: Prisma.PermissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PermissionInclude<ExtArgs> | null
+  where?: Prisma.PermissionWhereInput
+  orderBy?: Prisma.PermissionOrderByWithRelationInput | Prisma.PermissionOrderByWithRelationInput[]
+  cursor?: Prisma.PermissionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PermissionScalarFieldEnum | Prisma.PermissionScalarFieldEnum[]
+}
+
+/**
+ * User.deletedPermissions
+ */
+export type User$deletedPermissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Permission
    */

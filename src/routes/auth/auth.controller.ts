@@ -10,8 +10,8 @@ import {
   RegisterResDto,
   SendOtpBodyDto,
   SendOtpResDto,
-} from 'src/auth/auth.dto';
-import { AuthService } from 'src/auth/auth.service';
+} from 'src/routes/auth/auth.dto';
+import { AuthService } from 'src/routes/auth/auth.service';
 import { isPublic } from 'src/shared/decorators/auth.decorator';
 import { UserAgent } from 'src/shared/decorators/user-agent.decorator';
 import { MessageResDto } from 'src/shared/dtos/response.dto';

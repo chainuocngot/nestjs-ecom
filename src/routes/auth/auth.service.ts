@@ -1,8 +1,8 @@
 import { HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { addMilliseconds } from 'date-fns';
 import ms, { StringValue } from 'ms';
-import { LoginBodyType, RefreshTokenBodyType, RegisterBodyType, SendOtpBodyType } from 'src/auth/auth.model';
-import { AuthRepository } from 'src/auth/auth.repository';
+import { LoginBodyType, RefreshTokenBodyType, RegisterBodyType, SendOtpBodyType } from 'src/routes/auth/auth.model';
+import { AuthRepository } from 'src/routes/auth/auth.repository';
 import {
   EmailAlreadyExistsException,
   EmailNotFoundException,
@@ -11,8 +11,8 @@ import {
   InvalidOtpException,
   OtpExpiredException,
   RefreshTokenAlreadyUsedException,
-} from 'src/auth/error.model';
-import { RoleService } from 'src/auth/role.service';
+} from 'src/routes/auth/auth.error';
+import { RoleService } from 'src/routes/auth/role.service';
 import { envConfig } from 'src/shared/config';
 import { VerificationCode } from 'src/shared/constants/auth.constant';
 import { SharedUserRepository } from 'src/shared/repositories/shared-user.repository';

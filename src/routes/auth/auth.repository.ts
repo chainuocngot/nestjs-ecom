@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DeviceType, RefreshTokenType, RegisterBodyType, VerificationCodeType } from 'src/auth/auth.model';
+import { DeviceType, RefreshTokenType, RegisterBodyType, VerificationCodeType } from 'src/routes/auth/auth.model';
 import { TypeOfVerificationCode } from 'src/shared/constants/auth.constant';
 import { RoleType, UserType } from 'src/shared/models/shared-user.model';
 import { PrismaService } from 'src/shared/services/prisma.service';

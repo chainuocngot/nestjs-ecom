@@ -9,7 +9,7 @@ import {
   RegisterResSchema,
   SendOtpBodySchema,
   SendOtpResSchema,
-} from 'src/auth/auth.model';
+} from 'src/routes/auth/auth.model';
 
 export class RegisterBodyDto extends createZodDto(RegisterBodySchema) {}
 
