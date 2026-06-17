@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import { Pool } from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
-import { PrismaClient } from 'src/generated/prisma/client';
-import { RoleName } from 'src/shared/constants/role.constant';
-import { envConfig } from 'src/shared/config';
-import { HashingService } from 'src/shared/services/hashing.service';
+import { PrismaClient } from '../src/generated/prisma/client';
+import { RoleName } from '../src/shared/constants/role.constant';
+import { envConfig } from '../src/shared/config';
+import { HashingService } from '../src/shared/services/hashing.service';
 
 const connectionString = `${process.env.DATABASE_URL}`;
 const pool = new Pool({ connectionString });
@@ -45,6 +45,7 @@ async function main() {
     adminUser,
   };
 }
+
 main()
   .then(async ({ adminUser, createdRoleCount }) => {
     console.log('Seed result:', { adminUser, createdRoleCount });
