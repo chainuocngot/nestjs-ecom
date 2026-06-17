@@ -12,6 +12,12 @@ async function bootstrap() {
   const server = app.getHttpAdapter().getInstance();
   const router = server.router;
 
+  const permissionsInDb = await prisma.permission.findMany({
+    where: {
+      deletedAt: null,
+    },
+  });
+
   const availableRoutes: { path: string; method: HTTPMethod; name: string }[] = router.stack
     .map((layer) => {
       if (layer.route) {
@@ -26,12 +32,51 @@ async function bootstrap() {
     })
     .filter((item) => item !== undefined);
 
-  const result = await prisma.permission.createMany({
-    data: availableRoutes,
-    skipDuplicates: true,
+  const permissionsInDbMap = permissionsInDb.reduce((acc, cur) => {
+    acc[`${cur.method} ${cur.path}`] = cur;
+    return acc;
+  }, {});
+
+  const availableRoutesMap = availableRoutes.reduce((acc, cur) => {
+    acc[`${cur.method} ${cur.path}`] = cur;
+    return acc;
+  }, {});
+
+  const permissionsToDelete = permissionsInDb.filter((item) => {
+    return !availableRoutesMap[`${item.method} ${item.path}`];
   });
 
-  console.log(result);
+  if (permissionsToDelete.length > 0) {
+    const deleteResult = await prisma.permission.deleteMany({
+      where: {
+        id: {
+          in: permissionsToDelete.map((item) => item.id),
+        },
+      },
+    });
+    console.log('Deleted permissions: ', deleteResult);
+  } else {
+    console.log('No permission to delete');
+  }
+
+  const routesToAdd = availableRoutes.filter((item) => {
+    return !permissionsInDbMap[`${item.method} ${item.path}`];
+  });
+
+  if (routesToAdd.length > 0) {
+    const addResult = await prisma.permission.createMany({
+      data: routesToAdd,
+    });
+    console.log('Added routes: ', addResult);
+  } else {
+    console.log('No permission to add');
+  }
+  // const result = await prisma.permission.createMany({
+  //   data: availableRoutes,
+  //   skipDuplicates: true,
+  // });
+
+  // console.log(result);
 
   process.exit(0);
 }
