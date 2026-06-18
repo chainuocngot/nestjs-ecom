@@ -55,6 +55,7 @@ model User {
   deletedPermissions          Permission[]          @relation("PermissionDeletedBy")
   createdRoles                Role[]                @relation("RoleCreatedBy")
   updatedRoles                Role[]                @relation("RoleUpdatedBy")
+  deletedRoles                Role[]                @relation("RoleDeletedBy")
   createdProducts             Product[]             @relation("ProductCreatedBy")
   updatedProducts             Product[]             @relation("ProductUpdatedBy")
   createdCategories           Category[]            @relation("CategoryCreatedBy")
@@ -167,8 +168,8 @@ model Permission {
 
 model Role {
   id          Int          @id @default(autoincrement())
-  name        String       @unique @db.VarChar(500)
-  description String
+  name        String       @db.VarChar(500)
+  description String       @default("")
   isActive    Boolean      @default(true)
   permissions Permission[]
   users       User[]
@@ -177,6 +178,8 @@ model Role {
   createdBy   User? @relation("RoleCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("RoleUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  deletedById Int?
+  deletedBy   User? @relation("RoleDeletedBy", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
 
   deletedAt DateTime?
   createdAt DateTime  @default(now())

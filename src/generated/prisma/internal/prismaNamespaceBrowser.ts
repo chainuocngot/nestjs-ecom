@@ -189,6 +189,7 @@ export const RoleScalarFieldEnum = {
   isActive: 'isActive',
   createdById: 'createdById',
   updatedById: 'updatedById',
+  deletedById: 'deletedById',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
