@@ -21,34 +21,56 @@ export class AuthenticationGuard implements CanActivate {
   }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
+    const authTypeValue = this._getAuthTypeValue(context);
+    const guards = authTypeValue.authTypes.map((authType) => this.authTypeGuardMap[authType]);
+
+    return authTypeValue.options.condition === ConditionGuard.And
+      ? this._handleAndCondition(guards, context)
+      : this._handleOrCondition(guards, context);
+  }
+
+  private _getAuthTypeValue(context: ExecutionContext) {
     const authTypeValue = this.reflector.getAllAndOverride<AuthTypeDecoratorPayload | undefined>(AUTH_TYPE_KEY, [
       context.getHandler(),
       context.getClass(),
-    ]) ?? { authTypes: [AuthType.Bearer], options: { condition: ConditionGuard.Or } };
+    ]) ?? { authTypes: [AuthType.Bearer], options: { condition: ConditionGuard.And } };
 
-    const guards = authTypeValue.authTypes.map((authType) => this.authTypeGuardMap[authType]);
-    let error = new UnauthorizedException();
-    if (authTypeValue.options.condition === ConditionGuard.Or) {
-      for (const instance of guards) {
-        const canActive = await Promise.resolve(instance.canActivate(context)).catch((err: HttpException) => {
-          error = err;
-          return false;
-        });
-        if (canActive) {
+    return authTypeValue;
+  }
+
+  private async _handleOrCondition(guards: CanActivate[], context: ExecutionContext) {
+    let lastError: HttpException | Error | null = null;
+
+    for (const guard of guards) {
+      try {
+        if (await guard.canActivate(context)) {
           return true;
         }
+      } catch (error) {
+        lastError = error as Error;
       }
+    }
 
-      throw error;
-    } else {
-      for (const instance of guards) {
-        const canActive = await instance.canActivate(context);
-        if (!canActive) {
+    if (lastError instanceof HttpException) {
+      throw lastError;
+    }
+    throw new UnauthorizedException();
+  }
+
+  private async _handleAndCondition(guards: CanActivate[], context: ExecutionContext) {
+    for (const guard of guards) {
+      try {
+        if (!(await guard.canActivate(context))) {
           throw new UnauthorizedException();
         }
+      } catch (error) {
+        if (error instanceof HttpException) {
+          throw error;
+        }
+        throw new UnauthorizedException();
       }
-
-      return true;
     }
+
+    return true;
   }
 }
