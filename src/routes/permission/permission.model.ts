@@ -8,6 +8,7 @@ export const PermissionSchema = z.object({
   description: z.string().nullable(),
   path: z.string(),
   method: z.enum(HTTPMethod),
+  module: z.string(),
   createdById: z.number().int().nullable(),
   updatedById: z.number().int().nullable(),
   deletedAt: z.date().nullable(),
@@ -32,6 +33,7 @@ export const CreatePermissionBodySchema = PermissionSchema.pick({
   method: true,
   name: true,
   path: true,
+  module: true,
 }).strict();
 
 export const CreatePermissionResSchema = PermissionSchema;

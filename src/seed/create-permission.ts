@@ -19,15 +19,17 @@ async function bootstrap() {
     },
   });
 
-  const availableRoutes: { path: string; method: HTTPMethod; name: string }[] = router.stack
+  const availableRoutes: { path: string; method: HTTPMethod; name: string; module: string }[] = router.stack
     .map((layer) => {
       if (layer.route) {
         const method = String(layer.route?.stack[0].method).toUpperCase() as HTTPMethod;
         const path = layer.route?.path;
+        const module = String(path.split('/')[1]).toUpperCase();
         return {
           name: `${method} ${path}`,
           path,
           method,
+          module,
         };
       }
     })
