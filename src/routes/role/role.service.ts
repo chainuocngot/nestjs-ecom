@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { RoleAlreadyExistsException, RoleNotFoundException } from 'src/routes/role/role.error';
+import {
+  ProhibitedActionOnBaseRoleException,
+  RoleAlreadyExistsException,
+  RoleNotFoundException,
+} from 'src/routes/role/role.error';
 import { CreateRoleBodyType, GetListRoleQueryType, UpdateRoleBodyType } from 'src/routes/role/role.model';
 import { RoleRepository } from 'src/routes/role/role.repository';
+import { RoleName } from 'src/shared/constants/role.constant';
 import { isNotFoundPrismaError, isUniqueConstraintPrismaError } from 'src/shared/utils';
 
 @Injectable()
 export class RoleService {
+  private BASE_ROLE_NAMES: string[] = [RoleName.Admin, RoleName.Seller, RoleName.Client];
+
   constructor(private readonly roleRepository: RoleRepository) {}
 
   list(query: GetListRoleQueryType) {
@@ -38,6 +45,15 @@ export class RoleService {
 
   async update({ updatedById, body, roleId }: { updatedById: number; body: UpdateRoleBodyType; roleId: number }) {
     try {
+      const role = await this.roleRepository.findById(roleId);
+      if (!role) {
+        throw RoleNotFoundException;
+      }
+
+      if (role.name === RoleName.Admin) {
+        throw ProhibitedActionOnBaseRoleException;
+      }
+
       return await this.roleRepository.update({
         updatedById,
         body,
@@ -58,6 +74,15 @@ export class RoleService {
 
   async delete(deletedById: number, roleId: number) {
     try {
+      const role = await this.roleRepository.findById(roleId);
+      if (!role) {
+        throw RoleNotFoundException;
+      }
+
+      if (this.BASE_ROLE_NAMES.includes(role.name)) {
+        throw ProhibitedActionOnBaseRoleException;
+      }
+
       await this.roleRepository.delete(deletedById, roleId);
 
       return {
