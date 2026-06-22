@@ -106,7 +106,7 @@ export class AuthService {
       ip: string;
     },
   ) {
-    const user = await this.sharedUserRepository.findUniqueIncludeRole({
+    const user = await this.sharedUserRepository.findUniqueIncludeRolePermissions({
       email: body.email,
     });
 

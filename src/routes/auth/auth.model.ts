@@ -7,10 +7,15 @@ export const RegisterBodySchema = UserSchema.pick({
   password: true,
   name: true,
   phoneNumber: true,
-}).extend({
-  confirmPassword: z.string().min(6).max(255),
-  code: z.string().length(6),
-});
+})
+  .extend({
+    confirmPassword: z.string().min(6).max(255),
+    code: z.string().length(6),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Mật khẩu xác nhận không khớp',
+    path: ['confirmPassword'],
+  });
 
 export const RegisterResSchema = UserSchema.omit({
   password: true,
@@ -33,7 +38,7 @@ export const SendOtpBodySchema = VerificationCodeSchema.pick({
 
 export const SendOtpResSchema = VerificationCodeSchema;
 
-export const LoginBodySchema = RegisterBodySchema.pick({
+export const LoginBodySchema = UserSchema.pick({
   email: true,
   password: true,
 }).strict();
