@@ -12,7 +12,6 @@ import {
   OtpExpiredException,
   RefreshTokenAlreadyUsedException,
 } from 'src/routes/auth/auth.error';
-import { RoleService } from 'src/routes/auth/role.service';
 import { envConfig } from 'src/shared/config';
 import { VerificationCode } from 'src/shared/constants/auth.constant';
 import { SharedUserRepository } from 'src/shared/repositories/shared-user.repository';
@@ -20,15 +19,16 @@ import { EmailService } from 'src/shared/services/email.service';
 import { HashingService } from 'src/shared/services/hashing.service';
 import { TokenService } from 'src/shared/services/token.service';
 import { generateOtp, isNotFoundPrismaError, isUniqueConstraintPrismaError } from 'src/shared/utils';
+import { SharedRoleRepository } from 'src/shared/repositories/shared-role.repository';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly tokenService: TokenService,
-    private readonly roleService: RoleService,
     private readonly hashingService: HashingService,
     private readonly authRepository: AuthRepository,
     private readonly sharedUserRepository: SharedUserRepository,
+    private readonly sharedRoleRepository: SharedRoleRepository,
     private readonly emailService: EmailService,
   ) {}
 
@@ -49,7 +49,7 @@ export class AuthService {
       }
 
       const [clientRoleId, hashedPassword] = await Promise.all([
-        this.roleService.getClientRoleId(),
+        this.sharedRoleRepository.getClientRoleId(),
         this.hashingService.hash(body.password),
       ]);
 

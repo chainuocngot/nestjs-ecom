@@ -4,7 +4,7 @@ import { RoleType } from 'src/shared/models/shared-user.model';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
 @Injectable()
-export class RoleService {
+export class SharedRoleRepository {
   private clientRoleId: number | null = null;
 
   constructor(private readonly prismaService: PrismaService) {}

@@ -7,12 +7,14 @@ import { SharedUserRepository } from 'src/shared/repositories/shared-user.reposi
 import { EmailService } from 'src/shared/services/email.service';
 import { AccessTokenGuard } from 'src/shared/guards/access-token.guard';
 import { ApiKeyGuard } from 'src/shared/guards/api-key.guard';
+import { SharedRoleRepository } from 'src/shared/repositories/shared-role.repository';
 
 const sharedServices = [
   PrismaService,
   TokenService,
   HashingService,
   SharedUserRepository,
+  SharedRoleRepository,
   EmailService,
   AccessTokenGuard,
   ApiKeyGuard,
