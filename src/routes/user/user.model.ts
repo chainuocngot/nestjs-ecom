@@ -1,4 +1,3 @@
-import { PermissionSchema } from 'src/routes/permission/permission.model';
 import { PaginationQuerySchema } from 'src/shared/models/request.model';
 import { RoleSchema, UserSchema } from 'src/shared/models/shared-user.model';
 import { z } from 'zod';
@@ -27,21 +26,6 @@ export const GetUserDetailParamSchema = z.object({
 export const GetUserDetailResSchema = UserSchema.omit({
   password: true,
   totpSecret: true,
-}).extend({
-  role: RoleSchema.pick({
-    id: true,
-    name: true,
-  }).extend({
-    permissions: z.array(
-      PermissionSchema.pick({
-        id: true,
-        method: true,
-        module: true,
-        name: true,
-        path: true,
-      }),
-    ),
-  }),
 });
 
 export const CreateUserBodySchema = UserSchema.pick({
@@ -56,7 +40,7 @@ export const CreateUserBodySchema = UserSchema.pick({
 
 export const CreateUserResSchema = GetUserDetailResSchema;
 
-export const UpdateUserBodySchema = CreateUserBodySchema;
+export const UpdateUserBodySchema = CreateUserBodySchema.partial();
 
 export const UpdateUserResSchema = GetUserDetailResSchema;
 

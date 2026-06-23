@@ -81,6 +81,7 @@ export class UserRepository {
         deletedAt: null,
       },
       data: {
+        deletedAt: new Date(),
         deletedById,
       },
     });

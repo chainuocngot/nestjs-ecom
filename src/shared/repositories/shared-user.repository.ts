@@ -11,13 +11,13 @@ export class SharedUserRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   findUnique(uniqueObject: UniqueObjectType): Promise<UserType | null> {
-    return this.prismaService.user.findUnique({
+    return this.prismaService.user.findFirst({
       where: uniqueObject,
     });
   }
 
   findUniqueIncludeRolePermissions(uniqueObject: UniqueObjectType): Promise<UserIncludeRolePermissions | null> {
-    return this.prismaService.user.findUnique({
+    return this.prismaService.user.findFirst({
       where: uniqueObject,
       include: {
         role: {
