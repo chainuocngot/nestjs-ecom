@@ -95,6 +95,10 @@ model User {
   updatedBy    User?  @relation("UpdatorUsers", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   updatedUsers User[] @relation("UpdatorUsers")
 
+  deletedById  Int?
+  deletedBy    User?  @relation("DeletorUsers", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  deletedUsers User[] @relation("DeletorUsers")
+
   deletedAt DateTime?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt

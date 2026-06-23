@@ -31,6 +31,7 @@ export type UserAvgAggregateOutputType = {
   roleId: number | null
   createdById: number | null
   updatedById: number | null
+  deletedById: number | null
 }
 
 export type UserSumAggregateOutputType = {
@@ -38,6 +39,7 @@ export type UserSumAggregateOutputType = {
   roleId: number | null
   createdById: number | null
   updatedById: number | null
+  deletedById: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -52,6 +54,7 @@ export type UserMinAggregateOutputType = {
   roleId: number | null
   createdById: number | null
   updatedById: number | null
+  deletedById: number | null
   deletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -69,6 +72,7 @@ export type UserMaxAggregateOutputType = {
   roleId: number | null
   createdById: number | null
   updatedById: number | null
+  deletedById: number | null
   deletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -86,6 +90,7 @@ export type UserCountAggregateOutputType = {
   roleId: number
   createdById: number
   updatedById: number
+  deletedById: number
   deletedAt: number
   createdAt: number
   updatedAt: number
@@ -98,6 +103,7 @@ export type UserAvgAggregateInputType = {
   roleId?: true
   createdById?: true
   updatedById?: true
+  deletedById?: true
 }
 
 export type UserSumAggregateInputType = {
@@ -105,6 +111,7 @@ export type UserSumAggregateInputType = {
   roleId?: true
   createdById?: true
   updatedById?: true
+  deletedById?: true
 }
 
 export type UserMinAggregateInputType = {
@@ -119,6 +126,7 @@ export type UserMinAggregateInputType = {
   roleId?: true
   createdById?: true
   updatedById?: true
+  deletedById?: true
   deletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -136,6 +144,7 @@ export type UserMaxAggregateInputType = {
   roleId?: true
   createdById?: true
   updatedById?: true
+  deletedById?: true
   deletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -153,6 +162,7 @@ export type UserCountAggregateInputType = {
   roleId?: true
   createdById?: true
   updatedById?: true
+  deletedById?: true
   deletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -257,6 +267,7 @@ export type UserGroupByOutputType = {
   roleId: number
   createdById: number | null
   updatedById: number | null
+  deletedById: number | null
   deletedAt: Date | null
   createdAt: Date
   updatedAt: Date
@@ -297,6 +308,7 @@ export type UserWhereInput = {
   roleId?: Prisma.IntFilter<"User"> | number
   createdById?: Prisma.IntNullableFilter<"User"> | number | null
   updatedById?: Prisma.IntNullableFilter<"User"> | number | null
+  deletedById?: Prisma.IntNullableFilter<"User"> | number | null
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -343,6 +355,8 @@ export type UserWhereInput = {
   createdUsers?: Prisma.UserListRelationFilter
   updatedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   updatedUsers?: Prisma.UserListRelationFilter
+  deletedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  deletedUsers?: Prisma.UserListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -357,6 +371,7 @@ export type UserOrderByWithRelationInput = {
   roleId?: Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedById?: Prisma.SortOrderInput | Prisma.SortOrder
+  deletedById?: Prisma.SortOrderInput | Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -403,6 +418,8 @@ export type UserOrderByWithRelationInput = {
   createdUsers?: Prisma.UserOrderByRelationAggregateInput
   updatedBy?: Prisma.UserOrderByWithRelationInput
   updatedUsers?: Prisma.UserOrderByRelationAggregateInput
+  deletedBy?: Prisma.UserOrderByWithRelationInput
+  deletedUsers?: Prisma.UserOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -420,6 +437,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   roleId?: Prisma.IntFilter<"User"> | number
   createdById?: Prisma.IntNullableFilter<"User"> | number | null
   updatedById?: Prisma.IntNullableFilter<"User"> | number | null
+  deletedById?: Prisma.IntNullableFilter<"User"> | number | null
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -466,6 +484,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdUsers?: Prisma.UserListRelationFilter
   updatedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   updatedUsers?: Prisma.UserListRelationFilter
+  deletedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  deletedUsers?: Prisma.UserListRelationFilter
 }, "id" | "email" | "totpSecret">
 
 export type UserOrderByWithAggregationInput = {
@@ -480,6 +500,7 @@ export type UserOrderByWithAggregationInput = {
   roleId?: Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedById?: Prisma.SortOrderInput | Prisma.SortOrder
+  deletedById?: Prisma.SortOrderInput | Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -505,6 +526,7 @@ export type UserScalarWhereWithAggregatesInput = {
   roleId?: Prisma.IntWithAggregatesFilter<"User"> | number
   createdById?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
   updatedById?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
+  deletedById?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -564,6 +586,8 @@ export type UserCreateInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -578,6 +602,7 @@ export type UserUncheckedCreateInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -621,6 +646,7 @@ export type UserUncheckedCreateInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUpdateInput = {
@@ -677,6 +703,8 @@ export type UserUpdateInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -691,6 +719,7 @@ export type UserUncheckedUpdateInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -734,6 +763,7 @@ export type UserUncheckedUpdateInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -748,6 +778,7 @@ export type UserCreateManyInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -778,6 +809,7 @@ export type UserUncheckedUpdateManyInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -810,6 +842,7 @@ export type UserCountOrderByAggregateInput = {
   roleId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   updatedById?: Prisma.SortOrder
+  deletedById?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -820,6 +853,7 @@ export type UserAvgOrderByAggregateInput = {
   roleId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   updatedById?: Prisma.SortOrder
+  deletedById?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -834,6 +868,7 @@ export type UserMaxOrderByAggregateInput = {
   roleId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   updatedById?: Prisma.SortOrder
+  deletedById?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -851,6 +886,7 @@ export type UserMinOrderByAggregateInput = {
   roleId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   updatedById?: Prisma.SortOrder
+  deletedById?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -861,6 +897,7 @@ export type UserSumOrderByAggregateInput = {
   roleId?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   updatedById?: Prisma.SortOrder
+  deletedById?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -926,6 +963,19 @@ export type UserCreateNestedManyWithoutUpdatedByInput = {
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
+export type UserCreateNestedOneWithoutDeletedUsersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedUsersInput, Prisma.UserUncheckedCreateWithoutDeletedUsersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedUsersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedManyWithoutDeletedByInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedByInput, Prisma.UserUncheckedCreateWithoutDeletedByInput> | Prisma.UserCreateWithoutDeletedByInput[] | Prisma.UserUncheckedCreateWithoutDeletedByInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedByInput | Prisma.UserCreateOrConnectWithoutDeletedByInput[]
+  createMany?: Prisma.UserCreateManyDeletedByInputEnvelope
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
 export type UserUncheckedCreateNestedManyWithoutCreatedByInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedByInput, Prisma.UserUncheckedCreateWithoutCreatedByInput> | Prisma.UserCreateWithoutCreatedByInput[] | Prisma.UserUncheckedCreateWithoutCreatedByInput[]
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedByInput | Prisma.UserCreateOrConnectWithoutCreatedByInput[]
@@ -937,6 +987,13 @@ export type UserUncheckedCreateNestedManyWithoutUpdatedByInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutUpdatedByInput, Prisma.UserUncheckedCreateWithoutUpdatedByInput> | Prisma.UserCreateWithoutUpdatedByInput[] | Prisma.UserUncheckedCreateWithoutUpdatedByInput[]
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutUpdatedByInput | Prisma.UserCreateOrConnectWithoutUpdatedByInput[]
   createMany?: Prisma.UserCreateManyUpdatedByInputEnvelope
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUncheckedCreateNestedManyWithoutDeletedByInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedByInput, Prisma.UserUncheckedCreateWithoutDeletedByInput> | Prisma.UserCreateWithoutDeletedByInput[] | Prisma.UserUncheckedCreateWithoutDeletedByInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedByInput | Prisma.UserCreateOrConnectWithoutDeletedByInput[]
+  createMany?: Prisma.UserCreateManyDeletedByInputEnvelope
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
@@ -996,6 +1053,30 @@ export type UserUpdateManyWithoutUpdatedByNestedInput = {
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
+export type UserUpdateOneWithoutDeletedUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedUsersInput, Prisma.UserUncheckedCreateWithoutDeletedUsersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedUsersInput
+  upsert?: Prisma.UserUpsertWithoutDeletedUsersInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDeletedUsersInput, Prisma.UserUpdateWithoutDeletedUsersInput>, Prisma.UserUncheckedUpdateWithoutDeletedUsersInput>
+}
+
+export type UserUpdateManyWithoutDeletedByNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedByInput, Prisma.UserUncheckedCreateWithoutDeletedByInput> | Prisma.UserCreateWithoutDeletedByInput[] | Prisma.UserUncheckedCreateWithoutDeletedByInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedByInput | Prisma.UserCreateOrConnectWithoutDeletedByInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutDeletedByInput | Prisma.UserUpsertWithWhereUniqueWithoutDeletedByInput[]
+  createMany?: Prisma.UserCreateManyDeletedByInputEnvelope
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutDeletedByInput | Prisma.UserUpdateWithWhereUniqueWithoutDeletedByInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutDeletedByInput | Prisma.UserUpdateManyWithWhereWithoutDeletedByInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
 export type UserUncheckedUpdateManyWithoutCreatedByNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedByInput, Prisma.UserUncheckedCreateWithoutCreatedByInput> | Prisma.UserCreateWithoutCreatedByInput[] | Prisma.UserUncheckedCreateWithoutCreatedByInput[]
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedByInput | Prisma.UserCreateOrConnectWithoutCreatedByInput[]
@@ -1021,6 +1102,20 @@ export type UserUncheckedUpdateManyWithoutUpdatedByNestedInput = {
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   update?: Prisma.UserUpdateWithWhereUniqueWithoutUpdatedByInput | Prisma.UserUpdateWithWhereUniqueWithoutUpdatedByInput[]
   updateMany?: Prisma.UserUpdateManyWithWhereWithoutUpdatedByInput | Prisma.UserUpdateManyWithWhereWithoutUpdatedByInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type UserUncheckedUpdateManyWithoutDeletedByNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedByInput, Prisma.UserUncheckedCreateWithoutDeletedByInput> | Prisma.UserCreateWithoutDeletedByInput[] | Prisma.UserUncheckedCreateWithoutDeletedByInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedByInput | Prisma.UserCreateOrConnectWithoutDeletedByInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutDeletedByInput | Prisma.UserUpsertWithWhereUniqueWithoutDeletedByInput[]
+  createMany?: Prisma.UserCreateManyDeletedByInputEnvelope
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutDeletedByInput | Prisma.UserUpdateWithWhereUniqueWithoutDeletedByInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutDeletedByInput | Prisma.UserUpdateManyWithWhereWithoutDeletedByInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
@@ -1679,6 +1774,8 @@ export type UserCreateWithoutCreatedLanguagesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedLanguagesInput = {
@@ -1693,6 +1790,7 @@ export type UserUncheckedCreateWithoutCreatedLanguagesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1735,6 +1833,7 @@ export type UserUncheckedCreateWithoutCreatedLanguagesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedLanguagesInput = {
@@ -1795,6 +1894,8 @@ export type UserCreateWithoutUpdatedLanguagesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedLanguagesInput = {
@@ -1809,6 +1910,7 @@ export type UserUncheckedCreateWithoutUpdatedLanguagesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1851,6 +1953,7 @@ export type UserUncheckedCreateWithoutUpdatedLanguagesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedLanguagesInput = {
@@ -1922,6 +2025,8 @@ export type UserUpdateWithoutCreatedLanguagesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedLanguagesInput = {
@@ -1936,6 +2041,7 @@ export type UserUncheckedUpdateWithoutCreatedLanguagesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1978,6 +2084,7 @@ export type UserUncheckedUpdateWithoutCreatedLanguagesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedLanguagesInput = {
@@ -2044,6 +2151,8 @@ export type UserUpdateWithoutUpdatedLanguagesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedLanguagesInput = {
@@ -2058,6 +2167,7 @@ export type UserUncheckedUpdateWithoutUpdatedLanguagesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2100,6 +2210,7 @@ export type UserUncheckedUpdateWithoutUpdatedLanguagesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedUsersInput = {
@@ -2155,6 +2266,8 @@ export type UserCreateWithoutCreatedUsersInput = {
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedUsersInput = {
@@ -2169,6 +2282,7 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2211,6 +2325,7 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedUsersInput = {
@@ -2271,6 +2386,8 @@ export type UserCreateWithoutCreatedByInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedByInput = {
@@ -2284,6 +2401,7 @@ export type UserUncheckedCreateWithoutCreatedByInput = {
   status?: $Enums.UserStatus
   roleId: number
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2327,6 +2445,7 @@ export type UserUncheckedCreateWithoutCreatedByInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedByInput = {
@@ -2392,6 +2511,8 @@ export type UserCreateWithoutUpdatedUsersInput = {
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedUsersInput = {
@@ -2406,6 +2527,7 @@ export type UserUncheckedCreateWithoutUpdatedUsersInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2448,6 +2570,7 @@ export type UserUncheckedCreateWithoutUpdatedUsersInput = {
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedUsersInput = {
@@ -2508,6 +2631,8 @@ export type UserCreateWithoutUpdatedByInput = {
   createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedByInput = {
@@ -2521,6 +2646,133 @@ export type UserUncheckedCreateWithoutUpdatedByInput = {
   status?: $Enums.UserStatus
   roleId: number
   createdById?: number | null
+  deletedById?: number | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserCreateOrConnectWithoutUpdatedByInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUpdatedByInput, Prisma.UserUncheckedCreateWithoutUpdatedByInput>
+}
+
+export type UserCreateManyUpdatedByInputEnvelope = {
+  data: Prisma.UserCreateManyUpdatedByInput | Prisma.UserCreateManyUpdatedByInput[]
+  skipDuplicates?: boolean
+}
+
+export type UserCreateWithoutDeletedUsersInput = {
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutToUserInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
+  updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
+  updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+}
+
+export type UserUncheckedCreateWithoutDeletedUsersInput = {
+  id?: number
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  roleId: number
+  createdById?: number | null
+  updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2566,13 +2818,133 @@ export type UserUncheckedCreateWithoutUpdatedByInput = {
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
 }
 
-export type UserCreateOrConnectWithoutUpdatedByInput = {
+export type UserCreateOrConnectWithoutDeletedUsersInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutUpdatedByInput, Prisma.UserUncheckedCreateWithoutUpdatedByInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedUsersInput, Prisma.UserUncheckedCreateWithoutDeletedUsersInput>
 }
 
-export type UserCreateManyUpdatedByInputEnvelope = {
-  data: Prisma.UserCreateManyUpdatedByInput | Prisma.UserCreateManyUpdatedByInput[]
+export type UserCreateWithoutDeletedByInput = {
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutToUserInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
+  updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
+  updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserUncheckedCreateWithoutDeletedByInput = {
+  id?: number
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  roleId: number
+  createdById?: number | null
+  updatedById?: number | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserCreateOrConnectWithoutDeletedByInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedByInput, Prisma.UserUncheckedCreateWithoutDeletedByInput>
+}
+
+export type UserCreateManyDeletedByInputEnvelope = {
+  data: Prisma.UserCreateManyDeletedByInput | Prisma.UserCreateManyDeletedByInput[]
   skipDuplicates?: boolean
 }
 
@@ -2640,6 +3012,8 @@ export type UserUpdateWithoutCreatedUsersInput = {
   createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedUsersInput = {
@@ -2654,6 +3028,7 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2696,6 +3071,7 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutCreatedByInput = {
@@ -2729,6 +3105,7 @@ export type UserScalarWhereInput = {
   roleId?: Prisma.IntFilter<"User"> | number
   createdById?: Prisma.IntNullableFilter<"User"> | number | null
   updatedById?: Prisma.IntNullableFilter<"User"> | number | null
+  deletedById?: Prisma.IntNullableFilter<"User"> | number | null
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -2798,6 +3175,8 @@ export type UserUpdateWithoutUpdatedUsersInput = {
   createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedUsersInput = {
@@ -2812,6 +3191,7 @@ export type UserUncheckedUpdateWithoutUpdatedUsersInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2854,6 +3234,7 @@ export type UserUncheckedUpdateWithoutUpdatedUsersInput = {
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutUpdatedByInput = {
@@ -2870,6 +3251,148 @@ export type UserUpdateWithWhereUniqueWithoutUpdatedByInput = {
 export type UserUpdateManyWithWhereWithoutUpdatedByInput = {
   where: Prisma.UserScalarWhereInput
   data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutUpdatedByInput>
+}
+
+export type UserUpsertWithoutDeletedUsersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDeletedUsersInput, Prisma.UserUncheckedUpdateWithoutDeletedUsersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedUsersInput, Prisma.UserUncheckedCreateWithoutDeletedUsersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDeletedUsersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDeletedUsersInput, Prisma.UserUncheckedUpdateWithoutDeletedUsersInput>
+}
+
+export type UserUpdateWithoutDeletedUsersInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUpdateManyWithoutToUserNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
+  updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
+  updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDeletedUsersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+}
+
+export type UserUpsertWithWhereUniqueWithoutDeletedByInput = {
+  where: Prisma.UserWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDeletedByInput, Prisma.UserUncheckedUpdateWithoutDeletedByInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedByInput, Prisma.UserUncheckedCreateWithoutDeletedByInput>
+}
+
+export type UserUpdateWithWhereUniqueWithoutDeletedByInput = {
+  where: Prisma.UserWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDeletedByInput, Prisma.UserUncheckedUpdateWithoutDeletedByInput>
+}
+
+export type UserUpdateManyWithWhereWithoutDeletedByInput = {
+  where: Prisma.UserScalarWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutDeletedByInput>
 }
 
 export type UserCreateWithoutUserTranslationsInput = {
@@ -2925,6 +3448,8 @@ export type UserCreateWithoutUserTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUserTranslationsInput = {
@@ -2939,6 +3464,7 @@ export type UserUncheckedCreateWithoutUserTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2981,6 +3507,7 @@ export type UserUncheckedCreateWithoutUserTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUserTranslationsInput = {
@@ -3041,6 +3568,8 @@ export type UserCreateWithoutCreatedUserTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedUserTranslationsInput = {
@@ -3055,6 +3584,7 @@ export type UserUncheckedCreateWithoutCreatedUserTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -3097,6 +3627,7 @@ export type UserUncheckedCreateWithoutCreatedUserTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedUserTranslationsInput = {
@@ -3157,6 +3688,8 @@ export type UserCreateWithoutUpdatedUserTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedUserTranslationsInput = {
@@ -3171,6 +3704,7 @@ export type UserUncheckedCreateWithoutUpdatedUserTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -3213,6 +3747,7 @@ export type UserUncheckedCreateWithoutUpdatedUserTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedUserTranslationsInput = {
@@ -3284,6 +3819,8 @@ export type UserUpdateWithoutUserTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserTranslationsInput = {
@@ -3298,6 +3835,7 @@ export type UserUncheckedUpdateWithoutUserTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3340,6 +3878,7 @@ export type UserUncheckedUpdateWithoutUserTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutCreatedUserTranslationsInput = {
@@ -3406,6 +3945,8 @@ export type UserUpdateWithoutCreatedUserTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedUserTranslationsInput = {
@@ -3420,6 +3961,7 @@ export type UserUncheckedUpdateWithoutCreatedUserTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3462,6 +4004,7 @@ export type UserUncheckedUpdateWithoutCreatedUserTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedUserTranslationsInput = {
@@ -3528,6 +4071,8 @@ export type UserUpdateWithoutUpdatedUserTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedUserTranslationsInput = {
@@ -3542,6 +4087,7 @@ export type UserUncheckedUpdateWithoutUpdatedUserTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3584,6 +4130,7 @@ export type UserUncheckedUpdateWithoutUpdatedUserTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutRefreshTokensInput = {
@@ -3639,6 +4186,8 @@ export type UserCreateWithoutRefreshTokensInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutRefreshTokensInput = {
@@ -3653,6 +4202,7 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -3695,6 +4245,7 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutRefreshTokensInput = {
@@ -3766,6 +4317,8 @@ export type UserUpdateWithoutRefreshTokensInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRefreshTokensInput = {
@@ -3780,6 +4333,7 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3822,6 +4376,7 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedPermissionsInput = {
@@ -3877,6 +4432,8 @@ export type UserCreateWithoutCreatedPermissionsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedPermissionsInput = {
@@ -3891,6 +4448,7 @@ export type UserUncheckedCreateWithoutCreatedPermissionsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -3933,6 +4491,7 @@ export type UserUncheckedCreateWithoutCreatedPermissionsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedPermissionsInput = {
@@ -3993,6 +4552,8 @@ export type UserCreateWithoutUpdatedPermissionsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedPermissionsInput = {
@@ -4007,6 +4568,7 @@ export type UserUncheckedCreateWithoutUpdatedPermissionsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -4049,6 +4611,7 @@ export type UserUncheckedCreateWithoutUpdatedPermissionsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedPermissionsInput = {
@@ -4109,6 +4672,8 @@ export type UserCreateWithoutDeletedPermissionsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutDeletedPermissionsInput = {
@@ -4123,6 +4688,7 @@ export type UserUncheckedCreateWithoutDeletedPermissionsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -4165,6 +4731,7 @@ export type UserUncheckedCreateWithoutDeletedPermissionsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutDeletedPermissionsInput = {
@@ -4236,6 +4803,8 @@ export type UserUpdateWithoutCreatedPermissionsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedPermissionsInput = {
@@ -4250,6 +4819,7 @@ export type UserUncheckedUpdateWithoutCreatedPermissionsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4292,6 +4862,7 @@ export type UserUncheckedUpdateWithoutCreatedPermissionsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedPermissionsInput = {
@@ -4358,6 +4929,8 @@ export type UserUpdateWithoutUpdatedPermissionsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedPermissionsInput = {
@@ -4372,6 +4945,7 @@ export type UserUncheckedUpdateWithoutUpdatedPermissionsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4414,6 +4988,7 @@ export type UserUncheckedUpdateWithoutUpdatedPermissionsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutDeletedPermissionsInput = {
@@ -4480,6 +5055,8 @@ export type UserUpdateWithoutDeletedPermissionsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeletedPermissionsInput = {
@@ -4494,6 +5071,7 @@ export type UserUncheckedUpdateWithoutDeletedPermissionsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4536,6 +5114,7 @@ export type UserUncheckedUpdateWithoutDeletedPermissionsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutRoleInput = {
@@ -4591,6 +5170,8 @@ export type UserCreateWithoutRoleInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -4604,6 +5185,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   status?: $Enums.UserStatus
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -4647,6 +5229,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -4712,6 +5295,8 @@ export type UserCreateWithoutCreatedRolesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedRolesInput = {
@@ -4726,6 +5311,7 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -4768,6 +5354,7 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedRolesInput = {
@@ -4828,6 +5415,8 @@ export type UserCreateWithoutUpdatedRolesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedRolesInput = {
@@ -4842,6 +5431,7 @@ export type UserUncheckedCreateWithoutUpdatedRolesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -4884,6 +5474,7 @@ export type UserUncheckedCreateWithoutUpdatedRolesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedRolesInput = {
@@ -4944,6 +5535,8 @@ export type UserCreateWithoutDeletedRolesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutDeletedRolesInput = {
@@ -4958,6 +5551,7 @@ export type UserUncheckedCreateWithoutDeletedRolesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -5000,6 +5594,7 @@ export type UserUncheckedCreateWithoutDeletedRolesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutDeletedRolesInput = {
@@ -5087,6 +5682,8 @@ export type UserUpdateWithoutCreatedRolesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedRolesInput = {
@@ -5101,6 +5698,7 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5143,6 +5741,7 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedRolesInput = {
@@ -5209,6 +5808,8 @@ export type UserUpdateWithoutUpdatedRolesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedRolesInput = {
@@ -5223,6 +5824,7 @@ export type UserUncheckedUpdateWithoutUpdatedRolesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5265,6 +5867,7 @@ export type UserUncheckedUpdateWithoutUpdatedRolesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutDeletedRolesInput = {
@@ -5331,6 +5934,8 @@ export type UserUpdateWithoutDeletedRolesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeletedRolesInput = {
@@ -5345,6 +5950,7 @@ export type UserUncheckedUpdateWithoutDeletedRolesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5387,6 +5993,7 @@ export type UserUncheckedUpdateWithoutDeletedRolesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedProductsInput = {
@@ -5442,6 +6049,8 @@ export type UserCreateWithoutCreatedProductsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedProductsInput = {
@@ -5456,6 +6065,7 @@ export type UserUncheckedCreateWithoutCreatedProductsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -5498,6 +6108,7 @@ export type UserUncheckedCreateWithoutCreatedProductsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedProductsInput = {
@@ -5558,6 +6169,8 @@ export type UserCreateWithoutUpdatedProductsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedProductsInput = {
@@ -5572,6 +6185,7 @@ export type UserUncheckedCreateWithoutUpdatedProductsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -5614,6 +6228,7 @@ export type UserUncheckedCreateWithoutUpdatedProductsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedProductsInput = {
@@ -5685,6 +6300,8 @@ export type UserUpdateWithoutCreatedProductsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedProductsInput = {
@@ -5699,6 +6316,7 @@ export type UserUncheckedUpdateWithoutCreatedProductsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5741,6 +6359,7 @@ export type UserUncheckedUpdateWithoutCreatedProductsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedProductsInput = {
@@ -5807,6 +6426,8 @@ export type UserUpdateWithoutUpdatedProductsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedProductsInput = {
@@ -5821,6 +6442,7 @@ export type UserUncheckedUpdateWithoutUpdatedProductsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5863,6 +6485,7 @@ export type UserUncheckedUpdateWithoutUpdatedProductsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedProductTranslationsInput = {
@@ -5918,6 +6541,8 @@ export type UserCreateWithoutCreatedProductTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedProductTranslationsInput = {
@@ -5932,6 +6557,7 @@ export type UserUncheckedCreateWithoutCreatedProductTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -5974,6 +6600,7 @@ export type UserUncheckedCreateWithoutCreatedProductTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedProductTranslationsInput = {
@@ -6034,6 +6661,8 @@ export type UserCreateWithoutUpdatedProductTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedProductTranslationsInput = {
@@ -6048,6 +6677,7 @@ export type UserUncheckedCreateWithoutUpdatedProductTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -6090,6 +6720,7 @@ export type UserUncheckedCreateWithoutUpdatedProductTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedProductTranslationsInput = {
@@ -6161,6 +6792,8 @@ export type UserUpdateWithoutCreatedProductTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedProductTranslationsInput = {
@@ -6175,6 +6808,7 @@ export type UserUncheckedUpdateWithoutCreatedProductTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -6217,6 +6851,7 @@ export type UserUncheckedUpdateWithoutCreatedProductTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedProductTranslationsInput = {
@@ -6283,6 +6918,8 @@ export type UserUpdateWithoutUpdatedProductTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedProductTranslationsInput = {
@@ -6297,6 +6934,7 @@ export type UserUncheckedUpdateWithoutUpdatedProductTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -6339,6 +6977,7 @@ export type UserUncheckedUpdateWithoutUpdatedProductTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedCategoriesInput = {
@@ -6394,6 +7033,8 @@ export type UserCreateWithoutCreatedCategoriesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedCategoriesInput = {
@@ -6408,6 +7049,7 @@ export type UserUncheckedCreateWithoutCreatedCategoriesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -6450,6 +7092,7 @@ export type UserUncheckedCreateWithoutCreatedCategoriesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedCategoriesInput = {
@@ -6510,6 +7153,8 @@ export type UserCreateWithoutUpdatedCategoriesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedCategoriesInput = {
@@ -6524,6 +7169,7 @@ export type UserUncheckedCreateWithoutUpdatedCategoriesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -6566,6 +7212,7 @@ export type UserUncheckedCreateWithoutUpdatedCategoriesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedCategoriesInput = {
@@ -6637,6 +7284,8 @@ export type UserUpdateWithoutCreatedCategoriesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedCategoriesInput = {
@@ -6651,6 +7300,7 @@ export type UserUncheckedUpdateWithoutCreatedCategoriesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -6693,6 +7343,7 @@ export type UserUncheckedUpdateWithoutCreatedCategoriesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedCategoriesInput = {
@@ -6759,6 +7410,8 @@ export type UserUpdateWithoutUpdatedCategoriesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedCategoriesInput = {
@@ -6773,6 +7426,7 @@ export type UserUncheckedUpdateWithoutUpdatedCategoriesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -6815,6 +7469,7 @@ export type UserUncheckedUpdateWithoutUpdatedCategoriesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedCategoryTranslationsInput = {
@@ -6870,6 +7525,8 @@ export type UserCreateWithoutCreatedCategoryTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedCategoryTranslationsInput = {
@@ -6884,6 +7541,7 @@ export type UserUncheckedCreateWithoutCreatedCategoryTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -6926,6 +7584,7 @@ export type UserUncheckedCreateWithoutCreatedCategoryTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedCategoryTranslationsInput = {
@@ -6986,6 +7645,8 @@ export type UserCreateWithoutUpdatedCategoryTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedCategoryTranslationsInput = {
@@ -7000,6 +7661,7 @@ export type UserUncheckedCreateWithoutUpdatedCategoryTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -7042,6 +7704,7 @@ export type UserUncheckedCreateWithoutUpdatedCategoryTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedCategoryTranslationsInput = {
@@ -7113,6 +7776,8 @@ export type UserUpdateWithoutCreatedCategoryTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedCategoryTranslationsInput = {
@@ -7127,6 +7792,7 @@ export type UserUncheckedUpdateWithoutCreatedCategoryTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -7169,6 +7835,7 @@ export type UserUncheckedUpdateWithoutCreatedCategoryTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedCategoryTranslationsInput = {
@@ -7235,6 +7902,8 @@ export type UserUpdateWithoutUpdatedCategoryTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedCategoryTranslationsInput = {
@@ -7249,6 +7918,7 @@ export type UserUncheckedUpdateWithoutUpdatedCategoryTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -7291,6 +7961,7 @@ export type UserUncheckedUpdateWithoutUpdatedCategoryTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedVariantsInput = {
@@ -7346,6 +8017,8 @@ export type UserCreateWithoutCreatedVariantsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedVariantsInput = {
@@ -7360,6 +8033,7 @@ export type UserUncheckedCreateWithoutCreatedVariantsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -7402,6 +8076,7 @@ export type UserUncheckedCreateWithoutCreatedVariantsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedVariantsInput = {
@@ -7462,6 +8137,8 @@ export type UserCreateWithoutUpdatedVariantsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedVariantsInput = {
@@ -7476,6 +8153,7 @@ export type UserUncheckedCreateWithoutUpdatedVariantsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -7518,6 +8196,7 @@ export type UserUncheckedCreateWithoutUpdatedVariantsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedVariantsInput = {
@@ -7589,6 +8268,8 @@ export type UserUpdateWithoutCreatedVariantsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedVariantsInput = {
@@ -7603,6 +8284,7 @@ export type UserUncheckedUpdateWithoutCreatedVariantsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -7645,6 +8327,7 @@ export type UserUncheckedUpdateWithoutCreatedVariantsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedVariantsInput = {
@@ -7711,6 +8394,8 @@ export type UserUpdateWithoutUpdatedVariantsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedVariantsInput = {
@@ -7725,6 +8410,7 @@ export type UserUncheckedUpdateWithoutUpdatedVariantsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -7767,6 +8453,7 @@ export type UserUncheckedUpdateWithoutUpdatedVariantsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedVariantOptionsInput = {
@@ -7822,6 +8509,8 @@ export type UserCreateWithoutCreatedVariantOptionsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedVariantOptionsInput = {
@@ -7836,6 +8525,7 @@ export type UserUncheckedCreateWithoutCreatedVariantOptionsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -7878,6 +8568,7 @@ export type UserUncheckedCreateWithoutCreatedVariantOptionsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedVariantOptionsInput = {
@@ -7938,6 +8629,8 @@ export type UserCreateWithoutUpdatedVariantOptionsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedVariantOptionsInput = {
@@ -7952,6 +8645,7 @@ export type UserUncheckedCreateWithoutUpdatedVariantOptionsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -7994,6 +8688,7 @@ export type UserUncheckedCreateWithoutUpdatedVariantOptionsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedVariantOptionsInput = {
@@ -8065,6 +8760,8 @@ export type UserUpdateWithoutCreatedVariantOptionsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedVariantOptionsInput = {
@@ -8079,6 +8776,7 @@ export type UserUncheckedUpdateWithoutCreatedVariantOptionsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -8121,6 +8819,7 @@ export type UserUncheckedUpdateWithoutCreatedVariantOptionsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedVariantOptionsInput = {
@@ -8187,6 +8886,8 @@ export type UserUpdateWithoutUpdatedVariantOptionsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedVariantOptionsInput = {
@@ -8201,6 +8902,7 @@ export type UserUncheckedUpdateWithoutUpdatedVariantOptionsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -8243,6 +8945,7 @@ export type UserUncheckedUpdateWithoutUpdatedVariantOptionsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedSKUSInput = {
@@ -8298,6 +9001,8 @@ export type UserCreateWithoutCreatedSKUSInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedSKUSInput = {
@@ -8312,6 +9017,7 @@ export type UserUncheckedCreateWithoutCreatedSKUSInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -8354,6 +9060,7 @@ export type UserUncheckedCreateWithoutCreatedSKUSInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedSKUSInput = {
@@ -8414,6 +9121,8 @@ export type UserCreateWithoutUpdatedSKUSInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedSKUSInput = {
@@ -8428,6 +9137,7 @@ export type UserUncheckedCreateWithoutUpdatedSKUSInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -8470,6 +9180,7 @@ export type UserUncheckedCreateWithoutUpdatedSKUSInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedSKUSInput = {
@@ -8541,6 +9252,8 @@ export type UserUpdateWithoutCreatedSKUSInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedSKUSInput = {
@@ -8555,6 +9268,7 @@ export type UserUncheckedUpdateWithoutCreatedSKUSInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -8597,6 +9311,7 @@ export type UserUncheckedUpdateWithoutCreatedSKUSInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedSKUSInput = {
@@ -8663,6 +9378,8 @@ export type UserUpdateWithoutUpdatedSKUSInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedSKUSInput = {
@@ -8677,6 +9394,7 @@ export type UserUncheckedUpdateWithoutUpdatedSKUSInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -8719,6 +9437,7 @@ export type UserUncheckedUpdateWithoutUpdatedSKUSInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedBrandsInput = {
@@ -8774,6 +9493,8 @@ export type UserCreateWithoutCreatedBrandsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedBrandsInput = {
@@ -8788,6 +9509,7 @@ export type UserUncheckedCreateWithoutCreatedBrandsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -8830,6 +9552,7 @@ export type UserUncheckedCreateWithoutCreatedBrandsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedBrandsInput = {
@@ -8890,6 +9613,8 @@ export type UserCreateWithoutUpdatedBrandsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedBrandsInput = {
@@ -8904,6 +9629,7 @@ export type UserUncheckedCreateWithoutUpdatedBrandsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -8946,6 +9672,7 @@ export type UserUncheckedCreateWithoutUpdatedBrandsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedBrandsInput = {
@@ -9017,6 +9744,8 @@ export type UserUpdateWithoutCreatedBrandsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedBrandsInput = {
@@ -9031,6 +9760,7 @@ export type UserUncheckedUpdateWithoutCreatedBrandsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -9073,6 +9803,7 @@ export type UserUncheckedUpdateWithoutCreatedBrandsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedBrandsInput = {
@@ -9139,6 +9870,8 @@ export type UserUpdateWithoutUpdatedBrandsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedBrandsInput = {
@@ -9153,6 +9886,7 @@ export type UserUncheckedUpdateWithoutUpdatedBrandsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -9195,6 +9929,7 @@ export type UserUncheckedUpdateWithoutUpdatedBrandsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCreatedBrandTranslationsInput = {
@@ -9250,6 +9985,8 @@ export type UserCreateWithoutCreatedBrandTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedBrandTranslationsInput = {
@@ -9264,6 +10001,7 @@ export type UserUncheckedCreateWithoutCreatedBrandTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -9306,6 +10044,7 @@ export type UserUncheckedCreateWithoutCreatedBrandTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedBrandTranslationsInput = {
@@ -9366,6 +10105,8 @@ export type UserCreateWithoutUpdatedBrandTranslationsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedBrandTranslationsInput = {
@@ -9380,6 +10121,7 @@ export type UserUncheckedCreateWithoutUpdatedBrandTranslationsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -9422,6 +10164,7 @@ export type UserUncheckedCreateWithoutUpdatedBrandTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedBrandTranslationsInput = {
@@ -9493,6 +10236,8 @@ export type UserUpdateWithoutCreatedBrandTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedBrandTranslationsInput = {
@@ -9507,6 +10252,7 @@ export type UserUncheckedUpdateWithoutCreatedBrandTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -9549,6 +10295,7 @@ export type UserUncheckedUpdateWithoutCreatedBrandTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedBrandTranslationsInput = {
@@ -9615,6 +10362,8 @@ export type UserUpdateWithoutUpdatedBrandTranslationsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedBrandTranslationsInput = {
@@ -9629,6 +10378,7 @@ export type UserUncheckedUpdateWithoutUpdatedBrandTranslationsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -9671,6 +10421,7 @@ export type UserUncheckedUpdateWithoutUpdatedBrandTranslationsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutCartsInput = {
@@ -9726,6 +10477,8 @@ export type UserCreateWithoutCartsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCartsInput = {
@@ -9740,6 +10493,7 @@ export type UserUncheckedCreateWithoutCartsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -9782,6 +10536,7 @@ export type UserUncheckedCreateWithoutCartsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCartsInput = {
@@ -9853,6 +10608,8 @@ export type UserUpdateWithoutCartsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCartsInput = {
@@ -9867,6 +10624,7 @@ export type UserUncheckedUpdateWithoutCartsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -9909,6 +10667,7 @@ export type UserUncheckedUpdateWithoutCartsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutOrdersInput = {
@@ -9964,6 +10723,8 @@ export type UserCreateWithoutOrdersInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutOrdersInput = {
@@ -9978,6 +10739,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -10020,6 +10782,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutOrdersInput = {
@@ -10080,6 +10843,8 @@ export type UserCreateWithoutCreatedOrdersInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutCreatedOrdersInput = {
@@ -10094,6 +10859,7 @@ export type UserUncheckedCreateWithoutCreatedOrdersInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -10136,6 +10902,7 @@ export type UserUncheckedCreateWithoutCreatedOrdersInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedOrdersInput = {
@@ -10196,6 +10963,8 @@ export type UserCreateWithoutUpdatedOrdersInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutUpdatedOrdersInput = {
@@ -10210,6 +10979,7 @@ export type UserUncheckedCreateWithoutUpdatedOrdersInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -10252,6 +11022,7 @@ export type UserUncheckedCreateWithoutUpdatedOrdersInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutUpdatedOrdersInput = {
@@ -10323,6 +11094,8 @@ export type UserUpdateWithoutOrdersInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrdersInput = {
@@ -10337,6 +11110,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -10379,6 +11153,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutCreatedOrdersInput = {
@@ -10445,6 +11220,8 @@ export type UserUpdateWithoutCreatedOrdersInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedOrdersInput = {
@@ -10459,6 +11236,7 @@ export type UserUncheckedUpdateWithoutCreatedOrdersInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -10501,6 +11279,7 @@ export type UserUncheckedUpdateWithoutCreatedOrdersInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutUpdatedOrdersInput = {
@@ -10567,6 +11346,8 @@ export type UserUpdateWithoutUpdatedOrdersInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedOrdersInput = {
@@ -10581,6 +11362,7 @@ export type UserUncheckedUpdateWithoutUpdatedOrdersInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -10623,6 +11405,7 @@ export type UserUncheckedUpdateWithoutUpdatedOrdersInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutReviewsInput = {
@@ -10678,6 +11461,8 @@ export type UserCreateWithoutReviewsInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
@@ -10692,6 +11477,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -10734,6 +11520,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -10805,6 +11592,8 @@ export type UserUpdateWithoutReviewsInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -10819,6 +11608,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -10861,6 +11651,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutSentMessagesInput = {
@@ -10916,6 +11707,8 @@ export type UserCreateWithoutSentMessagesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutSentMessagesInput = {
@@ -10930,6 +11723,7 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -10972,6 +11766,7 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutSentMessagesInput = {
@@ -11032,6 +11827,8 @@ export type UserCreateWithoutReceivedMessagesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutReceivedMessagesInput = {
@@ -11046,6 +11843,7 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -11088,6 +11886,7 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutReceivedMessagesInput = {
@@ -11159,6 +11958,8 @@ export type UserUpdateWithoutSentMessagesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentMessagesInput = {
@@ -11173,6 +11974,7 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -11215,6 +12017,7 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUpsertWithoutReceivedMessagesInput = {
@@ -11281,6 +12084,8 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
@@ -11295,6 +12100,7 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -11337,6 +12143,7 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateWithoutDevicesInput = {
@@ -11392,6 +12199,8 @@ export type UserCreateWithoutDevicesInput = {
   createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
   updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
   updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserUncheckedCreateWithoutDevicesInput = {
@@ -11406,6 +12215,7 @@ export type UserUncheckedCreateWithoutDevicesInput = {
   roleId: number
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -11448,6 +12258,7 @@ export type UserUncheckedCreateWithoutDevicesInput = {
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
 }
 
 export type UserCreateOrConnectWithoutDevicesInput = {
@@ -11519,6 +12330,8 @@ export type UserUpdateWithoutDevicesInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDevicesInput = {
@@ -11533,6 +12346,7 @@ export type UserUncheckedUpdateWithoutDevicesInput = {
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -11575,6 +12389,7 @@ export type UserUncheckedUpdateWithoutDevicesInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserCreateManyCreatedByInput = {
@@ -11588,6 +12403,7 @@ export type UserCreateManyCreatedByInput = {
   status?: $Enums.UserStatus
   roleId: number
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -11604,6 +12420,24 @@ export type UserCreateManyUpdatedByInput = {
   status?: $Enums.UserStatus
   roleId: number
   createdById?: number | null
+  deletedById?: number | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type UserCreateManyDeletedByInput = {
+  id?: number
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  roleId: number
+  createdById?: number | null
+  updatedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -11662,6 +12496,8 @@ export type UserUpdateWithoutCreatedByInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedByInput = {
@@ -11675,6 +12511,7 @@ export type UserUncheckedUpdateWithoutCreatedByInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -11718,6 +12555,7 @@ export type UserUncheckedUpdateWithoutCreatedByInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCreatedByInput = {
@@ -11731,6 +12569,7 @@ export type UserUncheckedUpdateManyWithoutCreatedByInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -11789,6 +12628,8 @@ export type UserUpdateWithoutUpdatedByInput = {
   createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUpdatedByInput = {
@@ -11802,6 +12643,7 @@ export type UserUncheckedUpdateWithoutUpdatedByInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -11845,6 +12687,7 @@ export type UserUncheckedUpdateWithoutUpdatedByInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutUpdatedByInput = {
@@ -11858,6 +12701,139 @@ export type UserUncheckedUpdateManyWithoutUpdatedByInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type UserUpdateWithoutDeletedByInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUpdateManyWithoutToUserNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
+  updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
+  updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDeletedByInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
+}
+
+export type UserUncheckedUpdateManyWithoutDeletedByInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -11874,6 +12850,7 @@ export type UserCreateManyRoleInput = {
   status?: $Enums.UserStatus
   createdById?: number | null
   updatedById?: number | null
+  deletedById?: number | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -11932,6 +12909,8 @@ export type UserUpdateWithoutRoleInput = {
   createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
   updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
   updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -11945,6 +12924,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -11988,6 +12968,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -12001,6 +12982,7 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -12052,6 +13034,7 @@ export type UserCountOutputType = {
   receivedMessages: number
   createdUsers: number
   updatedUsers: number
+  deletedUsers: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -12095,6 +13078,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   receivedMessages?: boolean | UserCountOutputTypeCountReceivedMessagesArgs
   createdUsers?: boolean | UserCountOutputTypeCountCreatedUsersArgs
   updatedUsers?: boolean | UserCountOutputTypeCountUpdatedUsersArgs
+  deletedUsers?: boolean | UserCountOutputTypeCountDeletedUsersArgs
 }
 
 /**
@@ -12387,6 +13371,13 @@ export type UserCountOutputTypeCountUpdatedUsersArgs<ExtArgs extends runtime.Typ
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDeletedUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -12400,6 +13391,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   roleId?: boolean
   createdById?: boolean
   updatedById?: boolean
+  deletedById?: boolean
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -12446,6 +13438,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdUsers?: boolean | Prisma.User$createdUsersArgs<ExtArgs>
   updatedBy?: boolean | Prisma.User$updatedByArgs<ExtArgs>
   updatedUsers?: boolean | Prisma.User$updatedUsersArgs<ExtArgs>
+  deletedBy?: boolean | Prisma.User$deletedByArgs<ExtArgs>
+  deletedUsers?: boolean | Prisma.User$deletedUsersArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -12461,12 +13455,14 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   roleId?: boolean
   createdById?: boolean
   updatedById?: boolean
+  deletedById?: boolean
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   createdBy?: boolean | Prisma.User$createdByArgs<ExtArgs>
   updatedBy?: boolean | Prisma.User$updatedByArgs<ExtArgs>
+  deletedBy?: boolean | Prisma.User$deletedByArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -12481,12 +13477,14 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   roleId?: boolean
   createdById?: boolean
   updatedById?: boolean
+  deletedById?: boolean
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   createdBy?: boolean | Prisma.User$createdByArgs<ExtArgs>
   updatedBy?: boolean | Prisma.User$updatedByArgs<ExtArgs>
+  deletedBy?: boolean | Prisma.User$deletedByArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -12501,12 +13499,13 @@ export type UserSelectScalar = {
   roleId?: boolean
   createdById?: boolean
   updatedById?: boolean
+  deletedById?: boolean
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "password" | "phoneNumber" | "avatar" | "totpSecret" | "status" | "roleId" | "createdById" | "updatedById" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "password" | "phoneNumber" | "avatar" | "totpSecret" | "status" | "roleId" | "createdById" | "updatedById" | "deletedById" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   devices?: boolean | Prisma.User$devicesArgs<ExtArgs>
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
@@ -12551,17 +13550,21 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createdUsers?: boolean | Prisma.User$createdUsersArgs<ExtArgs>
   updatedBy?: boolean | Prisma.User$updatedByArgs<ExtArgs>
   updatedUsers?: boolean | Prisma.User$updatedUsersArgs<ExtArgs>
+  deletedBy?: boolean | Prisma.User$deletedByArgs<ExtArgs>
+  deletedUsers?: boolean | Prisma.User$deletedUsersArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   createdBy?: boolean | Prisma.User$createdByArgs<ExtArgs>
   updatedBy?: boolean | Prisma.User$updatedByArgs<ExtArgs>
+  deletedBy?: boolean | Prisma.User$deletedByArgs<ExtArgs>
 }
 export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   createdBy?: boolean | Prisma.User$createdByArgs<ExtArgs>
   updatedBy?: boolean | Prisma.User$updatedByArgs<ExtArgs>
+  deletedBy?: boolean | Prisma.User$deletedByArgs<ExtArgs>
 }
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -12610,6 +13613,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     createdUsers: Prisma.$UserPayload<ExtArgs>[]
     updatedBy: Prisma.$UserPayload<ExtArgs> | null
     updatedUsers: Prisma.$UserPayload<ExtArgs>[]
+    deletedBy: Prisma.$UserPayload<ExtArgs> | null
+    deletedUsers: Prisma.$UserPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -12623,6 +13628,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     roleId: number
     createdById: number | null
     updatedById: number | null
+    deletedById: number | null
     deletedAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -13063,6 +14069,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   createdUsers<T extends Prisma.User$createdUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   updatedBy<T extends Prisma.User$updatedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   updatedUsers<T extends Prisma.User$updatedUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  deletedBy<T extends Prisma.User$deletedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deletedByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  deletedUsers<T extends Prisma.User$deletedUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deletedUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13103,6 +14111,7 @@ export interface UserFieldRefs {
   readonly roleId: Prisma.FieldRef<"User", 'Int'>
   readonly createdById: Prisma.FieldRef<"User", 'Int'>
   readonly updatedById: Prisma.FieldRef<"User", 'Int'>
+  readonly deletedById: Prisma.FieldRef<"User", 'Int'>
   readonly deletedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
@@ -14484,6 +15493,49 @@ export type User$updatedByArgs<ExtArgs extends runtime.Types.Extensions.Internal
  * User.updatedUsers
  */
 export type User$updatedUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[]
+  cursor?: Prisma.UserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * User.deletedBy
+ */
+export type User$deletedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * User.deletedUsers
+ */
+export type User$deletedUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the User
    */

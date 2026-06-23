@@ -10,6 +10,7 @@ export class ProfileRepository {
     return this.prismaService.user.findUniqueOrThrow({
       where: {
         id: profileId,
+        deletedAt: null,
       },
       include: {
         role: {

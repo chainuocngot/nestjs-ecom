@@ -1,6 +1,4 @@
-import { ConflictException, ForbiddenException, NotFoundException } from '@nestjs/common';
-
-export const RoleNotFoundException = new NotFoundException('Error.RoleNotFound');
+import { ConflictException, ForbiddenException } from '@nestjs/common';
 
 export const RoleAlreadyExistsException = new ConflictException('Error.RoleAlreadyExists');
 

@@ -20,6 +20,7 @@ import { HashingService } from 'src/shared/services/hashing.service';
 import { TokenService } from 'src/shared/services/token.service';
 import { generateOtp, isNotFoundPrismaError, isUniqueConstraintPrismaError } from 'src/shared/utils';
 import { SharedRoleRepository } from 'src/shared/repositories/shared-role.repository';
+import { RoleNameType } from 'src/shared/constants/role.constant';
 
 @Injectable()
 export class AuthService {
@@ -129,7 +130,7 @@ export class AuthService {
       userId: user.id,
       deviceId: device.id,
       roleId: user.roleId,
-      roleName: user.role.name,
+      roleName: user.role.name as RoleNameType,
     });
     const decodedRefreshToken = await this.tokenService.verifyRefreshToken(refreshToken);
     await this.authRepository.createRefreshToken({
@@ -160,7 +161,7 @@ export class AuthService {
         this._signTokens({
           deviceId: refreshTokenIncludeRole.deviceId,
           roleId: refreshTokenIncludeRole.user.roleId,
-          roleName: refreshTokenIncludeRole.user.role.name,
+          roleName: refreshTokenIncludeRole.user.role.name as RoleNameType,
           userId,
         }),
         this.authRepository.updateDevice(refreshTokenIncludeRole.deviceId, { ip: body.ip, userAgent: body.userAgent }),
@@ -211,7 +212,7 @@ export class AuthService {
     userId: number;
     deviceId: number;
     roleId: number;
-    roleName: string;
+    roleName: RoleNameType;
   }): Promise<[string, string]> {
     return Promise.all([
       this.tokenService.signAccessToken({

@@ -1,12 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import {
-  ProhibitedActionOnBaseRoleException,
-  RoleAlreadyExistsException,
-  RoleNotFoundException,
-} from 'src/routes/role/role.error';
+import { ProhibitedActionOnBaseRoleException, RoleAlreadyExistsException } from 'src/routes/role/role.error';
 import { CreateRoleBodyType, GetListRoleQueryType, UpdateRoleBodyType } from 'src/routes/role/role.model';
 import { RoleRepository } from 'src/routes/role/role.repository';
 import { RoleName } from 'src/shared/constants/role.constant';
+import { RoleNotFoundException } from 'src/shared/error';
 import { isNotFoundPrismaError, isUniqueConstraintPrismaError } from 'src/shared/utils';
 
 @Injectable()

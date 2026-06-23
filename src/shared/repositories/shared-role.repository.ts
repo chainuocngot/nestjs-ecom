@@ -6,6 +6,7 @@ import { PrismaService } from 'src/shared/services/prisma.service';
 @Injectable()
 export class SharedRoleRepository {
   private clientRoleId: number | null = null;
+  private adminRoleId: number | null = null;
 
   constructor(private readonly prismaService: PrismaService) {}
 
@@ -30,5 +31,14 @@ export class SharedRoleRepository {
 
     this.clientRoleId = clientRole.id;
     return this.clientRoleId;
+  }
+
+  async getAdminRoleId() {
+    if (this.adminRoleId) return this.adminRoleId;
+
+    const adminRole: RoleType = await this.getRoleByName(RoleName.Admin);
+
+    this.adminRoleId = adminRole.id;
+    return this.adminRoleId;
   }
 }
