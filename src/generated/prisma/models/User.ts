@@ -336,8 +336,10 @@ export type UserWhereInput = {
   updatedSKUS?: Prisma.SKUListRelationFilter
   createdLanguages?: Prisma.LanguageListRelationFilter
   updatedLanguages?: Prisma.LanguageListRelationFilter
+  deletedLanguages?: Prisma.LanguageListRelationFilter
   createdBrands?: Prisma.BrandListRelationFilter
   updatedBrands?: Prisma.BrandListRelationFilter
+  deletedBrands?: Prisma.BrandListRelationFilter
   createdProductTranslations?: Prisma.ProductTranslationListRelationFilter
   updatedProductTranslations?: Prisma.ProductTranslationListRelationFilter
   createdCategoryTranslations?: Prisma.CategoryTranslationListRelationFilter
@@ -399,8 +401,10 @@ export type UserOrderByWithRelationInput = {
   updatedSKUS?: Prisma.SKUOrderByRelationAggregateInput
   createdLanguages?: Prisma.LanguageOrderByRelationAggregateInput
   updatedLanguages?: Prisma.LanguageOrderByRelationAggregateInput
+  deletedLanguages?: Prisma.LanguageOrderByRelationAggregateInput
   createdBrands?: Prisma.BrandOrderByRelationAggregateInput
   updatedBrands?: Prisma.BrandOrderByRelationAggregateInput
+  deletedBrands?: Prisma.BrandOrderByRelationAggregateInput
   createdProductTranslations?: Prisma.ProductTranslationOrderByRelationAggregateInput
   updatedProductTranslations?: Prisma.ProductTranslationOrderByRelationAggregateInput
   createdCategoryTranslations?: Prisma.CategoryTranslationOrderByRelationAggregateInput
@@ -465,8 +469,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   updatedSKUS?: Prisma.SKUListRelationFilter
   createdLanguages?: Prisma.LanguageListRelationFilter
   updatedLanguages?: Prisma.LanguageListRelationFilter
+  deletedLanguages?: Prisma.LanguageListRelationFilter
   createdBrands?: Prisma.BrandListRelationFilter
   updatedBrands?: Prisma.BrandListRelationFilter
+  deletedBrands?: Prisma.BrandListRelationFilter
   createdProductTranslations?: Prisma.ProductTranslationListRelationFilter
   updatedProductTranslations?: Prisma.ProductTranslationListRelationFilter
   createdCategoryTranslations?: Prisma.CategoryTranslationListRelationFilter
@@ -567,8 +573,10 @@ export type UserCreateInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -629,8 +637,10 @@ export type UserUncheckedCreateInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -684,8 +694,10 @@ export type UserUpdateInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -746,8 +758,10 @@ export type UserUncheckedUpdateInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -917,6 +931,12 @@ export type UserCreateNestedOneWithoutUpdatedLanguagesInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
+export type UserCreateNestedOneWithoutDeletedLanguagesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedLanguagesInput, Prisma.UserUncheckedCreateWithoutDeletedLanguagesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedLanguagesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
 export type UserUpdateOneWithoutCreatedLanguagesNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedLanguagesInput, Prisma.UserUncheckedCreateWithoutCreatedLanguagesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedLanguagesInput
@@ -935,6 +955,16 @@ export type UserUpdateOneWithoutUpdatedLanguagesNestedInput = {
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUpdatedLanguagesInput, Prisma.UserUpdateWithoutUpdatedLanguagesInput>, Prisma.UserUncheckedUpdateWithoutUpdatedLanguagesInput>
+}
+
+export type UserUpdateOneWithoutDeletedLanguagesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedLanguagesInput, Prisma.UserUncheckedCreateWithoutDeletedLanguagesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedLanguagesInput
+  upsert?: Prisma.UserUpsertWithoutDeletedLanguagesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDeletedLanguagesInput, Prisma.UserUpdateWithoutDeletedLanguagesInput>, Prisma.UserUncheckedUpdateWithoutDeletedLanguagesInput>
 }
 
 export type UserCreateNestedOneWithoutCreatedUsersInput = {
@@ -1075,6 +1105,14 @@ export type UserUpdateManyWithoutDeletedByNestedInput = {
   update?: Prisma.UserUpdateWithWhereUniqueWithoutDeletedByInput | Prisma.UserUpdateWithWhereUniqueWithoutDeletedByInput[]
   updateMany?: Prisma.UserUpdateManyWithWhereWithoutDeletedByInput | Prisma.UserUpdateManyWithWhereWithoutDeletedByInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type UserUncheckedUpdateManyWithoutCreatedByNestedInput = {
@@ -1553,6 +1591,12 @@ export type UserCreateNestedOneWithoutUpdatedBrandsInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
+export type UserCreateNestedOneWithoutDeletedBrandsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedBrandsInput, Prisma.UserUncheckedCreateWithoutDeletedBrandsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedBrandsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
 export type UserUpdateOneWithoutCreatedBrandsNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedBrandsInput, Prisma.UserUncheckedCreateWithoutCreatedBrandsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedBrandsInput
@@ -1571,6 +1615,16 @@ export type UserUpdateOneWithoutUpdatedBrandsNestedInput = {
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUpdatedBrandsInput, Prisma.UserUpdateWithoutUpdatedBrandsInput>, Prisma.UserUncheckedUpdateWithoutUpdatedBrandsInput>
+}
+
+export type UserUpdateOneWithoutDeletedBrandsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedBrandsInput, Prisma.UserUncheckedCreateWithoutDeletedBrandsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedBrandsInput
+  upsert?: Prisma.UserUpsertWithoutDeletedBrandsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDeletedBrandsInput, Prisma.UserUpdateWithoutDeletedBrandsInput>, Prisma.UserUncheckedUpdateWithoutDeletedBrandsInput>
 }
 
 export type UserCreateNestedOneWithoutCreatedBrandTranslationsInput = {
@@ -1755,8 +1809,10 @@ export type UserCreateWithoutCreatedLanguagesInput = {
   createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -1816,8 +1872,10 @@ export type UserUncheckedCreateWithoutCreatedLanguagesInput = {
   createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -1875,8 +1933,10 @@ export type UserCreateWithoutUpdatedLanguagesInput = {
   createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -1936,8 +1996,10 @@ export type UserUncheckedCreateWithoutUpdatedLanguagesInput = {
   createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -1959,6 +2021,130 @@ export type UserUncheckedCreateWithoutUpdatedLanguagesInput = {
 export type UserCreateOrConnectWithoutUpdatedLanguagesInput = {
   where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutUpdatedLanguagesInput, Prisma.UserUncheckedCreateWithoutUpdatedLanguagesInput>
+}
+
+export type UserCreateWithoutDeletedLanguagesInput = {
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
+  createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutToUserInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
+  updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
+  updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserUncheckedCreateWithoutDeletedLanguagesInput = {
+  id?: number
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  roleId: number
+  createdById?: number | null
+  updatedById?: number | null
+  deletedById?: number | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserCreateOrConnectWithoutDeletedLanguagesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedLanguagesInput, Prisma.UserUncheckedCreateWithoutDeletedLanguagesInput>
 }
 
 export type UserUpsertWithoutCreatedLanguagesInput = {
@@ -2006,8 +2192,10 @@ export type UserUpdateWithoutCreatedLanguagesInput = {
   createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -2067,8 +2255,10 @@ export type UserUncheckedUpdateWithoutCreatedLanguagesInput = {
   createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -2132,8 +2322,10 @@ export type UserUpdateWithoutUpdatedLanguagesInput = {
   createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -2193,8 +2385,140 @@ export type UserUncheckedUpdateWithoutUpdatedLanguagesInput = {
   createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
+}
+
+export type UserUpsertWithoutDeletedLanguagesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDeletedLanguagesInput, Prisma.UserUncheckedUpdateWithoutDeletedLanguagesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedLanguagesInput, Prisma.UserUncheckedCreateWithoutDeletedLanguagesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDeletedLanguagesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDeletedLanguagesInput, Prisma.UserUncheckedUpdateWithoutDeletedLanguagesInput>
+}
+
+export type UserUpdateWithoutDeletedLanguagesInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUpdateManyWithoutToUserNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
+  updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
+  updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDeletedLanguagesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -2248,8 +2572,10 @@ export type UserCreateWithoutCreatedUsersInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -2309,8 +2635,10 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2368,8 +2696,10 @@ export type UserCreateWithoutCreatedByInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -2428,8 +2758,10 @@ export type UserUncheckedCreateWithoutCreatedByInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2493,8 +2825,10 @@ export type UserCreateWithoutUpdatedUsersInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -2554,8 +2888,10 @@ export type UserUncheckedCreateWithoutUpdatedUsersInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2613,8 +2949,10 @@ export type UserCreateWithoutUpdatedByInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -2673,8 +3011,10 @@ export type UserUncheckedCreateWithoutUpdatedByInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2738,8 +3078,10 @@ export type UserCreateWithoutDeletedUsersInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -2799,8 +3141,10 @@ export type UserUncheckedCreateWithoutDeletedUsersInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2858,8 +3202,10 @@ export type UserCreateWithoutDeletedByInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -2918,8 +3264,10 @@ export type UserUncheckedCreateWithoutDeletedByInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -2994,8 +3342,10 @@ export type UserUpdateWithoutCreatedUsersInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -3055,8 +3405,10 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3157,8 +3509,10 @@ export type UserUpdateWithoutUpdatedUsersInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -3218,8 +3572,10 @@ export type UserUncheckedUpdateWithoutUpdatedUsersInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3299,8 +3655,10 @@ export type UserUpdateWithoutDeletedUsersInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -3360,8 +3718,10 @@ export type UserUncheckedUpdateWithoutDeletedUsersInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3430,8 +3790,10 @@ export type UserCreateWithoutUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -3491,8 +3853,10 @@ export type UserUncheckedCreateWithoutUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -3550,8 +3914,10 @@ export type UserCreateWithoutCreatedUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -3611,8 +3977,10 @@ export type UserUncheckedCreateWithoutCreatedUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -3670,8 +4038,10 @@ export type UserCreateWithoutUpdatedUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -3731,8 +4101,10 @@ export type UserUncheckedCreateWithoutUpdatedUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -3801,8 +4173,10 @@ export type UserUpdateWithoutUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -3862,8 +4236,10 @@ export type UserUncheckedUpdateWithoutUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -3927,8 +4303,10 @@ export type UserUpdateWithoutCreatedUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -3988,8 +4366,10 @@ export type UserUncheckedUpdateWithoutCreatedUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -4053,8 +4433,10 @@ export type UserUpdateWithoutUpdatedUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -4114,8 +4496,10 @@ export type UserUncheckedUpdateWithoutUpdatedUserTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -4167,8 +4551,10 @@ export type UserCreateWithoutRefreshTokensInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -4228,8 +4614,10 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -4298,8 +4686,10 @@ export type UserUpdateWithoutRefreshTokensInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -4359,8 +4749,10 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -4413,8 +4805,10 @@ export type UserCreateWithoutCreatedPermissionsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -4474,8 +4868,10 @@ export type UserUncheckedCreateWithoutCreatedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -4533,8 +4929,10 @@ export type UserCreateWithoutUpdatedPermissionsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -4594,8 +4992,10 @@ export type UserUncheckedCreateWithoutUpdatedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -4653,8 +5053,10 @@ export type UserCreateWithoutDeletedPermissionsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -4714,8 +5116,10 @@ export type UserUncheckedCreateWithoutDeletedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -4784,8 +5188,10 @@ export type UserUpdateWithoutCreatedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -4845,8 +5251,10 @@ export type UserUncheckedUpdateWithoutCreatedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -4910,8 +5318,10 @@ export type UserUpdateWithoutUpdatedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -4971,8 +5381,10 @@ export type UserUncheckedUpdateWithoutUpdatedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -5036,8 +5448,10 @@ export type UserUpdateWithoutDeletedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -5097,8 +5511,10 @@ export type UserUncheckedUpdateWithoutDeletedPermissionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -5151,8 +5567,10 @@ export type UserCreateWithoutRoleInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -5212,8 +5630,10 @@ export type UserUncheckedCreateWithoutRoleInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5276,8 +5696,10 @@ export type UserCreateWithoutCreatedRolesInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -5337,8 +5759,10 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5396,8 +5820,10 @@ export type UserCreateWithoutUpdatedRolesInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -5457,8 +5883,10 @@ export type UserUncheckedCreateWithoutUpdatedRolesInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5516,8 +5944,10 @@ export type UserCreateWithoutDeletedRolesInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -5577,8 +6007,10 @@ export type UserUncheckedCreateWithoutDeletedRolesInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -5663,8 +6095,10 @@ export type UserUpdateWithoutCreatedRolesInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -5724,8 +6158,10 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -5789,8 +6225,10 @@ export type UserUpdateWithoutUpdatedRolesInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -5850,8 +6288,10 @@ export type UserUncheckedUpdateWithoutUpdatedRolesInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -5915,8 +6355,10 @@ export type UserUpdateWithoutDeletedRolesInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -5976,8 +6418,10 @@ export type UserUncheckedUpdateWithoutDeletedRolesInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -6030,8 +6474,10 @@ export type UserCreateWithoutCreatedProductsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -6091,8 +6537,10 @@ export type UserUncheckedCreateWithoutCreatedProductsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -6150,8 +6598,10 @@ export type UserCreateWithoutUpdatedProductsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -6211,8 +6661,10 @@ export type UserUncheckedCreateWithoutUpdatedProductsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -6281,8 +6733,10 @@ export type UserUpdateWithoutCreatedProductsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -6342,8 +6796,10 @@ export type UserUncheckedUpdateWithoutCreatedProductsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -6407,8 +6863,10 @@ export type UserUpdateWithoutUpdatedProductsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -6468,8 +6926,10 @@ export type UserUncheckedUpdateWithoutUpdatedProductsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -6523,8 +6983,10 @@ export type UserCreateWithoutCreatedProductTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
@@ -6584,8 +7046,10 @@ export type UserUncheckedCreateWithoutCreatedProductTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
@@ -6643,8 +7107,10 @@ export type UserCreateWithoutUpdatedProductTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
@@ -6704,8 +7170,10 @@ export type UserUncheckedCreateWithoutUpdatedProductTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
@@ -6774,8 +7242,10 @@ export type UserUpdateWithoutCreatedProductTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
@@ -6835,8 +7305,10 @@ export type UserUncheckedUpdateWithoutCreatedProductTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
@@ -6900,8 +7372,10 @@ export type UserUpdateWithoutUpdatedProductTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
@@ -6961,8 +7435,10 @@ export type UserUncheckedUpdateWithoutUpdatedProductTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
@@ -7014,8 +7490,10 @@ export type UserCreateWithoutCreatedCategoriesInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -7075,8 +7553,10 @@ export type UserUncheckedCreateWithoutCreatedCategoriesInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -7134,8 +7614,10 @@ export type UserCreateWithoutUpdatedCategoriesInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -7195,8 +7677,10 @@ export type UserUncheckedCreateWithoutUpdatedCategoriesInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -7265,8 +7749,10 @@ export type UserUpdateWithoutCreatedCategoriesInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -7326,8 +7812,10 @@ export type UserUncheckedUpdateWithoutCreatedCategoriesInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -7391,8 +7879,10 @@ export type UserUpdateWithoutUpdatedCategoriesInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -7452,8 +7942,10 @@ export type UserUncheckedUpdateWithoutUpdatedCategoriesInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -7507,8 +7999,10 @@ export type UserCreateWithoutCreatedCategoryTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
@@ -7568,8 +8062,10 @@ export type UserUncheckedCreateWithoutCreatedCategoryTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
@@ -7627,8 +8123,10 @@ export type UserCreateWithoutUpdatedCategoryTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -7688,8 +8186,10 @@ export type UserUncheckedCreateWithoutUpdatedCategoryTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -7758,8 +8258,10 @@ export type UserUpdateWithoutCreatedCategoryTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
@@ -7819,8 +8321,10 @@ export type UserUncheckedUpdateWithoutCreatedCategoryTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
@@ -7884,8 +8388,10 @@ export type UserUpdateWithoutUpdatedCategoryTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -7945,8 +8451,10 @@ export type UserUncheckedUpdateWithoutUpdatedCategoryTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -7998,8 +8506,10 @@ export type UserCreateWithoutCreatedVariantsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -8059,8 +8569,10 @@ export type UserUncheckedCreateWithoutCreatedVariantsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -8118,8 +8630,10 @@ export type UserCreateWithoutUpdatedVariantsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -8179,8 +8693,10 @@ export type UserUncheckedCreateWithoutUpdatedVariantsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -8249,8 +8765,10 @@ export type UserUpdateWithoutCreatedVariantsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -8310,8 +8828,10 @@ export type UserUncheckedUpdateWithoutCreatedVariantsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -8375,8 +8895,10 @@ export type UserUpdateWithoutUpdatedVariantsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -8436,8 +8958,10 @@ export type UserUncheckedUpdateWithoutUpdatedVariantsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -8490,8 +9014,10 @@ export type UserCreateWithoutCreatedVariantOptionsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -8551,8 +9077,10 @@ export type UserUncheckedCreateWithoutCreatedVariantOptionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -8610,8 +9138,10 @@ export type UserCreateWithoutUpdatedVariantOptionsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -8671,8 +9201,10 @@ export type UserUncheckedCreateWithoutUpdatedVariantOptionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -8741,8 +9273,10 @@ export type UserUpdateWithoutCreatedVariantOptionsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -8802,8 +9336,10 @@ export type UserUncheckedUpdateWithoutCreatedVariantOptionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -8867,8 +9403,10 @@ export type UserUpdateWithoutUpdatedVariantOptionsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -8928,8 +9466,10 @@ export type UserUncheckedUpdateWithoutUpdatedVariantOptionsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -8982,8 +9522,10 @@ export type UserCreateWithoutCreatedSKUSInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -9043,8 +9585,10 @@ export type UserUncheckedCreateWithoutCreatedSKUSInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9102,8 +9646,10 @@ export type UserCreateWithoutUpdatedSKUSInput = {
   createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -9163,8 +9709,10 @@ export type UserUncheckedCreateWithoutUpdatedSKUSInput = {
   createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9233,8 +9781,10 @@ export type UserUpdateWithoutCreatedSKUSInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -9294,8 +9844,10 @@ export type UserUncheckedUpdateWithoutCreatedSKUSInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -9359,8 +9911,10 @@ export type UserUpdateWithoutUpdatedSKUSInput = {
   createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -9420,8 +9974,10 @@ export type UserUncheckedUpdateWithoutUpdatedSKUSInput = {
   createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -9475,7 +10031,9 @@ export type UserCreateWithoutCreatedBrandsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -9536,7 +10094,9 @@ export type UserUncheckedCreateWithoutCreatedBrandsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9595,7 +10155,9 @@ export type UserCreateWithoutUpdatedBrandsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -9656,7 +10218,9 @@ export type UserUncheckedCreateWithoutUpdatedBrandsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -9678,6 +10242,130 @@ export type UserUncheckedCreateWithoutUpdatedBrandsInput = {
 export type UserCreateOrConnectWithoutUpdatedBrandsInput = {
   where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutUpdatedBrandsInput, Prisma.UserUncheckedCreateWithoutUpdatedBrandsInput>
+}
+
+export type UserCreateWithoutDeletedBrandsInput = {
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
+  createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutToUserInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
+  updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
+  updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserUncheckedCreateWithoutDeletedBrandsInput = {
+  id?: number
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  roleId: number
+  createdById?: number | null
+  updatedById?: number | null
+  deletedById?: number | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariants?: Prisma.VariantUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
+  createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserCreateOrConnectWithoutDeletedBrandsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedBrandsInput, Prisma.UserUncheckedCreateWithoutDeletedBrandsInput>
 }
 
 export type UserUpsertWithoutCreatedBrandsInput = {
@@ -9726,7 +10414,9 @@ export type UserUpdateWithoutCreatedBrandsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -9787,7 +10477,9 @@ export type UserUncheckedUpdateWithoutCreatedBrandsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -9852,7 +10544,9 @@ export type UserUpdateWithoutUpdatedBrandsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -9913,7 +10607,139 @@ export type UserUncheckedUpdateWithoutUpdatedBrandsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
+}
+
+export type UserUpsertWithoutDeletedBrandsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDeletedBrandsInput, Prisma.UserUncheckedUpdateWithoutDeletedBrandsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedBrandsInput, Prisma.UserUncheckedCreateWithoutDeletedBrandsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDeletedBrandsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDeletedBrandsInput, Prisma.UserUncheckedUpdateWithoutDeletedBrandsInput>
+}
+
+export type UserUpdateWithoutDeletedBrandsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
+  createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutUpdatedByNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUpdateManyWithoutToUserNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
+  updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
+  updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDeletedBrandsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdCategories?: Prisma.CategoryUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariants?: Prisma.VariantUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariants?: Prisma.VariantUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedVariantOptions?: Prisma.VariantOptionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
+  createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -9967,8 +10793,10 @@ export type UserCreateWithoutCreatedBrandTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -10028,8 +10856,10 @@ export type UserUncheckedCreateWithoutCreatedBrandTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -10087,8 +10917,10 @@ export type UserCreateWithoutUpdatedBrandTranslationsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -10148,8 +10980,10 @@ export type UserUncheckedCreateWithoutUpdatedBrandTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -10218,8 +11052,10 @@ export type UserUpdateWithoutCreatedBrandTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -10279,8 +11115,10 @@ export type UserUncheckedUpdateWithoutCreatedBrandTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -10344,8 +11182,10 @@ export type UserUpdateWithoutUpdatedBrandTranslationsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -10405,8 +11245,10 @@ export type UserUncheckedUpdateWithoutUpdatedBrandTranslationsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -10458,8 +11300,10 @@ export type UserCreateWithoutCartsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -10519,8 +11363,10 @@ export type UserUncheckedCreateWithoutCartsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -10589,8 +11435,10 @@ export type UserUpdateWithoutCartsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -10650,8 +11498,10 @@ export type UserUncheckedUpdateWithoutCartsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -10704,8 +11554,10 @@ export type UserCreateWithoutOrdersInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -10765,8 +11617,10 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -10825,8 +11679,10 @@ export type UserCreateWithoutCreatedOrdersInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -10886,8 +11742,10 @@ export type UserUncheckedCreateWithoutCreatedOrdersInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -10945,8 +11803,10 @@ export type UserCreateWithoutUpdatedOrdersInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -11006,8 +11866,10 @@ export type UserUncheckedCreateWithoutUpdatedOrdersInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -11075,8 +11937,10 @@ export type UserUpdateWithoutOrdersInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -11136,8 +12000,10 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -11202,8 +12068,10 @@ export type UserUpdateWithoutCreatedOrdersInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -11263,8 +12131,10 @@ export type UserUncheckedUpdateWithoutCreatedOrdersInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -11328,8 +12198,10 @@ export type UserUpdateWithoutUpdatedOrdersInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -11389,8 +12261,10 @@ export type UserUncheckedUpdateWithoutUpdatedOrdersInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -11442,8 +12316,10 @@ export type UserCreateWithoutReviewsInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -11503,8 +12379,10 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -11573,8 +12451,10 @@ export type UserUpdateWithoutReviewsInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -11634,8 +12514,10 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -11689,8 +12571,10 @@ export type UserCreateWithoutSentMessagesInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -11750,8 +12634,10 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -11809,8 +12695,10 @@ export type UserCreateWithoutReceivedMessagesInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -11870,8 +12758,10 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -11940,8 +12830,10 @@ export type UserUpdateWithoutSentMessagesInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -12001,8 +12893,10 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -12066,8 +12960,10 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -12127,8 +13023,10 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -12180,8 +13078,10 @@ export type UserCreateWithoutDevicesInput = {
   updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
@@ -12241,8 +13141,10 @@ export type UserUncheckedCreateWithoutDevicesInput = {
   updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
   createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
   updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
   createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
   updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
@@ -12311,8 +13213,10 @@ export type UserUpdateWithoutDevicesInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -12372,8 +13276,10 @@ export type UserUncheckedUpdateWithoutDevicesInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -12478,8 +13384,10 @@ export type UserUpdateWithoutCreatedByInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -12538,8 +13446,10 @@ export type UserUncheckedUpdateWithoutCreatedByInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -12610,8 +13520,10 @@ export type UserUpdateWithoutUpdatedByInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -12670,8 +13582,10 @@ export type UserUncheckedUpdateWithoutUpdatedByInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -12742,8 +13656,10 @@ export type UserUpdateWithoutDeletedByInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -12802,8 +13718,10 @@ export type UserUncheckedUpdateWithoutDeletedByInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -12890,8 +13808,10 @@ export type UserUpdateWithoutRoleInput = {
   updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
@@ -12951,8 +13871,10 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
   createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
   createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -13017,8 +13939,10 @@ export type UserCountOutputType = {
   updatedSKUS: number
   createdLanguages: number
   updatedLanguages: number
+  deletedLanguages: number
   createdBrands: number
   updatedBrands: number
+  deletedBrands: number
   createdProductTranslations: number
   updatedProductTranslations: number
   createdCategoryTranslations: number
@@ -13061,8 +13985,10 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   updatedSKUS?: boolean | UserCountOutputTypeCountUpdatedSKUSArgs
   createdLanguages?: boolean | UserCountOutputTypeCountCreatedLanguagesArgs
   updatedLanguages?: boolean | UserCountOutputTypeCountUpdatedLanguagesArgs
+  deletedLanguages?: boolean | UserCountOutputTypeCountDeletedLanguagesArgs
   createdBrands?: boolean | UserCountOutputTypeCountCreatedBrandsArgs
   updatedBrands?: boolean | UserCountOutputTypeCountUpdatedBrandsArgs
+  deletedBrands?: boolean | UserCountOutputTypeCountDeletedBrandsArgs
   createdProductTranslations?: boolean | UserCountOutputTypeCountCreatedProductTranslationsArgs
   updatedProductTranslations?: boolean | UserCountOutputTypeCountUpdatedProductTranslationsArgs
   createdCategoryTranslations?: boolean | UserCountOutputTypeCountCreatedCategoryTranslationsArgs
@@ -13255,6 +14181,13 @@ export type UserCountOutputTypeCountUpdatedLanguagesArgs<ExtArgs extends runtime
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountDeletedLanguagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LanguageWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountCreatedBrandsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BrandWhereInput
 }
@@ -13263,6 +14196,13 @@ export type UserCountOutputTypeCountCreatedBrandsArgs<ExtArgs extends runtime.Ty
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountUpdatedBrandsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BrandWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDeletedBrandsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BrandWhereInput
 }
 
@@ -13419,8 +14359,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   updatedSKUS?: boolean | Prisma.User$updatedSKUSArgs<ExtArgs>
   createdLanguages?: boolean | Prisma.User$createdLanguagesArgs<ExtArgs>
   updatedLanguages?: boolean | Prisma.User$updatedLanguagesArgs<ExtArgs>
+  deletedLanguages?: boolean | Prisma.User$deletedLanguagesArgs<ExtArgs>
   createdBrands?: boolean | Prisma.User$createdBrandsArgs<ExtArgs>
   updatedBrands?: boolean | Prisma.User$updatedBrandsArgs<ExtArgs>
+  deletedBrands?: boolean | Prisma.User$deletedBrandsArgs<ExtArgs>
   createdProductTranslations?: boolean | Prisma.User$createdProductTranslationsArgs<ExtArgs>
   updatedProductTranslations?: boolean | Prisma.User$updatedProductTranslationsArgs<ExtArgs>
   createdCategoryTranslations?: boolean | Prisma.User$createdCategoryTranslationsArgs<ExtArgs>
@@ -13531,8 +14473,10 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   updatedSKUS?: boolean | Prisma.User$updatedSKUSArgs<ExtArgs>
   createdLanguages?: boolean | Prisma.User$createdLanguagesArgs<ExtArgs>
   updatedLanguages?: boolean | Prisma.User$updatedLanguagesArgs<ExtArgs>
+  deletedLanguages?: boolean | Prisma.User$deletedLanguagesArgs<ExtArgs>
   createdBrands?: boolean | Prisma.User$createdBrandsArgs<ExtArgs>
   updatedBrands?: boolean | Prisma.User$updatedBrandsArgs<ExtArgs>
+  deletedBrands?: boolean | Prisma.User$deletedBrandsArgs<ExtArgs>
   createdProductTranslations?: boolean | Prisma.User$createdProductTranslationsArgs<ExtArgs>
   updatedProductTranslations?: boolean | Prisma.User$updatedProductTranslationsArgs<ExtArgs>
   createdCategoryTranslations?: boolean | Prisma.User$createdCategoryTranslationsArgs<ExtArgs>
@@ -13594,8 +14538,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     updatedSKUS: Prisma.$SKUPayload<ExtArgs>[]
     createdLanguages: Prisma.$LanguagePayload<ExtArgs>[]
     updatedLanguages: Prisma.$LanguagePayload<ExtArgs>[]
+    deletedLanguages: Prisma.$LanguagePayload<ExtArgs>[]
     createdBrands: Prisma.$BrandPayload<ExtArgs>[]
     updatedBrands: Prisma.$BrandPayload<ExtArgs>[]
+    deletedBrands: Prisma.$BrandPayload<ExtArgs>[]
     createdProductTranslations: Prisma.$ProductTranslationPayload<ExtArgs>[]
     updatedProductTranslations: Prisma.$ProductTranslationPayload<ExtArgs>[]
     createdCategoryTranslations: Prisma.$CategoryTranslationPayload<ExtArgs>[]
@@ -14050,8 +14996,10 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   updatedSKUS<T extends Prisma.User$updatedSKUSArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedSKUSArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SKUPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdLanguages<T extends Prisma.User$createdLanguagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdLanguagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   updatedLanguages<T extends Prisma.User$updatedLanguagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedLanguagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  deletedLanguages<T extends Prisma.User$deletedLanguagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deletedLanguagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdBrands<T extends Prisma.User$createdBrandsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdBrandsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   updatedBrands<T extends Prisma.User$updatedBrandsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedBrandsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  deletedBrands<T extends Prisma.User$deletedBrandsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deletedBrandsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdProductTranslations<T extends Prisma.User$createdProductTranslationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdProductTranslationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   updatedProductTranslations<T extends Prisma.User$updatedProductTranslationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedProductTranslationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdCategoryTranslations<T extends Prisma.User$createdCategoryTranslationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdCategoryTranslationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CategoryTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -15068,6 +16016,30 @@ export type User$updatedLanguagesArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
+ * User.deletedLanguages
+ */
+export type User$deletedLanguagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Language
+   */
+  select?: Prisma.LanguageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Language
+   */
+  omit?: Prisma.LanguageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LanguageInclude<ExtArgs> | null
+  where?: Prisma.LanguageWhereInput
+  orderBy?: Prisma.LanguageOrderByWithRelationInput | Prisma.LanguageOrderByWithRelationInput[]
+  cursor?: Prisma.LanguageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LanguageScalarFieldEnum | Prisma.LanguageScalarFieldEnum[]
+}
+
+/**
  * User.createdBrands
  */
 export type User$createdBrandsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -15095,6 +16067,30 @@ export type User$createdBrandsArgs<ExtArgs extends runtime.Types.Extensions.Inte
  * User.updatedBrands
  */
 export type User$updatedBrandsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Brand
+   */
+  select?: Prisma.BrandSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Brand
+   */
+  omit?: Prisma.BrandOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BrandInclude<ExtArgs> | null
+  where?: Prisma.BrandWhereInput
+  orderBy?: Prisma.BrandOrderByWithRelationInput | Prisma.BrandOrderByWithRelationInput[]
+  cursor?: Prisma.BrandWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BrandScalarFieldEnum | Prisma.BrandScalarFieldEnum[]
+}
+
+/**
+ * User.deletedBrands
+ */
+export type User$deletedBrandsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Brand
    */

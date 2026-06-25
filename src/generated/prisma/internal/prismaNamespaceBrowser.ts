@@ -95,9 +95,9 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const LanguageScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  code: 'code',
   createdById: 'createdById',
   updatedById: 'updatedById',
+  deletedById: 'deletedById',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -309,8 +309,10 @@ export type SKUScalarFieldEnum = (typeof SKUScalarFieldEnum)[keyof typeof SKUSca
 export const BrandScalarFieldEnum = {
   id: 'id',
   logo: 'logo',
+  name: 'name',
   createdById: 'createdById',
   updatedById: 'updatedById',
+  deletedById: 'deletedById',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
