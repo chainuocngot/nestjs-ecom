@@ -2404,6 +2404,7 @@ export const BrandTranslationScalarFieldEnum = {
   description: 'description',
   createdById: 'createdById',
   updatedById: 'updatedById',
+  deletedById: 'deletedById',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

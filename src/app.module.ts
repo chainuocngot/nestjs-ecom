@@ -14,9 +14,22 @@ import { ProfileModule } from './routes/profile/profile.module';
 import { UserModule } from './routes/user/user.module';
 import { MediaModule } from './routes/media/media.module';
 import { LanguageModule } from './routes/language/language.module';
+import { BrandModule } from './routes/brand/brand.module';
+import { BrandTranslationModule } from 'src/routes/brand/brand-translation/brand-translation.module';
 
 @Module({
-  imports: [SharedModule, AuthModule, PermissionModule, RoleModule, ProfileModule, UserModule, MediaModule, LanguageModule],
+  imports: [
+    SharedModule,
+    AuthModule,
+    PermissionModule,
+    RoleModule,
+    ProfileModule,
+    UserModule,
+    MediaModule,
+    LanguageModule,
+    BrandModule,
+    BrandTranslationModule,
+  ],
   controllers: [AppController],
   providers: [
     AppService,
