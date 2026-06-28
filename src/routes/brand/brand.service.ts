@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { I18nContext } from 'nestjs-i18n';
 import { BrandAlreadyExistsException, BrandNotFoundException } from 'src/routes/brand/brand.error';
 import { CreateBrandBodyType, GetListBrandQueryType, UpdateBrandBodyType } from 'src/routes/brand/brand.model';
 import { BrandRepository } from 'src/routes/brand/brand.repository';
@@ -9,12 +10,12 @@ export class BrandService {
   constructor(private readonly brandRepository: BrandRepository) {}
 
   list(query: GetListBrandQueryType) {
-    return this.brandRepository.getListBrand(query);
+    return this.brandRepository.getListBrand(query, I18nContext.current()?.lang as string);
   }
 
   async findById(brandId: number) {
     try {
-      return await this.brandRepository.findById(brandId);
+      return await this.brandRepository.findById(brandId, I18nContext.current()?.lang as string);
     } catch (error) {
       if (isNotFoundPrismaError(error)) {
         throw BrandNotFoundException;
@@ -38,7 +39,12 @@ export class BrandService {
 
   async update({ updatedById, body, brandId }: { updatedById: number; body: UpdateBrandBodyType; brandId: number }) {
     try {
-      return await this.brandRepository.update({ updatedById, body, brandId });
+      return await this.brandRepository.update({
+        updatedById,
+        body,
+        brandId,
+        languageId: I18nContext.current()?.lang as string,
+      });
     } catch (error) {
       if (isUniqueConstraintPrismaError(error)) {
         throw BrandAlreadyExistsException;

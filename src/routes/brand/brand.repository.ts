@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBrandBodyType, GetListBrandQueryType, UpdateBrandBodyType } from 'src/routes/brand/brand.model';
+import { ALL_LANGUAGE_CODE } from 'src/shared/constants/translation.constant';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
 @Injectable()
 export class BrandRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async getListBrand({ page, limit }: GetListBrandQueryType, languageId?: string) {
+  async getListBrand({ page, limit }: GetListBrandQueryType, languageId: string) {
     const skip = (page - 1) * limit;
     const [total, records] = await Promise.all([
       this.prismaService.brand.count({
@@ -20,7 +21,7 @@ export class BrandRepository {
         },
         include: {
           brandTranslations: {
-            where: languageId ? { deletedAt: null, languageId } : { deletedAt: null },
+            where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
           },
         },
         skip,
@@ -34,7 +35,7 @@ export class BrandRepository {
     };
   }
 
-  findById(brandId: number, languageId?: string) {
+  findById(brandId: number, languageId: string) {
     return this.prismaService.brand.findUniqueOrThrow({
       where: {
         id: brandId,
@@ -42,7 +43,7 @@ export class BrandRepository {
       },
       include: {
         brandTranslations: {
-          where: languageId ? { deletedAt: null, languageId } : { deletedAt: null },
+          where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
         },
       },
     });
@@ -66,7 +67,7 @@ export class BrandRepository {
     updatedById: number;
     body: UpdateBrandBodyType;
     brandId: number;
-    languageId?: string;
+    languageId: string;
   }) {
     return this.prismaService.brand.update({
       where: {
@@ -79,7 +80,7 @@ export class BrandRepository {
       },
       include: {
         brandTranslations: {
-          where: languageId ? { deletedAt: null, languageId } : { deletedAt: null },
+          where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
         },
       },
     });
