@@ -63,6 +63,7 @@ model User {
   updatedProducts             Product[]             @relation("ProductUpdatedBy")
   createdCategories           Category[]            @relation("CategoryCreatedBy")
   updatedCategories           Category[]            @relation("CategoryUpdatedBy")
+  deletedCategories           Category[]            @relation("CategoryDeletedBy")
   createdVariants             Variant[]             @relation("VariantCreatedBy")
   updatedVariants             Variant[]             @relation("VariantUpdatedBy")
   createdVariantOptions       VariantOption[]       @relation("VariantOptionCreatedBy")
@@ -79,6 +80,7 @@ model User {
   updatedProductTranslations  ProductTranslation[]  @relation("ProductTranslationUpdatedBy")
   createdCategoryTranslations CategoryTranslation[] @relation("CategoryTranslationCreatedBy")
   updatedCategoryTranslations CategoryTranslation[] @relation("CategoryTranslationUpdatedBy")
+  deletedCategoryTranslations CategoryTranslation[] @relation("CategoryTranslationDeletedBy")
   createdBrandTranslations    BrandTranslation[]    @relation("BrandTranslationCreatedBy")
   updatedBrandTranslations    BrandTranslation[]    @relation("BrandTranslationUpdatedBy")
   deletedBrandTranslations    BrandTranslation[]    @relation("BrandTranslationDeletedBy")
@@ -242,6 +244,8 @@ model ProductTranslation {
 model Category {
   id                   Int                   @id @default(autoincrement())
   products             Product[]
+  name                 String                @db.VarChar(500)
+  logo                 String?               @db.VarChar(1000)
   parentCategoryId     Int?
   parentCategory       Category?             @relation("ParentCategoryCategories", fields: [parentCategoryId], references: [id], onDelete: SetNull, onUpdate: NoAction)
   childrenCategories   Category[]            @relation("ParentCategoryCategories")
@@ -251,6 +255,8 @@ model Category {
   createdBy   User? @relation("CategoryCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("CategoryUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  deletedById Int?
+  deletedBy   User? @relation("CategoryDeletedBy", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
 
   deletedAt DateTime?
   createdAt DateTime  @default(now())
@@ -270,6 +276,8 @@ model CategoryTranslation {
   createdBy   User? @relation("CategoryTranslationCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("CategoryTranslationUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  deletedById Int?
+  deletedBy   User? @relation("CategoryTranslationDeletedBy", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
 
   deletedAt DateTime?
   createdAt DateTime  @default(now())
@@ -337,7 +345,7 @@ model Brand {
   logo              String             @db.VarChar(1000)
   products          Product[]
   brandTranslations BrandTranslation[]
-  name  String
+  name              String
 
   createdById Int?
   createdBy   User? @relation("BrandCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
