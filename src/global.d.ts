@@ -1,3 +1,4 @@
+import { VariantsType } from 'src/routes/product/product.model';
 import { AccessTokenPayload } from 'src/shared/types/jwt.type';
 
 declare global {
@@ -5,6 +6,10 @@ declare global {
     interface Request {
       user: AccessTokenPayload;
     }
+  }
+
+  namespace PrismaJson {
+    type VariantsTypeJson = VariantsType;
   }
 }
 

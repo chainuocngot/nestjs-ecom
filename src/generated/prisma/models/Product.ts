@@ -8,6 +8,8 @@
  *
  * 🟢 You can import this file directly.
  */
+
+import type * as PJTG from '../pjtg';
 import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
@@ -84,7 +86,7 @@ export type ProductCountAggregateOutputType = {
   publishedAt: number
   brandId: number
   images: number
-  variants: number
+  variants:PrismaJson.VariantsTypeJson
   createdById: number
   updatedById: number
   deletedById: number
@@ -257,7 +259,7 @@ export type ProductGroupByOutputType = {
   publishedAt: Date | null
   brandId: number
   images: string[]
-  variants: runtime.JsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById: number | null
   updatedById: number | null
   deletedById: number | null
@@ -415,7 +417,7 @@ export type ProductCreateInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -437,7 +439,7 @@ export type ProductUncheckedCreateInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedById?: number | null
@@ -456,7 +458,7 @@ export type ProductUpdateInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -478,7 +480,7 @@ export type ProductUncheckedUpdateInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -499,7 +501,7 @@ export type ProductCreateManyInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedById?: number | null
@@ -514,7 +516,7 @@ export type ProductUpdateManyMutationInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -528,7 +530,7 @@ export type ProductUncheckedUpdateManyInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -898,7 +900,7 @@ export type ProductCreateWithoutCreatedByInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -919,7 +921,7 @@ export type ProductUncheckedCreateWithoutCreatedByInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   updatedById?: number | null
   deletedById?: number | null
   deletedAt?: Date | string | null
@@ -947,7 +949,7 @@ export type ProductCreateWithoutUpdatedByInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -968,7 +970,7 @@ export type ProductUncheckedCreateWithoutUpdatedByInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   deletedById?: number | null
   deletedAt?: Date | string | null
@@ -996,7 +998,7 @@ export type ProductCreateWithoutDeletedByInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1017,7 +1019,7 @@ export type ProductUncheckedCreateWithoutDeletedByInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedAt?: Date | string | null
@@ -1113,7 +1115,7 @@ export type ProductCreateWithoutProductTranslationsInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1134,7 +1136,7 @@ export type ProductUncheckedCreateWithoutProductTranslationsInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedById?: number | null
@@ -1168,7 +1170,7 @@ export type ProductUpdateWithoutProductTranslationsInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1189,7 +1191,7 @@ export type ProductUncheckedUpdateWithoutProductTranslationsInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1207,7 +1209,7 @@ export type ProductCreateWithoutCategoriesInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1228,7 +1230,7 @@ export type ProductUncheckedCreateWithoutCategoriesInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedById?: number | null
@@ -1267,7 +1269,7 @@ export type ProductCreateWithoutSkusInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1288,7 +1290,7 @@ export type ProductUncheckedCreateWithoutSkusInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedById?: number | null
@@ -1322,7 +1324,7 @@ export type ProductUpdateWithoutSkusInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1343,7 +1345,7 @@ export type ProductUncheckedUpdateWithoutSkusInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1361,7 +1363,7 @@ export type ProductCreateWithoutBrandInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1381,7 +1383,7 @@ export type ProductUncheckedCreateWithoutBrandInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedById?: number | null
@@ -1426,7 +1428,7 @@ export type ProductCreateWithoutReviewsInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1447,7 +1449,7 @@ export type ProductUncheckedCreateWithoutReviewsInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedById?: number | null
@@ -1481,7 +1483,7 @@ export type ProductUpdateWithoutReviewsInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1502,7 +1504,7 @@ export type ProductUncheckedUpdateWithoutReviewsInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1522,7 +1524,7 @@ export type ProductCreateManyCreatedByInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   updatedById?: number | null
   deletedById?: number | null
   deletedAt?: Date | string | null
@@ -1538,7 +1540,7 @@ export type ProductCreateManyUpdatedByInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   deletedById?: number | null
   deletedAt?: Date | string | null
@@ -1554,7 +1556,7 @@ export type ProductCreateManyDeletedByInput = {
   publishedAt?: Date | string | null
   brandId: number
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedAt?: Date | string | null
@@ -1568,7 +1570,7 @@ export type ProductUpdateWithoutCreatedByInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1589,7 +1591,7 @@ export type ProductUncheckedUpdateWithoutCreatedByInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1609,7 +1611,7 @@ export type ProductUncheckedUpdateManyWithoutCreatedByInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1623,7 +1625,7 @@ export type ProductUpdateWithoutUpdatedByInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1644,7 +1646,7 @@ export type ProductUncheckedUpdateWithoutUpdatedByInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1664,7 +1666,7 @@ export type ProductUncheckedUpdateManyWithoutUpdatedByInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1678,7 +1680,7 @@ export type ProductUpdateWithoutDeletedByInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1699,7 +1701,7 @@ export type ProductUncheckedUpdateWithoutDeletedByInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1719,7 +1721,7 @@ export type ProductUncheckedUpdateManyWithoutDeletedByInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1733,7 +1735,7 @@ export type ProductUpdateWithoutCategoriesInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1754,7 +1756,7 @@ export type ProductUncheckedUpdateWithoutCategoriesInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1774,7 +1776,7 @@ export type ProductUncheckedUpdateManyWithoutCategoriesInput = {
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1790,7 +1792,7 @@ export type ProductCreateManyBrandInput = {
   virtualPrice: number
   publishedAt?: Date | string | null
   images?: Prisma.ProductCreateimagesInput | string[]
-  variants: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants:PrismaJson.VariantsTypeJson
   createdById?: number | null
   updatedById?: number | null
   deletedById?: number | null
@@ -1805,7 +1807,7 @@ export type ProductUpdateWithoutBrandInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1825,7 +1827,7 @@ export type ProductUncheckedUpdateWithoutBrandInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1845,7 +1847,7 @@ export type ProductUncheckedUpdateManyWithoutBrandInput = {
   virtualPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.ProductUpdateimagesInput | string[]
-  variants?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  variants?:PrismaJson.VariantsTypeJson
   createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2042,7 +2044,10 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     publishedAt: Date | null
     brandId: number
     images: string[]
-    variants: runtime.JsonValue
+    /**
+     * [VariantsTypeJson]
+     */
+    variants:PrismaJson.VariantsTypeJson
     createdById: number | null
     updatedById: number | null
     deletedById: number | null
