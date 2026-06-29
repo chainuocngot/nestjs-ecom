@@ -45,4 +45,70 @@ export class ProductRepository {
       records,
     };
   }
+
+  findById(productId: number, languageId: string) {
+    const now = new Date();
+    return this.prismaService.product.findUniqueOrThrow({
+      where: {
+        id: productId,
+        deletedAt: null,
+        publishedAt: {
+          lt: now,
+        },
+      },
+      include: {
+        productTranslations: {
+          where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
+        },
+        skus: {
+          where: {
+            deletedAt: null,
+          },
+        },
+        brand: {
+          include: {
+            brandTranslations: {
+              where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
+            },
+          },
+        },
+        categories: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            categoryTranslations: {
+              where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  delete(deletedById: number, productId: number) {
+    const now = new Date();
+    return Promise.all([
+      this.prismaService.product.update({
+        where: {
+          id: productId,
+          deletedAt: null,
+        },
+        data: {
+          deletedAt: now,
+          deletedById,
+        },
+      }),
+      this.prismaService.sKU.updateMany({
+        where: {
+          deletedAt: null,
+          productId,
+        },
+        data: {
+          deletedAt: now,
+          deletedById,
+        },
+      }),
+    ]);
+  }
 }
