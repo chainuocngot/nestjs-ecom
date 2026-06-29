@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProductBodyType, GetListProductQueryType } from 'src/routes/product/product.model';
+import {
+  CreateProductBodyType,
+  GetListProductQueryType,
+  UpdateProductBodyType,
+} from 'src/routes/product/product.model';
 import { ALL_LANGUAGE_CODE } from 'src/shared/constants/translation.constant';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
@@ -132,6 +136,108 @@ export class ProductRepository {
         },
       },
     });
+  }
+
+  async update({
+    updatedById,
+    body,
+    productId,
+  }: {
+    updatedById: number;
+    body: UpdateProductBodyType;
+    productId: number;
+  }) {
+    const { skus: skusPayload = [], categories, ...updateProductPayload } = body;
+
+    const existingSkus = await this.prismaService.sKU.findMany({
+      where: {
+        deletedAt: null,
+        productId,
+      },
+    });
+
+    // Các sku cần xoá (Có trong DB nhưng không có trong payload)
+    const skusToDelete = existingSkus.filter((sku) =>
+      skusPayload.every((skuPayload) => skuPayload.value !== sku.value),
+    );
+    const skusToDeleteIds = skusToDelete.map((sku) => sku.id);
+
+    // Mapping để chuẩn bị cho các sku cần tạo và cập nhật
+    const skusWithId = skusPayload.map((sku) => {
+      const existingSku = existingSkus.find((existingSku) => existingSku.value === sku.value);
+      return {
+        ...sku,
+        id: existingSku ? existingSku.id : null,
+      };
+    });
+
+    const skusToUpdate = skusWithId.filter((sku) => sku.id !== null) || [];
+    const skusToCreate = skusWithId
+      .filter((sku) => sku.id === null)
+      .map((sku) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { id, ...skuData } = sku;
+
+        return {
+          ...skuData,
+          productId,
+          createdById: updatedById,
+        };
+      });
+
+    const [product] = await this.prismaService.$transaction([
+      //Cập nhật product
+      this.prismaService.product.update({
+        where: {
+          id: productId,
+          deletedAt: null,
+        },
+        data: {
+          ...updateProductPayload,
+          updatedById,
+          categories: categories
+            ? {
+                connect: categories.map((category) => ({ id: category })),
+              }
+            : undefined,
+        },
+      }),
+      //Xoá sku
+      this.prismaService.sKU.updateMany({
+        where: {
+          id: {
+            in: skusToDeleteIds,
+          },
+          deletedAt: null,
+        },
+        data: {
+          deletedAt: new Date(),
+          deletedById: updatedById,
+        },
+      }),
+      //Cập nhật sku
+      ...skusToUpdate.map((sku) =>
+        this.prismaService.sKU.update({
+          where: {
+            id: sku.id as number,
+            deletedAt: null,
+          },
+          data: {
+            image: sku.image,
+            price: sku.price,
+            stock: sku.stock,
+            value: sku.value,
+            updatedById,
+          },
+        }),
+      ),
+      //Tạo sku
+      this.prismaService.sKU.createMany({
+        data: skusToCreate,
+      }),
+    ]);
+
+    return product;
   }
 
   delete(deletedById: number, productId: number) {
