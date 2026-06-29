@@ -13,7 +13,7 @@ export const BrandSchema = z.object({
   updatedAt: z.date(),
 });
 
-export const BrandIncludeTranslations = BrandSchema.extend({
+export const BrandIncludeTranslationsSchema = BrandSchema.extend({
   brandTranslations: z.array(BrandTranslationSchema),
 });
 
@@ -28,7 +28,7 @@ export const GetBrandDetailParamSchema = z.object({
   brandId: z.coerce.number(),
 });
 
-export const GetBrandDetailResSchema = BrandIncludeTranslations;
+export const GetBrandDetailResSchema = BrandIncludeTranslationsSchema;
 
 export const CreateBrandBodySchema = BrandSchema.pick({
   logo: true,
@@ -41,7 +41,7 @@ export const UpdateBrandParamSchema = GetBrandDetailParamSchema;
 
 export const UpdateBrandBodySchema = CreateBrandBodySchema.partial();
 
-export const UpdateBrandResSchema = BrandIncludeTranslations;
+export const UpdateBrandResSchema = BrandIncludeTranslationsSchema;
 
 export const DeleteBrandParamSchema = GetBrandDetailParamSchema;
 

@@ -14,7 +14,7 @@ export const CategorySchema = z.object({
   updatedAt: z.date(),
 });
 
-export const CategoryIncludeTranslations = CategorySchema.extend({
+export const CategoryIncludeTranslationsSchema = CategorySchema.extend({
   categoryTranslations: z.array(CategoryTranslationSchema),
 });
 
@@ -29,7 +29,7 @@ export const GetCategoryDetailParamSchema = z.object({
   categoryId: z.coerce.number(),
 });
 
-export const GetCategoryDetailResSchema = CategoryIncludeTranslations;
+export const GetCategoryDetailResSchema = CategoryIncludeTranslationsSchema;
 
 export const CreateCategoryBodySchema = CategorySchema.pick({
   logo: true,
@@ -47,7 +47,7 @@ export const UpdateCategoryParamSchema = GetCategoryDetailParamSchema;
 
 export const UpdateCategoryBodySchema = CreateCategoryBodySchema.partial();
 
-export const UpdateCategoryResSchema = CategoryIncludeTranslations;
+export const UpdateCategoryResSchema = CategoryIncludeTranslationsSchema;
 
 export const DeleteCategoryParamSchema = GetCategoryDetailParamSchema;
 

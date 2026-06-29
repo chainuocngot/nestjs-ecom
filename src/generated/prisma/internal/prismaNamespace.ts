@@ -2136,6 +2136,7 @@ export const ProductScalarFieldEnum = {
   variants: 'variants',
   createdById: 'createdById',
   updatedById: 'updatedById',
+  deletedById: 'deletedById',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -2202,6 +2203,7 @@ export const SKUScalarFieldEnum = {
   productId: 'productId',
   createdById: 'createdById',
   updatedById: 'updatedById',
+  deletedById: 'deletedById',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

@@ -61,11 +61,13 @@ model User {
   deletedRoles                Role[]                @relation("RoleDeletedBy")
   createdProducts             Product[]             @relation("ProductCreatedBy")
   updatedProducts             Product[]             @relation("ProductUpdatedBy")
+  deletedProducts             Product[]             @relation("ProductDeletedBy")
   createdCategories           Category[]            @relation("CategoryCreatedBy")
   updatedCategories           Category[]            @relation("CategoryUpdatedBy")
   deletedCategories           Category[]            @relation("CategoryDeletedBy")
   createdSKUS                 SKU[]                 @relation("SKUCreatedBy")
   updatedSKUS                 SKU[]                 @relation("SKUUpdatedBy")
+  deletedSKUS                 SKU[]                 @relation("SKUDeletedBy")
   createdLanguages            Language[]            @relation("LanguageCreatedBy")
   updatedLanguages            Language[]            @relation("LanguageUpdatedBy")
   deletedLanguages            Language[]            @relation("LanguageDeletedBy")
@@ -214,6 +216,8 @@ model Product {
   createdBy   User? @relation("ProductCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("ProductUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  deletedById Int?
+  deletedBy   User? @relation("ProductDeletedBy", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
 
   deletedAt DateTime?
   createdAt DateTime  @default(now())
@@ -297,6 +301,8 @@ model SKU {
   createdBy   User? @relation("SKUCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("SKUUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  deletedById Int?
+  deletedBy   User? @relation("SKUDeletedBy", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
 
   deletedAt DateTime?
   createdAt DateTime  @default(now())

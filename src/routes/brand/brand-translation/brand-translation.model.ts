@@ -14,7 +14,7 @@ export const BrandTranslationSchema = z.object({
 });
 
 export const GetBrandTranslationDetailParamSchema = z.object({
-  brandTranslationId: z.coerce.number(),
+  brandTranslationId: z.coerce.number().int(),
 });
 
 export const GetBrandTranslationDetailResSchema = BrandTranslationSchema;
