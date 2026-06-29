@@ -81,6 +81,7 @@ export class RoleRepository {
         isActive: body.isActive,
         updatedById,
         permissions: {
+          //IMPORTANT: Many-Many Update
           set: body.permissionIds?.map((permissionId) => ({ id: permissionId })),
         },
       },

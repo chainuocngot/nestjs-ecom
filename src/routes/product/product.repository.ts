@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { GetListProductQueryType } from 'src/routes/product/product.model';
+import { CreateProductBodyType, GetListProductQueryType } from 'src/routes/product/product.model';
 import { ALL_LANGUAGE_CODE } from 'src/shared/constants/translation.constant';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
@@ -54,6 +54,54 @@ export class ProductRepository {
         deletedAt: null,
         publishedAt: {
           lt: now,
+        },
+      },
+      include: {
+        productTranslations: {
+          where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
+        },
+        skus: {
+          where: {
+            deletedAt: null,
+          },
+        },
+        brand: {
+          include: {
+            brandTranslations: {
+              where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
+            },
+          },
+        },
+        categories: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            categoryTranslations: {
+              where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  create({ createdById, body, languageId }: { createdById: number; body: CreateProductBodyType; languageId: string }) {
+    const { skus, categories, ...createProductPayload } = body;
+
+    return this.prismaService.product.create({
+      data: {
+        ...createProductPayload,
+        createdById,
+        categories: {
+          //IMPORTANT: Many-Many Create
+          connect: categories.map((category) => ({ id: category })),
+        },
+        skus: {
+          //IMPORTANT: One-Many Create
+          createMany: {
+            data: skus,
+          },
         },
       },
       include: {
