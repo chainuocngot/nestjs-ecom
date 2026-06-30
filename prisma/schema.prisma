@@ -80,6 +80,7 @@ model User {
   deletedBrands               Brand[]               @relation("BrandDeletedBy")
   createdProductTranslations  ProductTranslation[]  @relation("ProductTranslationCreatedBy")
   updatedProductTranslations  ProductTranslation[]  @relation("ProductTranslationUpdatedBy")
+  deletedProductTranslations  ProductTranslation[]  @relation("ProductTranslationDeletedBy")
   createdCategoryTranslations CategoryTranslation[] @relation("CategoryTranslationCreatedBy")
   updatedCategoryTranslations CategoryTranslation[] @relation("CategoryTranslationUpdatedBy")
   deletedCategoryTranslations CategoryTranslation[] @relation("CategoryTranslationDeletedBy")
@@ -242,6 +243,8 @@ model ProductTranslation {
   createdBy   User? @relation("ProductTranslationCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("ProductTranslationUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  deletedById Int?
+  deletedBy   User? @relation("ProductTranslationDeletedBy", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
 
   deletedAt DateTime?
   createdAt DateTime  @default(now())

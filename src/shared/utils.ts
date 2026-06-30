@@ -6,13 +6,13 @@ import fs from 'fs';
 import { UPLOAD_DIR } from 'src/shared/constants/media.constant';
 import { VariantsType } from 'src/routes/product/product.model';
 
-export const isUniqueConstraintPrismaError = (error: unknown) =>
+export const isUniqueConstraintPrismaError = (error: unknown): error is Prisma.PrismaClientKnownRequestError =>
   error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002';
 
-export const isForeignKeyConstraintPrismaError = (error: unknown) =>
+export const isForeignKeyConstraintPrismaError = (error: unknown): error is Prisma.PrismaClientKnownRequestError =>
   error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2003';
 
-export const isNotFoundPrismaError = (error: unknown) =>
+export const isNotFoundPrismaError = (error: unknown): error is Prisma.PrismaClientKnownRequestError =>
   error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025';
 
 export const generateOtp = () => randomInt(100_000, 1_000_000).toString();

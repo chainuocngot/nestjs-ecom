@@ -2153,6 +2153,7 @@ export const ProductTranslationScalarFieldEnum = {
   description: 'description',
   createdById: 'createdById',
   updatedById: 'updatedById',
+  deletedById: 'deletedById',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

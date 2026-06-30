@@ -147,7 +147,7 @@ export class ProductRepository {
     body: UpdateProductBodyType;
     productId: number;
   }) {
-    const { skus: skusPayload = [], categories, ...updateProductPayload } = body;
+    const { skus: skusPayload, categories, ...updateProductPayload } = body;
 
     const existingSkus = await this.prismaService.sKU.findMany({
       where: {
@@ -171,7 +171,7 @@ export class ProductRepository {
       };
     });
 
-    const skusToUpdate = skusWithId.filter((sku) => sku.id !== null) || [];
+    const skusToUpdate = skusWithId.filter((sku) => sku.id !== null);
     const skusToCreate = skusWithId
       .filter((sku) => sku.id === null)
       .map((sku) => {
@@ -185,6 +185,11 @@ export class ProductRepository {
         };
       });
 
+    console.log(
+      '???',
+      categories.map((category) => ({ id: category })),
+    );
+
     const [product] = await this.prismaService.$transaction([
       //Cập nhật product
       this.prismaService.product.update({
@@ -195,11 +200,9 @@ export class ProductRepository {
         data: {
           ...updateProductPayload,
           updatedById,
-          categories: categories
-            ? {
-                connect: categories.map((category) => ({ id: category })),
-              }
-            : undefined,
+          categories: {
+            connect: categories.map((category) => ({ id: category })),
+          },
         },
       }),
       //Xoá sku

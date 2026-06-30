@@ -43,7 +43,7 @@ export const ProductSchema = z.object({
   name: z.string(),
   basePrice: z.number(),
   virtualPrice: z.number(),
-  publishedAt: z.date().nullable(),
+  publishedAt: z.coerce.date().nullable(),
   brandId: z.number().int(),
   images: z.array(z.string()),
   variants: VariantsSchema,
@@ -119,7 +119,7 @@ export const CreateProductBodySchema = ProductSchema.pick({
       return isValid;
     });
 
-    if (isValidSkus) {
+    if (!isValidSkus) {
       return ctx.addIssue({
         code: 'custom',
         path: ['skus'],
@@ -128,7 +128,11 @@ export const CreateProductBodySchema = ProductSchema.pick({
     }
   });
 
-export const UpdateProductBodySchema = CreateProductBodySchema.partial();
+export const CreateProductResSchema = GetProductDetailResSchema;
+
+export const UpdateProductBodySchema = CreateProductBodySchema;
+
+export const UpdateProductResSchema = ProductSchema;
 
 export type SingleVariantType = z.infer<typeof SingleVariantSchema>;
 
@@ -146,4 +150,8 @@ export type GetProductDetailResType = z.infer<typeof GetProductDetailResSchema>;
 
 export type CreateProductBodyType = z.infer<typeof CreateProductBodySchema>;
 
+export type CreateProductResType = z.infer<typeof CreateProductResSchema>;
+
 export type UpdateProductBodyType = z.infer<typeof UpdateProductBodySchema>;
+
+export type UpdateProductResType = z.infer<typeof UpdateProductResSchema>;
