@@ -61,6 +61,12 @@ export const GetListProductQuerySchema = PaginationQuerySchema.extend({
   categoryIds: z.array(z.coerce.number().int()).optional(),
   minPrice: z.coerce.number().optional(),
   maxPrice: z.coerce.number().optional(),
+  createdById: z.coerce.number().int().optional(),
+  isPublic: z.coerce.boolean().optional(),
+});
+
+export const GetListManageProductQuerySchema = GetListProductQuerySchema.extend({
+  createdById: z.coerce.number().int(),
 });
 
 export const GetListProductResSchema = z.object({
@@ -141,6 +147,8 @@ export type VariantsType = z.infer<typeof VariantsSchema>;
 export type ProductType = z.infer<typeof ProductSchema>;
 
 export type GetListProductQueryType = z.infer<typeof GetListProductQuerySchema>;
+
+export type GetListManageProductQueryType = z.infer<typeof GetListManageProductQuerySchema>;
 
 export type GetListProductResType = z.infer<typeof GetListProductResSchema>;
 

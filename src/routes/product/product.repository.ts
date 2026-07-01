@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Prisma } from 'src/generated/prisma/client';
 import {
   CreateProductBodyType,
   GetListProductQueryType,
@@ -11,26 +12,31 @@ import { PrismaService } from 'src/shared/services/prisma.service';
 export class ProductRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async getListProduct({ limit, page }: GetListProductQueryType, languageId: string) {
+  async getListProduct(
+    {
+      limit,
+      page,
+      // name, brandIds, categoryIds, minPrice, maxPrice,
+      createdById,
+      isPublic,
+    }: GetListProductQueryType,
+    languageId: string,
+  ) {
     const now = new Date();
     const skip = (page - 1) * limit;
 
+    const where: Prisma.ProductWhereInput = {
+      deletedAt: null,
+      createdById,
+      publishedAt: isPublic ? { lte: now } : undefined,
+    };
+
     const [total, records] = await Promise.all([
       this.prismaService.product.count({
-        where: {
-          deletedAt: null,
-          publishedAt: {
-            lt: now,
-          },
-        },
+        where,
       }),
       this.prismaService.product.findMany({
-        where: {
-          deletedAt: null,
-          publishedAt: {
-            lt: now,
-          },
-        },
+        where,
         skip,
         take: limit,
         include: {
@@ -50,15 +56,22 @@ export class ProductRepository {
     };
   }
 
-  findById(productId: number, languageId: string) {
+  findById(productId: number) {
+    return this.prismaService.product.findUniqueOrThrow({
+      where: {
+        id: productId,
+        deletedAt: null,
+      },
+    });
+  }
+
+  getDetailById({ productId, languageId, isPublic }: { productId: number; languageId: string; isPublic?: boolean }) {
     const now = new Date();
     return this.prismaService.product.findUniqueOrThrow({
       where: {
         id: productId,
         deletedAt: null,
-        publishedAt: {
-          lt: now,
-        },
+        publishedAt: isPublic ? { lte: now } : undefined,
       },
       include: {
         productTranslations: {
@@ -185,11 +198,6 @@ export class ProductRepository {
         };
       });
 
-    console.log(
-      '???',
-      categories.map((category) => ({ id: category })),
-    );
-
     const [product] = await this.prismaService.$transaction([
       //Cập nhật product
       this.prismaService.product.update({
@@ -250,6 +258,16 @@ export class ProductRepository {
         where: {
           id: productId,
           deletedAt: null,
+        },
+        data: {
+          deletedAt: now,
+          deletedById,
+        },
+      }),
+      this.prismaService.productTranslation.updateMany({
+        where: {
+          deletedAt: null,
+          productId,
         },
         data: {
           deletedAt: now,

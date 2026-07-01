@@ -34,7 +34,9 @@ export class MediaController {
     )
     file: Express.Multer.File,
   ) {
-    console.log(file);
+    return {
+      url: `${envConfig.PREFIX_STATIC_ENDPOINT}/${file.filename}`,
+    };
   }
 
   @Post('images/upload/multiple')
