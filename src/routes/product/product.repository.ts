@@ -25,11 +25,23 @@ export class ProductRepository {
     const now = new Date();
     const skip = (page - 1) * limit;
 
-    const where: Prisma.ProductWhereInput = {
+    let where: Prisma.ProductWhereInput = {
       deletedAt: null,
       createdById,
-      publishedAt: isPublic ? { lte: now } : undefined,
     };
+    if (isPublic === true) {
+      where.publishedAt = {
+        lte: now,
+        not: null,
+      };
+    } else if (isPublic === false) {
+      where = {
+        OR: [
+          { ...where, publishedAt: null },
+          { ...where, publishedAt: { gt: now } },
+        ],
+      };
+    }
 
     const [total, records] = await Promise.all([
       this.prismaService.product.count({

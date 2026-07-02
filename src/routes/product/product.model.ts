@@ -62,7 +62,7 @@ export const GetListProductQuerySchema = PaginationQuerySchema.extend({
   minPrice: z.coerce.number().optional(),
   maxPrice: z.coerce.number().optional(),
   createdById: z.coerce.number().int().optional(),
-  isPublic: z.coerce.boolean().optional(),
+  isPublic: z.preprocess((value) => value === 'true', z.boolean()).optional(),
 });
 
 export const GetListManageProductQuerySchema = GetListProductQuerySchema.extend({
@@ -84,7 +84,7 @@ export const GetProductDetailParamSchema = z
   })
   .strict();
 
-export const GetProductDetailResSchema = z.object({
+export const GetProductDetailResSchema = ProductSchema.extend({
   productTranslations: z.array(ProductTranslationSchema),
   skus: z.array(SkuSchema),
   categories: z.array(CategoryIncludeTranslationsSchema),
