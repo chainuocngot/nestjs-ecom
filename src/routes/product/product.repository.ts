@@ -36,10 +36,8 @@ export class ProductRepository {
       };
     } else if (isPublic === false) {
       where = {
-        OR: [
-          { ...where, publishedAt: null },
-          { ...where, publishedAt: { gt: now } },
-        ],
+        ...where,
+        OR: [{ publishedAt: null }, { publishedAt: { gt: now } }],
       };
     }
 
@@ -79,12 +77,25 @@ export class ProductRepository {
 
   getDetailById({ productId, languageId, isPublic }: { productId: number; languageId: string; isPublic?: boolean }) {
     const now = new Date();
+
+    let where: Prisma.ProductWhereUniqueInput = {
+      id: productId,
+      deletedAt: null,
+    };
+    if (isPublic === true) {
+      where.publishedAt = {
+        lte: now,
+        not: null,
+      };
+    } else if (isPublic === false) {
+      where = {
+        ...where,
+        OR: [{ publishedAt: null }, { publishedAt: { gt: now } }],
+      };
+    }
+
     return this.prismaService.product.findUniqueOrThrow({
-      where: {
-        id: productId,
-        deletedAt: null,
-        publishedAt: isPublic ? { lte: now } : undefined,
-      },
+      where,
       include: {
         productTranslations: {
           where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
