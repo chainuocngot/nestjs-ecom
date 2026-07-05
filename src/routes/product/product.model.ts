@@ -2,6 +2,7 @@ import { BrandIncludeTranslationsSchema } from 'src/routes/brand/brand.model';
 import { CategoryIncludeTranslationsSchema } from 'src/routes/category/category.model';
 import { ProductTranslationSchema } from 'src/routes/product/product-translation/product-translation.model';
 import { SkuSchema, UpsertSkuBodySchema } from 'src/routes/product/sku.model';
+import { OrderBy, SortBy } from 'src/shared/constants/app.constant';
 import { PaginationQuerySchema } from 'src/shared/models/request.model';
 import { generateSkus } from 'src/shared/utils';
 import { z } from 'zod';
@@ -75,6 +76,8 @@ export const GetListProductQuerySchema = PaginationQuerySchema.extend({
   maxPrice: z.coerce.number().optional(),
   createdById: z.coerce.number().int().optional(),
   isPublic: z.preprocess((value) => value === 'true', z.boolean()).optional(),
+  orderBy: z.enum(OrderBy).default(OrderBy.Desc),
+  sortBy: z.enum(SortBy).default(SortBy.CreatedAt),
 });
 
 export const GetListManageProductQuerySchema = GetListProductQuerySchema.extend({

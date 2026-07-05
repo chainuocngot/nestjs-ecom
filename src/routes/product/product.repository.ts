@@ -5,6 +5,7 @@ import {
   GetListProductQueryType,
   UpdateProductBodyType,
 } from 'src/routes/product/product.model';
+import { SortBy } from 'src/shared/constants/app.constant';
 import { ALL_LANGUAGE_CODE } from 'src/shared/constants/translation.constant';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
@@ -13,7 +14,19 @@ export class ProductRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   async getListProduct(
-    { limit, page, name, brandIds, categoryIds, minPrice, maxPrice, createdById, isPublic }: GetListProductQueryType,
+    {
+      limit,
+      page,
+      name,
+      brandIds,
+      categoryIds,
+      minPrice,
+      maxPrice,
+      createdById,
+      isPublic,
+      orderBy,
+      sortBy,
+    }: GetListProductQueryType,
     languageId: string,
   ) {
     const now = new Date();
@@ -67,6 +80,22 @@ export class ProductRepository {
       };
     }
 
+    let caculatedOrderBy: Prisma.ProductOrderByWithRelationInput = {
+      createdAt: orderBy,
+    };
+
+    if (sortBy === SortBy.Price) {
+      caculatedOrderBy = {
+        basePrice: orderBy,
+      };
+    } else if (sortBy === SortBy.Sale) {
+      caculatedOrderBy = {
+        orders: {
+          _count: orderBy,
+        },
+      };
+    }
+
     const [total, records] = await Promise.all([
       this.prismaService.product.count({
         where,
@@ -79,10 +108,14 @@ export class ProductRepository {
           productTranslations: {
             where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
           },
+          orders: {
+            where: {
+              deletedAt: null,
+              status: 'DELIVERED',
+            },
+          },
         },
-        orderBy: {
-          createdAt: 'desc',
-        },
+        orderBy: caculatedOrderBy,
       }),
     ]);
 
