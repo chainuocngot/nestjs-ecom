@@ -13,13 +13,7 @@ export class ProductRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   async getListProduct(
-    {
-      limit,
-      page,
-      // name, brandIds, categoryIds, minPrice, maxPrice,
-      createdById,
-      isPublic,
-    }: GetListProductQueryType,
+    { limit, page, name, brandIds, categoryIds, minPrice, maxPrice, createdById, isPublic }: GetListProductQueryType,
     languageId: string,
   ) {
     const now = new Date();
@@ -29,6 +23,38 @@ export class ProductRepository {
       deletedAt: null,
       createdById,
     };
+
+    if (name) {
+      where.name = {
+        contains: name,
+        mode: 'insensitive',
+      };
+    }
+
+    if (brandIds && brandIds.length > 0) {
+      where.brandId = {
+        in: brandIds,
+      };
+    }
+
+    if (categoryIds && categoryIds.length > 0) {
+      //IMPORTANT: Many-Many Filter
+      where.categories = {
+        some: {
+          id: {
+            in: categoryIds,
+          },
+        },
+      };
+    }
+
+    if (minPrice !== undefined || maxPrice !== undefined) {
+      where.basePrice = {
+        gte: minPrice,
+        lte: maxPrice,
+      };
+    }
+
     if (isPublic === true) {
       where.publishedAt = {
         lte: now,

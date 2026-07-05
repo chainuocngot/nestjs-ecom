@@ -57,8 +57,20 @@ export const ProductSchema = z.object({
 
 export const GetListProductQuerySchema = PaginationQuerySchema.extend({
   name: z.string().optional(),
-  brandIds: z.array(z.coerce.number().int()).optional(),
-  categoryIds: z.array(z.coerce.number().int()).optional(),
+  brandIds: z.preprocess((value) => {
+    if (typeof value === 'string') {
+      return [Number(value)];
+    }
+
+    return value;
+  }, z.array(z.coerce.number().int()).optional()),
+  categoryIds: z.preprocess((value) => {
+    if (typeof value === 'string') {
+      return [Number(value)];
+    }
+
+    return value;
+  }, z.array(z.coerce.number().int()).optional()),
   minPrice: z.coerce.number().optional(),
   maxPrice: z.coerce.number().optional(),
   createdById: z.coerce.number().int().optional(),

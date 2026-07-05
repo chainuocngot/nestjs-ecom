@@ -29,7 +29,6 @@ export class ManageProductService {
     requestUserId: number;
     requestRoleName: RoleNameType;
   }) {
-    console.log('>> Check | query:', query);
     this._validatePrivilege({
       requestRoleName,
       requestUserId,
