@@ -87,6 +87,7 @@ model User {
   createdBrandTranslations    BrandTranslation[]    @relation("BrandTranslationCreatedBy")
   updatedBrandTranslations    BrandTranslation[]    @relation("BrandTranslationUpdatedBy")
   deletedBrandTranslations    BrandTranslation[]    @relation("BrandTranslationDeletedBy")
+  soldOrders                  Order[]               @relation("Shop")
   createdOrders               Order[]               @relation("OrderCreatedBy")
   updatedOrders               Order[]               @relation("OrderUpdatedBy")
   createdUserTranslations     UserTranslation[]     @relation("UserTranslationCreatedBy")
@@ -218,9 +219,10 @@ model Product {
   variants            Json
   productTranslations ProductTranslation[]
   orders              Order[]
+  sroductSKUSnapshots ProductSKUSnapshot[]
 
   createdById Int
-  createdBy   User @relation("ProductCreatedBy", fields: [createdById], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  createdBy   User  @relation("ProductCreatedBy", fields: [createdById], references: [id], onDelete: Cascade, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("ProductUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   deletedById Int?
@@ -307,7 +309,7 @@ model SKU {
   productSKUSnapshots ProductSKUSnapshot[]
 
   createdById Int
-  createdBy   User @relation("SKUCreatedBy", fields: [createdById], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  createdBy   User  @relation("SKUCreatedBy", fields: [createdById], references: [id], onDelete: Cascade, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("SKUUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   deletedById Int?
@@ -377,13 +379,19 @@ model CartItem {
 model ProductSKUSnapshot {
   id          Int      @id @default(autoincrement())
   productName String   @db.VarChar(500)
-  price       Float
+  skuPrice    Float
   images      String[]
+  quantity    Int
   skuValue    String   @db.VarChar(500)
+  productId   Int?
+  product     Product? @relation(fields: [productId], references: [id], onDelete: SetNull, onUpdate: NoAction)
   skuId       Int?
   sku         SKU?     @relation(fields: [skuId], references: [id], onDelete: SetNull, onUpdate: NoAction)
   orderId     Int?
   order       Order?   @relation(fields: [orderId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+
+  /// [ProductTranslationsTypeJson]
+  productTranslations Json
 
   createdAt DateTime @default(now())
 }
@@ -395,6 +403,11 @@ model Order {
   status   OrderStatus
   items    ProductSKUSnapshot[]
   products Product[]
+  shopId   Int
+  shop     User                 @relation("Shop", fields: [shopId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  /// [ReceiverTypeJson]
+  receiver Json
 
   createdById Int?
   createdBy   User? @relation("OrderCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
