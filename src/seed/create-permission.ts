@@ -5,7 +5,8 @@ import { HTTPMethod } from 'src/generated/prisma/enums';
 import { RoleName, RoleNameType } from 'src/shared/constants/role.constant';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
-const SELLER_MODULE = ['AUTH', 'MEDIA', 'MANAGE-PRODUCT', 'PRODUCT-TRANSLATION', 'PROFILE'];
+const SELLER_MODULE = ['AUTH', 'MEDIA', 'MANAGE-PRODUCT', 'PRODUCT-TRANSLATION', 'PROFILE', 'CART'];
+const CLIENT_MODULE = ['AUTH', 'MEDIA', 'PROFILE', 'CART'];
 
 const prisma = new PrismaService();
 
@@ -90,6 +91,11 @@ async function bootstrap() {
     .filter((item) => SELLER_MODULE.includes(item.module))
     .map((item) => ({ id: item.id }));
   await updateRole(RoleName.Seller, sellerPermissionIds);
+
+  const clientPermissionIds = updatedPermissionsInDb
+    .filter((item) => CLIENT_MODULE.includes(item.module))
+    .map((item) => ({ id: item.id }));
+  await updateRole(RoleName.Client, clientPermissionIds);
 
   process.exit(0);
 }

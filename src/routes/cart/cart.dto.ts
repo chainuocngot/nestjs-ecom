@@ -7,9 +7,12 @@ import {
   AddToCartBodySchema,
   UpdateCartItemBodySchema,
   DeleteCartBodySchema,
+  GetListCartItemQuerySchema,
 } from 'src/routes/cart/cart.model';
 
 export class CartItemDto extends createZodDto(CartItemSchema) {}
+
+export class GetListCartItemQueryDto extends createZodDto(GetListCartItemQuerySchema) {}
 
 export class GetCartItemDetailParamDto extends createZodDto(GetCartItemDetailParamSchema) {}
 

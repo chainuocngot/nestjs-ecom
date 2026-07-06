@@ -1,6 +1,7 @@
 import { ProductTranslationSchema } from 'src/routes/product/product-translation/product-translation.model';
 import { ProductSchema } from 'src/routes/product/product.model';
 import { SkuSchema } from 'src/routes/product/sku.model';
+import { PaginationQuerySchema } from 'src/shared/models/request.model';
 import { z } from 'zod';
 
 export const CartItemSchema = z.object({
@@ -11,6 +12,8 @@ export const CartItemSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
 });
+
+export const GetListCartItemQuerySchema = PaginationQuerySchema;
 
 export const GetCartItemDetailParamSchema = z.object({
   cartItemId: z.coerce.number().int(),
@@ -34,7 +37,7 @@ export const AddToCartBodySchema = CartItemSchema.pick({
   quantity: true,
 }).strict();
 
-export const UpdateCartItemBodySchema = AddToCartBodySchema.partial();
+export const UpdateCartItemBodySchema = AddToCartBodySchema;
 
 export const DeleteCartBodySchema = z
   .object({
@@ -43,6 +46,8 @@ export const DeleteCartBodySchema = z
   .strict();
 
 export type CartItemType = z.infer<typeof CartItemSchema>;
+
+export type GetListCartItemQueryType = z.infer<typeof GetListCartItemQuerySchema>;
 
 export type GetCartItemDetailParamType = z.infer<typeof GetCartItemDetailParamSchema>;
 

@@ -5,3 +5,5 @@ export const SkuNotFoundException = new NotFoundException('Error.SkuNotFound');
 export const SkuOutOfStockException = new BadRequestException('Error.SkuOutOfStock');
 
 export const ProductNotFoundException = new NotFoundException('Error.ProductNotFound');
+
+export const CartItemNotFoundException = new NotFoundException('Error.CartItemNotFound');

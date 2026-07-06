@@ -40,6 +40,7 @@ import { CartModule } from './routes/cart/cart.module';
     CategoryTranslationModule,
     ProductModule,
     ProductTranslationModule,
+    CartModule,
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
@@ -49,7 +50,6 @@ import { CartModule } from './routes/cart/cart.module';
       resolvers: [{ use: QueryResolver, options: ['lang'] }, AcceptLanguageResolver],
       typesOutputPath: path.resolve('src/generated/i18n.generated.ts'),
     }),
-    CartModule,
   ],
   controllers: [AppController],
   providers: [
