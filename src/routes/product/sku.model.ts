@@ -7,7 +7,7 @@ export const SkuSchema = z.object({
   stock: z.number().int(),
   image: z.string(),
   productId: z.number().int(),
-  createdById: z.number().int().nullable(),
+  createdById: z.number().int(),
   updatedById: z.number().int().nullable(),
   deletedById: z.number().int().nullable(),
   deletedAt: z.date().nullable(),

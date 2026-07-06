@@ -199,7 +199,7 @@ export class ProductRepository {
         skus: {
           //IMPORTANT: One-Many Create
           createMany: {
-            data: skus,
+            data: skus.map((sku) => ({ ...sku, createdById })),
           },
         },
       },
