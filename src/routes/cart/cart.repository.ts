@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ProductNotFoundException, SkuNotFoundException, SkuOutOfStockException } from 'src/routes/cart/cart.error';
 import {
   AddToCartBodyType,
+  CartItemDetailType,
   DeleteCartBodyType,
   GetListCartItemQueryType,
   UpdateCartItemBodyType,
@@ -22,42 +23,58 @@ export class CartRepository {
     userId: number;
     languageId: string;
   }) {
-    const skip = (query.page - 1) * query.limit;
-
-    const [total, records] = await Promise.all([
-      this.prismaService.cartItem.count({
-        where: {
-          userId,
+    const cartItems = await this.prismaService.cartItem.findMany({
+      where: {
+        userId,
+        sku: {
+          product: {
+            deletedAt: null,
+            publishedAt: {
+              lte: new Date(),
+              not: null,
+            },
+          },
         },
-      }),
-      this.prismaService.cartItem.findMany({
-        where: {
-          userId,
-        },
-        include: {
-          sku: {
-            include: {
-              product: {
-                include: {
-                  productTranslations: {
-                    where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
-                  },
+      },
+      include: {
+        sku: {
+          include: {
+            product: {
+              include: {
+                productTranslations: {
+                  where: languageId !== ALL_LANGUAGE_CODE ? { deletedAt: null, languageId } : { deletedAt: null },
                 },
+                createdBy: true,
               },
             },
           },
         },
-        skip,
-        take: query.limit,
-        orderBy: {
-          createdAt: 'desc',
-        },
-      }),
-    ]);
+      },
+      orderBy: {
+        updatedAt: 'desc',
+      },
+    });
+
+    const groupMap = new Map<number, CartItemDetailType>();
+    for (const cartItem of cartItems) {
+      const shopId = cartItem.sku.product.createdById;
+      if (shopId) {
+        if (!groupMap.has(shopId)) {
+          groupMap.set(shopId, { shop: cartItem.sku.product.createdBy, cartItems: [] });
+        }
+
+        groupMap.get(shopId)?.cartItems.push(cartItem);
+      }
+    }
+
+    const sortedGroups = Array.from(groupMap.values());
+
+    const skip = (query.page - 1) * query.limit;
+    const pagedRecords = sortedGroups.slice(skip, skip + query.limit);
 
     return {
-      total,
-      records,
+      total: sortedGroups.length,
+      records: pagedRecords,
     };
   }
 
