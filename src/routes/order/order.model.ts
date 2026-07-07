@@ -74,6 +74,7 @@ export const CreateOrderBodySchema = z.array(
       name: z.string(),
       phone: z.string(),
       address: z.string(),
+      email: z.string(),
     }),
     cartItemIds: z.array(z.number()),
   }),

@@ -1,7 +1,7 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ZodSerializerDto } from 'nestjs-zod';
 import { GetListBrandQueryDto } from 'src/routes/brand/brand.dto';
-import { GetListOrderResDto } from 'src/routes/order/order.dto';
+import { CreateOrderBodyDto, CreateOrderResDto, GetListOrderResDto } from 'src/routes/order/order.dto';
 import { OrderService } from 'src/routes/order/order.service';
 import { ActiveUser } from 'src/shared/decorators/active-user.decorator';
 
@@ -16,5 +16,11 @@ export class OrderController {
       ...query,
       userId,
     });
+  }
+
+  @Post()
+  @ZodSerializerDto(CreateOrderResDto)
+  create(@ActiveUser('userId') userId: number, @Body() body: CreateOrderBodyDto) {
+    return this.orderService.create(userId, body);
   }
 }

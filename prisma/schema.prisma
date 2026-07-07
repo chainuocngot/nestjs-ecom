@@ -374,7 +374,7 @@ model CartItem {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([userId,skuId])
+  @@unique([userId, skuId])
   @@index([userId])
 }
 
@@ -382,7 +382,7 @@ model ProductSKUSnapshot {
   id          Int      @id @default(autoincrement())
   productName String   @db.VarChar(500)
   skuPrice    Float
-  images      String[]
+  image       String
   quantity    Int
   skuValue    String   @db.VarChar(500)
   productId   Int?

@@ -353,6 +353,7 @@ export type UserWhereInput = {
   soldOrders?: Prisma.OrderListRelationFilter
   createdOrders?: Prisma.OrderListRelationFilter
   updatedOrders?: Prisma.OrderListRelationFilter
+  deletedOrders?: Prisma.OrderListRelationFilter
   createdUserTranslations?: Prisma.UserTranslationListRelationFilter
   updatedUserTranslations?: Prisma.UserTranslationListRelationFilter
   userTranslations?: Prisma.UserTranslationListRelationFilter
@@ -421,6 +422,7 @@ export type UserOrderByWithRelationInput = {
   soldOrders?: Prisma.OrderOrderByRelationAggregateInput
   createdOrders?: Prisma.OrderOrderByRelationAggregateInput
   updatedOrders?: Prisma.OrderOrderByRelationAggregateInput
+  deletedOrders?: Prisma.OrderOrderByRelationAggregateInput
   createdUserTranslations?: Prisma.UserTranslationOrderByRelationAggregateInput
   updatedUserTranslations?: Prisma.UserTranslationOrderByRelationAggregateInput
   userTranslations?: Prisma.UserTranslationOrderByRelationAggregateInput
@@ -492,6 +494,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   soldOrders?: Prisma.OrderListRelationFilter
   createdOrders?: Prisma.OrderListRelationFilter
   updatedOrders?: Prisma.OrderListRelationFilter
+  deletedOrders?: Prisma.OrderListRelationFilter
   createdUserTranslations?: Prisma.UserTranslationListRelationFilter
   updatedUserTranslations?: Prisma.UserTranslationListRelationFilter
   userTranslations?: Prisma.UserTranslationListRelationFilter
@@ -599,6 +602,7 @@ export type UserCreateInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -666,6 +670,7 @@ export type UserUncheckedCreateInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -726,6 +731,7 @@ export type UserUpdateInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -793,6 +799,7 @@ export type UserUncheckedUpdateInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -1748,6 +1755,12 @@ export type UserCreateNestedOneWithoutUpdatedOrdersInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
+export type UserCreateNestedOneWithoutDeletedOrdersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedOrdersInput, Prisma.UserUncheckedCreateWithoutDeletedOrdersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedOrdersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
 export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutOrdersInput
@@ -1782,6 +1795,16 @@ export type UserUpdateOneWithoutUpdatedOrdersNestedInput = {
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUpdatedOrdersInput, Prisma.UserUpdateWithoutUpdatedOrdersInput>, Prisma.UserUncheckedUpdateWithoutUpdatedOrdersInput>
+}
+
+export type UserUpdateOneWithoutDeletedOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeletedOrdersInput, Prisma.UserUncheckedCreateWithoutDeletedOrdersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeletedOrdersInput
+  upsert?: Prisma.UserUpsertWithoutDeletedOrdersInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDeletedOrdersInput, Prisma.UserUpdateWithoutDeletedOrdersInput>, Prisma.UserUncheckedUpdateWithoutDeletedOrdersInput>
 }
 
 export type UserCreateNestedOneWithoutReviewsInput = {
@@ -1889,6 +1912,7 @@ export type UserCreateWithoutCreatedLanguagesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -1955,6 +1979,7 @@ export type UserUncheckedCreateWithoutCreatedLanguagesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -2019,6 +2044,7 @@ export type UserCreateWithoutUpdatedLanguagesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -2085,6 +2111,7 @@ export type UserUncheckedCreateWithoutUpdatedLanguagesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -2149,6 +2176,7 @@ export type UserCreateWithoutDeletedLanguagesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -2215,6 +2243,7 @@ export type UserUncheckedCreateWithoutDeletedLanguagesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -2290,6 +2319,7 @@ export type UserUpdateWithoutCreatedLanguagesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -2356,6 +2386,7 @@ export type UserUncheckedUpdateWithoutCreatedLanguagesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -2426,6 +2457,7 @@ export type UserUpdateWithoutUpdatedLanguagesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -2492,6 +2524,7 @@ export type UserUncheckedUpdateWithoutUpdatedLanguagesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -2562,6 +2595,7 @@ export type UserUpdateWithoutDeletedLanguagesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -2628,6 +2662,7 @@ export type UserUncheckedUpdateWithoutDeletedLanguagesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -2688,6 +2723,7 @@ export type UserCreateWithoutCreatedUsersInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -2754,6 +2790,7 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -2818,6 +2855,7 @@ export type UserCreateWithoutCreatedByInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -2883,6 +2921,7 @@ export type UserUncheckedCreateWithoutCreatedByInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -2953,6 +2992,7 @@ export type UserCreateWithoutUpdatedUsersInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -3019,6 +3059,7 @@ export type UserUncheckedCreateWithoutUpdatedUsersInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -3083,6 +3124,7 @@ export type UserCreateWithoutUpdatedByInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -3148,6 +3190,7 @@ export type UserUncheckedCreateWithoutUpdatedByInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -3218,6 +3261,7 @@ export type UserCreateWithoutDeletedUsersInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -3284,6 +3328,7 @@ export type UserUncheckedCreateWithoutDeletedUsersInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -3348,6 +3393,7 @@ export type UserCreateWithoutDeletedByInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -3413,6 +3459,7 @@ export type UserUncheckedCreateWithoutDeletedByInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -3494,6 +3541,7 @@ export type UserUpdateWithoutCreatedUsersInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -3560,6 +3608,7 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -3667,6 +3716,7 @@ export type UserUpdateWithoutUpdatedUsersInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -3733,6 +3783,7 @@ export type UserUncheckedUpdateWithoutUpdatedUsersInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -3819,6 +3870,7 @@ export type UserUpdateWithoutDeletedUsersInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -3885,6 +3937,7 @@ export type UserUncheckedUpdateWithoutDeletedUsersInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -3960,6 +4013,7 @@ export type UserCreateWithoutUserTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
@@ -4026,6 +4080,7 @@ export type UserUncheckedCreateWithoutUserTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
@@ -4090,6 +4145,7 @@ export type UserCreateWithoutCreatedUserTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
@@ -4156,6 +4212,7 @@ export type UserUncheckedCreateWithoutCreatedUserTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
@@ -4220,6 +4277,7 @@ export type UserCreateWithoutUpdatedUserTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
@@ -4286,6 +4344,7 @@ export type UserUncheckedCreateWithoutUpdatedUserTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
@@ -4361,6 +4420,7 @@ export type UserUpdateWithoutUserTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
@@ -4427,6 +4487,7 @@ export type UserUncheckedUpdateWithoutUserTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
@@ -4497,6 +4558,7 @@ export type UserUpdateWithoutCreatedUserTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
@@ -4563,6 +4625,7 @@ export type UserUncheckedUpdateWithoutCreatedUserTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
@@ -4633,6 +4696,7 @@ export type UserUpdateWithoutUpdatedUserTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
@@ -4699,6 +4763,7 @@ export type UserUncheckedUpdateWithoutUpdatedUserTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
@@ -4757,6 +4822,7 @@ export type UserCreateWithoutRefreshTokensInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -4823,6 +4889,7 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -4898,6 +4965,7 @@ export type UserUpdateWithoutRefreshTokensInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -4964,6 +5032,7 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -5023,6 +5092,7 @@ export type UserCreateWithoutCreatedPermissionsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -5089,6 +5159,7 @@ export type UserUncheckedCreateWithoutCreatedPermissionsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -5153,6 +5224,7 @@ export type UserCreateWithoutUpdatedPermissionsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -5219,6 +5291,7 @@ export type UserUncheckedCreateWithoutUpdatedPermissionsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -5283,6 +5356,7 @@ export type UserCreateWithoutDeletedPermissionsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -5349,6 +5423,7 @@ export type UserUncheckedCreateWithoutDeletedPermissionsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -5424,6 +5499,7 @@ export type UserUpdateWithoutCreatedPermissionsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -5490,6 +5566,7 @@ export type UserUncheckedUpdateWithoutCreatedPermissionsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -5560,6 +5637,7 @@ export type UserUpdateWithoutUpdatedPermissionsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -5626,6 +5704,7 @@ export type UserUncheckedUpdateWithoutUpdatedPermissionsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -5696,6 +5775,7 @@ export type UserUpdateWithoutDeletedPermissionsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -5762,6 +5842,7 @@ export type UserUncheckedUpdateWithoutDeletedPermissionsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -5821,6 +5902,7 @@ export type UserCreateWithoutRoleInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -5887,6 +5969,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -5956,6 +6039,7 @@ export type UserCreateWithoutCreatedRolesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -6022,6 +6106,7 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -6086,6 +6171,7 @@ export type UserCreateWithoutUpdatedRolesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -6152,6 +6238,7 @@ export type UserUncheckedCreateWithoutUpdatedRolesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -6216,6 +6303,7 @@ export type UserCreateWithoutDeletedRolesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -6282,6 +6370,7 @@ export type UserUncheckedCreateWithoutDeletedRolesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -6373,6 +6462,7 @@ export type UserUpdateWithoutCreatedRolesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -6439,6 +6529,7 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -6509,6 +6600,7 @@ export type UserUpdateWithoutUpdatedRolesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -6575,6 +6667,7 @@ export type UserUncheckedUpdateWithoutUpdatedRolesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -6645,6 +6738,7 @@ export type UserUpdateWithoutDeletedRolesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -6711,6 +6805,7 @@ export type UserUncheckedUpdateWithoutDeletedRolesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -6770,6 +6865,7 @@ export type UserCreateWithoutCreatedProductsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -6836,6 +6932,7 @@ export type UserUncheckedCreateWithoutCreatedProductsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -6900,6 +6997,7 @@ export type UserCreateWithoutUpdatedProductsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -6966,6 +7064,7 @@ export type UserUncheckedCreateWithoutUpdatedProductsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -7030,6 +7129,7 @@ export type UserCreateWithoutDeletedProductsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -7096,6 +7196,7 @@ export type UserUncheckedCreateWithoutDeletedProductsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -7171,6 +7272,7 @@ export type UserUpdateWithoutCreatedProductsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -7237,6 +7339,7 @@ export type UserUncheckedUpdateWithoutCreatedProductsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -7307,6 +7410,7 @@ export type UserUpdateWithoutUpdatedProductsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -7373,6 +7477,7 @@ export type UserUncheckedUpdateWithoutUpdatedProductsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -7443,6 +7548,7 @@ export type UserUpdateWithoutDeletedProductsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -7509,6 +7615,7 @@ export type UserUncheckedUpdateWithoutDeletedProductsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -7568,6 +7675,7 @@ export type UserCreateWithoutCreatedProductTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -7634,6 +7742,7 @@ export type UserUncheckedCreateWithoutCreatedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -7698,6 +7807,7 @@ export type UserCreateWithoutUpdatedProductTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -7764,6 +7874,7 @@ export type UserUncheckedCreateWithoutUpdatedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -7828,6 +7939,7 @@ export type UserCreateWithoutDeletedProductTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -7894,6 +8006,7 @@ export type UserUncheckedCreateWithoutDeletedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -7969,6 +8082,7 @@ export type UserUpdateWithoutCreatedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -8035,6 +8149,7 @@ export type UserUncheckedUpdateWithoutCreatedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -8105,6 +8220,7 @@ export type UserUpdateWithoutUpdatedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -8171,6 +8287,7 @@ export type UserUncheckedUpdateWithoutUpdatedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -8241,6 +8358,7 @@ export type UserUpdateWithoutDeletedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -8307,6 +8425,7 @@ export type UserUncheckedUpdateWithoutDeletedProductTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -8366,6 +8485,7 @@ export type UserCreateWithoutCreatedCategoriesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -8432,6 +8552,7 @@ export type UserUncheckedCreateWithoutCreatedCategoriesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -8496,6 +8617,7 @@ export type UserCreateWithoutUpdatedCategoriesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -8562,6 +8684,7 @@ export type UserUncheckedCreateWithoutUpdatedCategoriesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -8626,6 +8749,7 @@ export type UserCreateWithoutDeletedCategoriesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -8692,6 +8816,7 @@ export type UserUncheckedCreateWithoutDeletedCategoriesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -8767,6 +8892,7 @@ export type UserUpdateWithoutCreatedCategoriesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -8833,6 +8959,7 @@ export type UserUncheckedUpdateWithoutCreatedCategoriesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -8903,6 +9030,7 @@ export type UserUpdateWithoutUpdatedCategoriesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -8969,6 +9097,7 @@ export type UserUncheckedUpdateWithoutUpdatedCategoriesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -9039,6 +9168,7 @@ export type UserUpdateWithoutDeletedCategoriesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -9105,6 +9235,7 @@ export type UserUncheckedUpdateWithoutDeletedCategoriesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -9164,6 +9295,7 @@ export type UserCreateWithoutCreatedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -9230,6 +9362,7 @@ export type UserUncheckedCreateWithoutCreatedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -9294,6 +9427,7 @@ export type UserCreateWithoutUpdatedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -9360,6 +9494,7 @@ export type UserUncheckedCreateWithoutUpdatedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -9424,6 +9559,7 @@ export type UserCreateWithoutDeletedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -9490,6 +9626,7 @@ export type UserUncheckedCreateWithoutDeletedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -9565,6 +9702,7 @@ export type UserUpdateWithoutCreatedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -9631,6 +9769,7 @@ export type UserUncheckedUpdateWithoutCreatedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -9701,6 +9840,7 @@ export type UserUpdateWithoutUpdatedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -9767,6 +9907,7 @@ export type UserUncheckedUpdateWithoutUpdatedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -9837,6 +9978,7 @@ export type UserUpdateWithoutDeletedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -9903,6 +10045,7 @@ export type UserUncheckedUpdateWithoutDeletedCategoryTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -9962,6 +10105,7 @@ export type UserCreateWithoutCreatedSKUSInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -10028,6 +10172,7 @@ export type UserUncheckedCreateWithoutCreatedSKUSInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -10092,6 +10237,7 @@ export type UserCreateWithoutUpdatedSKUSInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -10158,6 +10304,7 @@ export type UserUncheckedCreateWithoutUpdatedSKUSInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -10222,6 +10369,7 @@ export type UserCreateWithoutDeletedSKUSInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -10288,6 +10436,7 @@ export type UserUncheckedCreateWithoutDeletedSKUSInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -10363,6 +10512,7 @@ export type UserUpdateWithoutCreatedSKUSInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -10429,6 +10579,7 @@ export type UserUncheckedUpdateWithoutCreatedSKUSInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -10499,6 +10650,7 @@ export type UserUpdateWithoutUpdatedSKUSInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -10565,6 +10717,7 @@ export type UserUncheckedUpdateWithoutUpdatedSKUSInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -10635,6 +10788,7 @@ export type UserUpdateWithoutDeletedSKUSInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -10701,6 +10855,7 @@ export type UserUncheckedUpdateWithoutDeletedSKUSInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -10760,6 +10915,7 @@ export type UserCreateWithoutCreatedBrandsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -10826,6 +10982,7 @@ export type UserUncheckedCreateWithoutCreatedBrandsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -10890,6 +11047,7 @@ export type UserCreateWithoutUpdatedBrandsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -10956,6 +11114,7 @@ export type UserUncheckedCreateWithoutUpdatedBrandsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -11020,6 +11179,7 @@ export type UserCreateWithoutDeletedBrandsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -11086,6 +11246,7 @@ export type UserUncheckedCreateWithoutDeletedBrandsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -11161,6 +11322,7 @@ export type UserUpdateWithoutCreatedBrandsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -11227,6 +11389,7 @@ export type UserUncheckedUpdateWithoutCreatedBrandsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -11297,6 +11460,7 @@ export type UserUpdateWithoutUpdatedBrandsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -11363,6 +11527,7 @@ export type UserUncheckedUpdateWithoutUpdatedBrandsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -11433,6 +11598,7 @@ export type UserUpdateWithoutDeletedBrandsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -11499,6 +11665,7 @@ export type UserUncheckedUpdateWithoutDeletedBrandsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -11558,6 +11725,7 @@ export type UserCreateWithoutCreatedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -11624,6 +11792,7 @@ export type UserUncheckedCreateWithoutCreatedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -11688,6 +11857,7 @@ export type UserCreateWithoutUpdatedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -11754,6 +11924,7 @@ export type UserUncheckedCreateWithoutUpdatedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -11818,6 +11989,7 @@ export type UserCreateWithoutDeletedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -11884,6 +12056,7 @@ export type UserUncheckedCreateWithoutDeletedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -11959,6 +12132,7 @@ export type UserUpdateWithoutCreatedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -12025,6 +12199,7 @@ export type UserUncheckedUpdateWithoutCreatedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -12095,6 +12270,7 @@ export type UserUpdateWithoutUpdatedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -12161,6 +12337,7 @@ export type UserUncheckedUpdateWithoutUpdatedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -12231,6 +12408,7 @@ export type UserUpdateWithoutDeletedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -12297,6 +12475,7 @@ export type UserUncheckedUpdateWithoutDeletedBrandTranslationsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -12356,6 +12535,7 @@ export type UserCreateWithoutCartsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -12422,6 +12602,7 @@ export type UserUncheckedCreateWithoutCartsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -12497,6 +12678,7 @@ export type UserUpdateWithoutCartsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -12563,6 +12745,7 @@ export type UserUncheckedUpdateWithoutCartsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -12622,6 +12805,7 @@ export type UserCreateWithoutOrdersInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -12688,6 +12872,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -12752,6 +12937,7 @@ export type UserCreateWithoutSoldOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutDeletedByInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -12818,6 +13004,7 @@ export type UserUncheckedCreateWithoutSoldOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutDeletedByInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -12882,6 +13069,7 @@ export type UserCreateWithoutCreatedOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutDeletedByInput
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -12948,6 +13136,7 @@ export type UserUncheckedCreateWithoutCreatedOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutDeletedByInput
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -13012,6 +13201,7 @@ export type UserCreateWithoutUpdatedOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutDeletedByInput
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -13078,6 +13268,7 @@ export type UserUncheckedCreateWithoutUpdatedOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutDeletedByInput
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -13091,6 +13282,138 @@ export type UserUncheckedCreateWithoutUpdatedOrdersInput = {
 export type UserCreateOrConnectWithoutUpdatedOrdersInput = {
   where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutUpdatedOrdersInput, Prisma.UserUncheckedCreateWithoutUpdatedOrdersInput>
+}
+
+export type UserCreateWithoutDeletedOrdersInput = {
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductCreateNestedManyWithoutUpdatedByInput
+  deletedProducts?: Prisma.ProductCreateNestedManyWithoutDeletedByInput
+  createdCategories?: Prisma.CategoryCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryCreateNestedManyWithoutUpdatedByInput
+  deletedCategories?: Prisma.CategoryCreateNestedManyWithoutDeletedByInput
+  createdSKUS?: Prisma.SKUCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUCreateNestedManyWithoutUpdatedByInput
+  deletedSKUS?: Prisma.SKUCreateNestedManyWithoutDeletedByInput
+  createdLanguages?: Prisma.LanguageCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageCreateNestedManyWithoutDeletedByInput
+  createdBrands?: Prisma.BrandCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandCreateNestedManyWithoutDeletedByInput
+  createdProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutUpdatedByInput
+  deletedProductTranslations?: Prisma.ProductTranslationCreateNestedManyWithoutDeletedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutUpdatedByInput
+  deletedCategoryTranslations?: Prisma.CategoryTranslationCreateNestedManyWithoutDeletedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutUpdatedByInput
+  deletedBrandTranslations?: Prisma.BrandTranslationCreateNestedManyWithoutDeletedByInput
+  soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutToUserInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatedByInput
+  updatedBy?: Prisma.UserCreateNestedOneWithoutUpdatedUsersInput
+  updatedUsers?: Prisma.UserCreateNestedManyWithoutUpdatedByInput
+  deletedBy?: Prisma.UserCreateNestedOneWithoutDeletedUsersInput
+  deletedUsers?: Prisma.UserCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserUncheckedCreateWithoutDeletedOrdersInput = {
+  id?: number
+  email: string
+  name: string
+  password: string
+  phoneNumber: string
+  avatar?: string | null
+  totpSecret?: string | null
+  status?: $Enums.UserStatus
+  roleId: number
+  createdById?: number | null
+  updatedById?: number | null
+  deletedById?: number | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  devices?: Prisma.DeviceUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  carts?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  createdPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedPermissions?: Prisma.PermissionUncheckedCreateNestedManyWithoutDeletedByInput
+  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutDeletedByInput
+  createdProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedProducts?: Prisma.ProductUncheckedCreateNestedManyWithoutDeletedByInput
+  createdCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedCategories?: Prisma.CategoryUncheckedCreateNestedManyWithoutDeletedByInput
+  createdSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedSKUS?: Prisma.SKUUncheckedCreateNestedManyWithoutDeletedByInput
+  createdLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedLanguages?: Prisma.LanguageUncheckedCreateNestedManyWithoutDeletedByInput
+  createdBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrands?: Prisma.BrandUncheckedCreateNestedManyWithoutDeletedByInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedProductTranslations?: Prisma.ProductTranslationUncheckedCreateNestedManyWithoutDeletedByInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedCategoryTranslations?: Prisma.CategoryTranslationUncheckedCreateNestedManyWithoutDeletedByInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedBrandTranslations?: Prisma.BrandTranslationUncheckedCreateNestedManyWithoutDeletedByInput
+  soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
+  userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutFromUserInput
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutToUserInput
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutDeletedByInput
+}
+
+export type UserCreateOrConnectWithoutDeletedOrdersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedOrdersInput, Prisma.UserUncheckedCreateWithoutDeletedOrdersInput>
 }
 
 export type UserUpsertWithoutOrdersInput = {
@@ -13153,6 +13476,7 @@ export type UserUpdateWithoutOrdersInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -13219,6 +13543,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -13289,6 +13614,7 @@ export type UserUpdateWithoutSoldOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutDeletedByNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -13355,6 +13681,7 @@ export type UserUncheckedUpdateWithoutSoldOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutDeletedByNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -13425,6 +13752,7 @@ export type UserUpdateWithoutCreatedOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutDeletedByNestedInput
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -13491,6 +13819,7 @@ export type UserUncheckedUpdateWithoutCreatedOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutDeletedByNestedInput
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -13561,6 +13890,7 @@ export type UserUpdateWithoutUpdatedOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutDeletedByNestedInput
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -13627,6 +13957,145 @@ export type UserUncheckedUpdateWithoutUpdatedOrdersInput = {
   deletedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutDeletedByNestedInput
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutToUserNestedInput
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedUsers?: Prisma.UserUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedUsers?: Prisma.UserUncheckedUpdateManyWithoutDeletedByNestedInput
+}
+
+export type UserUpsertWithoutDeletedOrdersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDeletedOrdersInput, Prisma.UserUncheckedUpdateWithoutDeletedOrdersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeletedOrdersInput, Prisma.UserUncheckedCreateWithoutDeletedOrdersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDeletedOrdersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDeletedOrdersInput, Prisma.UserUncheckedUpdateWithoutDeletedOrdersInput>
+}
+
+export type UserUpdateWithoutDeletedOrdersInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUpdateManyWithoutUpdatedByNestedInput
+  deletedProducts?: Prisma.ProductUpdateManyWithoutDeletedByNestedInput
+  createdCategories?: Prisma.CategoryUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUpdateManyWithoutUpdatedByNestedInput
+  deletedCategories?: Prisma.CategoryUpdateManyWithoutDeletedByNestedInput
+  createdSKUS?: Prisma.SKUUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUpdateManyWithoutUpdatedByNestedInput
+  deletedSKUS?: Prisma.SKUUpdateManyWithoutDeletedByNestedInput
+  createdLanguages?: Prisma.LanguageUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUpdateManyWithoutDeletedByNestedInput
+  createdBrands?: Prisma.BrandUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUpdateManyWithoutDeletedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutUpdatedByNestedInput
+  deletedProductTranslations?: Prisma.ProductTranslationUpdateManyWithoutDeletedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutUpdatedByNestedInput
+  deletedCategoryTranslations?: Prisma.CategoryTranslationUpdateManyWithoutDeletedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutUpdatedByNestedInput
+  deletedBrandTranslations?: Prisma.BrandTranslationUpdateManyWithoutDeletedByNestedInput
+  soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
+  updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
+  userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutFromUserNestedInput
+  receivedMessages?: Prisma.MessageUpdateManyWithoutToUserNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutCreatedByNestedInput
+  updatedBy?: Prisma.UserUpdateOneWithoutUpdatedUsersNestedInput
+  updatedUsers?: Prisma.UserUpdateManyWithoutUpdatedByNestedInput
+  deletedBy?: Prisma.UserUpdateOneWithoutDeletedUsersNestedInput
+  deletedUsers?: Prisma.UserUpdateManyWithoutDeletedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDeletedOrdersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  devices?: Prisma.DeviceUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  carts?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  createdPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedPermissions?: Prisma.PermissionUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedRoles?: Prisma.RoleUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedRoles?: Prisma.RoleUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdProducts?: Prisma.ProductUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProducts?: Prisma.ProductUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedProducts?: Prisma.ProductUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdCategories?: Prisma.CategoryUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategories?: Prisma.CategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedCategories?: Prisma.CategoryUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdSKUS?: Prisma.SKUUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedSKUS?: Prisma.SKUUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedLanguages?: Prisma.LanguageUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdBrands?: Prisma.BrandUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrands?: Prisma.BrandUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrands?: Prisma.BrandUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedProductTranslations?: Prisma.ProductTranslationUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedCategoryTranslations?: Prisma.CategoryTranslationUncheckedUpdateManyWithoutDeletedByNestedInput
+  createdBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedBrandTranslations?: Prisma.BrandTranslationUncheckedUpdateManyWithoutDeletedByNestedInput
+  soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -13686,6 +14155,7 @@ export type UserCreateWithoutReviewsInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -13752,6 +14222,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -13827,6 +14298,7 @@ export type UserUpdateWithoutReviewsInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -13893,6 +14365,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -13953,6 +14426,7 @@ export type UserCreateWithoutSentMessagesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -14019,6 +14493,7 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -14083,6 +14558,7 @@ export type UserCreateWithoutReceivedMessagesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -14149,6 +14625,7 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -14224,6 +14701,7 @@ export type UserUpdateWithoutSentMessagesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -14290,6 +14768,7 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -14360,6 +14839,7 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -14426,6 +14906,7 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -14484,6 +14965,7 @@ export type UserCreateWithoutDevicesInput = {
   soldOrders?: Prisma.OrderCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationCreateNestedManyWithoutUserInput
@@ -14550,6 +15032,7 @@ export type UserUncheckedCreateWithoutDevicesInput = {
   soldOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutShopInput
   createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
   updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  deletedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutDeletedByInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutCreatedByInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUpdatedByInput
   userTranslations?: Prisma.UserTranslationUncheckedCreateNestedManyWithoutUserInput
@@ -14625,6 +15108,7 @@ export type UserUpdateWithoutDevicesInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -14691,6 +15175,7 @@ export type UserUncheckedUpdateWithoutDevicesInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -14802,6 +15287,7 @@ export type UserUpdateWithoutCreatedByInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -14867,6 +15353,7 @@ export type UserUncheckedUpdateWithoutCreatedByInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -14944,6 +15431,7 @@ export type UserUpdateWithoutUpdatedByInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -15009,6 +15497,7 @@ export type UserUncheckedUpdateWithoutUpdatedByInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -15086,6 +15575,7 @@ export type UserUpdateWithoutDeletedByInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -15151,6 +15641,7 @@ export type UserUncheckedUpdateWithoutDeletedByInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -15244,6 +15735,7 @@ export type UserUpdateWithoutRoleInput = {
   soldOrders?: Prisma.OrderUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUpdateManyWithoutUserNestedInput
@@ -15310,6 +15802,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   soldOrders?: Prisma.OrderUncheckedUpdateManyWithoutShopNestedInput
   createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  deletedOrders?: Prisma.OrderUncheckedUpdateManyWithoutDeletedByNestedInput
   createdUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutCreatedByNestedInput
   updatedUserTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUpdatedByNestedInput
   userTranslations?: Prisma.UserTranslationUncheckedUpdateManyWithoutUserNestedInput
@@ -15381,6 +15874,7 @@ export type UserCountOutputType = {
   soldOrders: number
   createdOrders: number
   updatedOrders: number
+  deletedOrders: number
   createdUserTranslations: number
   updatedUserTranslations: number
   userTranslations: number
@@ -15430,6 +15924,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   soldOrders?: boolean | UserCountOutputTypeCountSoldOrdersArgs
   createdOrders?: boolean | UserCountOutputTypeCountCreatedOrdersArgs
   updatedOrders?: boolean | UserCountOutputTypeCountUpdatedOrdersArgs
+  deletedOrders?: boolean | UserCountOutputTypeCountDeletedOrdersArgs
   createdUserTranslations?: boolean | UserCountOutputTypeCountCreatedUserTranslationsArgs
   updatedUserTranslations?: boolean | UserCountOutputTypeCountUpdatedUserTranslationsArgs
   userTranslations?: boolean | UserCountOutputTypeCountUserTranslationsArgs
@@ -15719,6 +16214,13 @@ export type UserCountOutputTypeCountUpdatedOrdersArgs<ExtArgs extends runtime.Ty
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountDeletedOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountCreatedUserTranslationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.UserTranslationWhereInput
 }
@@ -15828,6 +16330,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   soldOrders?: boolean | Prisma.User$soldOrdersArgs<ExtArgs>
   createdOrders?: boolean | Prisma.User$createdOrdersArgs<ExtArgs>
   updatedOrders?: boolean | Prisma.User$updatedOrdersArgs<ExtArgs>
+  deletedOrders?: boolean | Prisma.User$deletedOrdersArgs<ExtArgs>
   createdUserTranslations?: boolean | Prisma.User$createdUserTranslationsArgs<ExtArgs>
   updatedUserTranslations?: boolean | Prisma.User$updatedUserTranslationsArgs<ExtArgs>
   userTranslations?: boolean | Prisma.User$userTranslationsArgs<ExtArgs>
@@ -15945,6 +16448,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   soldOrders?: boolean | Prisma.User$soldOrdersArgs<ExtArgs>
   createdOrders?: boolean | Prisma.User$createdOrdersArgs<ExtArgs>
   updatedOrders?: boolean | Prisma.User$updatedOrdersArgs<ExtArgs>
+  deletedOrders?: boolean | Prisma.User$deletedOrdersArgs<ExtArgs>
   createdUserTranslations?: boolean | Prisma.User$createdUserTranslationsArgs<ExtArgs>
   updatedUserTranslations?: boolean | Prisma.User$updatedUserTranslationsArgs<ExtArgs>
   userTranslations?: boolean | Prisma.User$userTranslationsArgs<ExtArgs>
@@ -16013,6 +16517,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     soldOrders: Prisma.$OrderPayload<ExtArgs>[]
     createdOrders: Prisma.$OrderPayload<ExtArgs>[]
     updatedOrders: Prisma.$OrderPayload<ExtArgs>[]
+    deletedOrders: Prisma.$OrderPayload<ExtArgs>[]
     createdUserTranslations: Prisma.$UserTranslationPayload<ExtArgs>[]
     updatedUserTranslations: Prisma.$UserTranslationPayload<ExtArgs>[]
     userTranslations: Prisma.$UserTranslationPayload<ExtArgs>[]
@@ -16474,6 +16979,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   soldOrders<T extends Prisma.User$soldOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$soldOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdOrders<T extends Prisma.User$createdOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   updatedOrders<T extends Prisma.User$updatedOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  deletedOrders<T extends Prisma.User$deletedOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deletedOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdUserTranslations<T extends Prisma.User$createdUserTranslationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdUserTranslationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   updatedUserTranslations<T extends Prisma.User$updatedUserTranslationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedUserTranslationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userTranslations<T extends Prisma.User$userTranslationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userTranslationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -17821,6 +18327,30 @@ export type User$createdOrdersArgs<ExtArgs extends runtime.Types.Extensions.Inte
  * User.updatedOrders
  */
 export type User$updatedOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Order
+   */
+  select?: Prisma.OrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Order
+   */
+  omit?: Prisma.OrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+  orderBy?: Prisma.OrderOrderByWithRelationInput | Prisma.OrderOrderByWithRelationInput[]
+  cursor?: Prisma.OrderWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
+ * User.deletedOrders
+ */
+export type User$deletedOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Order
    */

@@ -334,7 +334,7 @@ export const ProductSKUSnapshotScalarFieldEnum = {
   id: 'id',
   productName: 'productName',
   skuPrice: 'skuPrice',
-  images: 'images',
+  image: 'image',
   quantity: 'quantity',
   skuValue: 'skuValue',
   productId: 'productId',
@@ -355,6 +355,7 @@ export const OrderScalarFieldEnum = {
   receiver: 'receiver',
   createdById: 'createdById',
   updatedById: 'updatedById',
+  deletedById: 'deletedById',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
