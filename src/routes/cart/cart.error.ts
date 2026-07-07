@@ -7,3 +7,5 @@ export const SkuOutOfStockException = new BadRequestException('Error.SkuOutOfSto
 export const ProductNotFoundException = new NotFoundException('Error.ProductNotFound');
 
 export const CartItemNotFoundException = new NotFoundException('Error.CartItemNotFound');
+
+export const InvalidQuantityException = new BadRequestException('Error.InvalidQuantity');

@@ -1,5 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { ProductNotFoundException, SkuNotFoundException, SkuOutOfStockException } from 'src/routes/cart/cart.error';
+import {
+  CartItemNotFoundException,
+  InvalidQuantityException,
+  ProductNotFoundException,
+  SkuNotFoundException,
+  SkuOutOfStockException,
+} from 'src/routes/cart/cart.error';
 import {
   AddToCartBodyType,
   CartItemDetailType,
@@ -79,7 +85,12 @@ export class CartRepository {
   }
 
   async create(userId: number, body: AddToCartBodyType) {
-    await this._validateSku(body.skuId, body.quantity);
+    await this._validateSku({
+      isCreate: true,
+      skuId: body.skuId,
+      quantity: body.quantity,
+      userId,
+    });
 
     //IMPORTANT: Hàm upsert
     return this.prismaService.cartItem.upsert({
@@ -102,12 +113,13 @@ export class CartRepository {
     });
   }
 
-  async update(cartItemId: number, body: UpdateCartItemBodyType) {
-    await this._validateSku(body.skuId, body.quantity);
+  async update({ userId, cartItemId, body }: { userId: number; cartItemId: number; body: UpdateCartItemBodyType }) {
+    await this._validateSku({ skuId: body.skuId, quantity: body.quantity, userId });
 
     return this.prismaService.cartItem.update({
       where: {
         id: cartItemId,
+        userId,
       },
       data: body,
     });
@@ -124,19 +136,44 @@ export class CartRepository {
     });
   }
 
-  private async _validateSku(skuId: number, quantity: number) {
-    const sku = await this.prismaService.sKU.findUnique({
-      where: {
-        deletedAt: null,
-        id: skuId,
-      },
-      include: {
-        product: true,
-      },
-    });
+  private async _validateSku({
+    skuId,
+    quantity,
+    userId,
+    isCreate,
+  }: {
+    skuId: number;
+    quantity: number;
+    userId: number;
+    isCreate?: boolean;
+  }) {
+    const [sku, cartItem] = await Promise.all([
+      this.prismaService.sKU.findUnique({
+        where: {
+          deletedAt: null,
+          id: skuId,
+        },
+        include: {
+          product: true,
+        },
+      }),
+      this.prismaService.cartItem.findUnique({
+        where: {
+          //IMPORTANT: Cặp unique
+          userId_skuId: {
+            userId,
+            skuId,
+          },
+        },
+      }),
+    ]);
 
     if (!sku) {
       throw SkuNotFoundException;
+    }
+
+    if (isCreate && cartItem && quantity + cartItem.quantity > sku.stock) {
+      throw InvalidQuantityException;
     }
 
     if (sku.stock < 1 || sku.stock < quantity) {

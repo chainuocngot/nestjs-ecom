@@ -26,9 +26,9 @@ export class CartService {
     return this.cartRepository.create(userId, body);
   }
 
-  async update(cartItemId: number, body: UpdateCartItemBodyType) {
+  async update({ userId, cartItemId, body }: { userId: number; cartItemId: number; body: UpdateCartItemBodyType }) {
     try {
-      return await this.cartRepository.update(cartItemId, body);
+      return await this.cartRepository.update({ userId, cartItemId, body });
     } catch (error) {
       if (isNotFoundPrismaError(error)) {
         throw CartItemNotFoundException;
