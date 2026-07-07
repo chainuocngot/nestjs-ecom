@@ -79,10 +79,23 @@ export class CartRepository {
   }
 
   async create(userId: number, body: AddToCartBodyType) {
-    await this._validateSku(body.skuId);
+    await this._validateSku(body.skuId, body.quantity);
 
-    return this.prismaService.cartItem.create({
-      data: {
+    //IMPORTANT: Hàm upsert
+    return this.prismaService.cartItem.upsert({
+      where: {
+        //IMPORTANT: Cặp unique
+        userId_skuId: {
+          userId,
+          skuId: body.skuId,
+        },
+      },
+      update: {
+        quantity: {
+          increment: body.quantity,
+        },
+      },
+      create: {
         ...body,
         userId,
       },
@@ -90,7 +103,7 @@ export class CartRepository {
   }
 
   async update(cartItemId: number, body: UpdateCartItemBodyType) {
-    await this._validateSku(body.skuId);
+    await this._validateSku(body.skuId, body.quantity);
 
     return this.prismaService.cartItem.update({
       where: {
@@ -111,7 +124,7 @@ export class CartRepository {
     });
   }
 
-  private async _validateSku(skuId: number) {
+  private async _validateSku(skuId: number, quantity: number) {
     const sku = await this.prismaService.sKU.findUnique({
       where: {
         deletedAt: null,
@@ -126,7 +139,7 @@ export class CartRepository {
       throw SkuNotFoundException;
     }
 
-    if (sku.stock < 1) {
+    if (sku.stock < 1 || sku.stock < quantity) {
       throw SkuOutOfStockException;
     }
 

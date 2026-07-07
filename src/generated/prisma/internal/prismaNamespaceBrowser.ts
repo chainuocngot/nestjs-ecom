@@ -333,11 +333,14 @@ export type CartItemScalarFieldEnum = (typeof CartItemScalarFieldEnum)[keyof typ
 export const ProductSKUSnapshotScalarFieldEnum = {
   id: 'id',
   productName: 'productName',
-  price: 'price',
+  skuPrice: 'skuPrice',
   images: 'images',
+  quantity: 'quantity',
   skuValue: 'skuValue',
+  productId: 'productId',
   skuId: 'skuId',
   orderId: 'orderId',
+  productTranslations: 'productTranslations',
   createdAt: 'createdAt'
 } as const
 
@@ -348,6 +351,8 @@ export const OrderScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   status: 'status',
+  shopId: 'shopId',
+  receiver: 'receiver',
   createdById: 'createdById',
   updatedById: 'updatedById',
   deletedAt: 'deletedAt',
