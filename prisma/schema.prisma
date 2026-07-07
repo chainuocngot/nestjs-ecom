@@ -90,6 +90,7 @@ model User {
   soldOrders                  Order[]               @relation("Shop")
   createdOrders               Order[]               @relation("OrderCreatedBy")
   updatedOrders               Order[]               @relation("OrderUpdatedBy")
+  deletedOrders               Order[]               @relation("OrderDeletedBy")
   createdUserTranslations     UserTranslation[]     @relation("UserTranslationCreatedBy")
   updatedUserTranslations     UserTranslation[]     @relation("UserTranslationUpdatedBy")
   userTranslations            UserTranslation[]     @relation("User")
@@ -414,6 +415,8 @@ model Order {
   createdBy   User? @relation("OrderCreatedBy", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: NoAction)
   updatedById Int?
   updatedBy   User? @relation("OrderUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  deletedById Int?
+  deletedBy   User? @relation("OrderDeletedBy", fields: [deletedById], references: [id], onDelete: SetNull, onUpdate: NoAction)
 
   deletedAt DateTime?
   createdAt DateTime  @default(now())
