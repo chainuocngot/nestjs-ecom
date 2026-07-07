@@ -160,4 +160,37 @@ export class OrderRepository {
       data: orders,
     };
   }
+
+  async findById(userId: number, orderId: number) {
+    const order = await this.prismaService.order.findUniqueOrThrow({
+      where: {
+        id: orderId,
+        userId,
+        deletedAt: null,
+      },
+      include: {
+        items: true,
+      },
+    });
+
+    return order;
+  }
+
+  async cancelOrder(userId: number, orderId: number) {
+    const order = await this.prismaService.order.update({
+      where: {
+        id: orderId,
+        userId,
+        status: {
+          not: OrderStatus.CANCELLED,
+        },
+      },
+      data: {
+        status: OrderStatus.CANCELLED,
+        updatedById: userId,
+      },
+    });
+
+    return order;
+  }
 }
