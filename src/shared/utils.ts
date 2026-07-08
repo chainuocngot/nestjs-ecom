@@ -51,3 +51,7 @@ export const generateSkus = (variants: VariantsType) => {
     image: '',
   }));
 };
+
+export const generateCancelPaymentJobId = (paymentId: number) => {
+  return `cancel-payment-${paymentId}`;
+};

@@ -106,7 +106,7 @@ export class OrderRepository {
       throw SKUNotBelongToShopException;
     }
 
-    const orders = await this.prismaService.$transaction(async (tx) => {
+    const [orders, payment] = await this.prismaService.$transaction(async (tx) => {
       const payment = await tx.payment.create({
         data: {
           status: PaymentStatus.PENDING,
@@ -177,11 +177,12 @@ export class OrderRepository {
 
       const [orders] = await Promise.all([$createOrders, $deleteCartItems, $updateStockOfSku]);
 
-      return orders;
+      return [orders, payment];
     });
 
     return {
-      data: orders,
+      orders,
+      payment,
     };
   }
 

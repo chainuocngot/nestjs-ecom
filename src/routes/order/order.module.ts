@@ -3,13 +3,15 @@ import { OrderController } from './order.controller';
 import { OrderService } from './order.service';
 import { OrderRepository } from 'src/routes/order/order.repository';
 import { BullModule } from '@nestjs/bullmq';
+import { PAYMENT_QUEUE_NAME } from 'src/shared/constants/app.constant';
+import { OrderProducer } from 'src/routes/order/order.producer';
 
 @Module({
   controllers: [OrderController],
-  providers: [OrderService, OrderRepository],
+  providers: [OrderService, OrderRepository, OrderProducer],
   imports: [
     BullModule.registerQueue({
-      name: 'payment',
+      name: PAYMENT_QUEUE_NAME,
     }),
   ],
 })
