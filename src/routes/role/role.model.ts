@@ -15,7 +15,7 @@ export const RoleSchema = z.object({
   updatedAt: z.date(),
 });
 
-export const RoleIncludePermissions = RoleSchema.extend({
+export const RoleIncludePermissionsSchema = RoleSchema.extend({
   permissions: z.array(PermissionSchema),
 });
 
@@ -30,7 +30,7 @@ export const GetRoleDetailParamSchema = z.object({
   roleId: z.coerce.number(),
 });
 
-export const GetRoleDetailResSchema = RoleIncludePermissions;
+export const GetRoleDetailResSchema = RoleIncludePermissionsSchema;
 
 export const CreateRoleBodySchema = RoleSchema.pick({
   name: true,
@@ -46,11 +46,13 @@ export const UpdateRoleBodySchema = CreateRoleBodySchema.extend({
   permissionIds: z.array(z.number().int()),
 }).partial();
 
-export const UpdateRoleResSchema = RoleIncludePermissions;
+export const UpdateRoleResSchema = RoleIncludePermissionsSchema;
 
 export const DeleteRoleParamSchema = GetRoleDetailParamSchema;
 
 export type RoleType = z.infer<typeof RoleSchema>;
+
+export type RoleIncludePermissionsType = z.infer<typeof RoleIncludePermissionsSchema>;
 
 export type GetListRoleQueryType = z.infer<typeof GetListRoleQuerySchema>;
 

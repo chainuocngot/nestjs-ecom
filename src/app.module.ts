@@ -30,6 +30,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { ThrottlerBehindProxyGuard } from 'src/shared/guards/throttler-behind-proxy.guard';
 import { ScheduleModule } from '@nestjs/schedule';
 import { RemoveRefreshTokenCronjob } from 'src/cronjobs/remove-refresh-token.cronjob';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
@@ -74,6 +75,9 @@ import { RemoveRefreshTokenCronjob } from 'src/cronjobs/remove-refresh-token.cro
       ],
     }),
     ScheduleModule.forRoot(),
+    CacheModule.register({
+      isGlobal: true,
+    }),
   ],
   controllers: [AppController],
   providers: [
