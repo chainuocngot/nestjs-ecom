@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { parse } from 'date-fns';
 import { OrderIncludeProductSKUSnapshotType } from 'src/routes/order/order.model';
 import { WebhookPaymentBodyType } from 'src/routes/payment/payment.model';
+import { PaymentProducer } from 'src/routes/payment/payment.producer';
 import { PREFIX_PAYMENT_CODE } from 'src/shared/constants/app.constant';
 import { OrderStatus } from 'src/shared/constants/order.constant';
 import { PaymentStatus } from 'src/shared/constants/payment.constant';
@@ -9,7 +10,10 @@ import { PrismaService } from 'src/shared/services/prisma.service';
 
 @Injectable()
 export class PaymentRepository {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly paymentProducer: PaymentProducer,
+  ) {}
 
   async receiver(body: WebhookPaymentBodyType) {
     let amountIn = 0;
@@ -21,55 +25,64 @@ export class PaymentRepository {
       amountOut = body.transferAmount;
     }
 
-    await this.prismaService.paymentTransaction.create({
-      data: {
-        gateway: body.gateway,
-        transactionDate: parse(body.transactionDate, 'yyyy-MM-dd HH:mm:ss', new Date()),
-        accountNumber: body.accountNumber,
-        subAccount: body.subAccount,
-        accumulated: body.accumulated,
-        code: body.code,
-        transactionContent: body.content,
-        referenceNumber: body.referenceCode,
-        body: body.description,
-        amountIn,
-        amountOut,
+    const paymentTransaction = await this.prismaService.paymentTransaction.findUnique({
+      where: {
+        id: body.id,
       },
     });
-
-    const paymentId = body.code
-      ? Number(body.code.split(PREFIX_PAYMENT_CODE)[1])
-      : Number(body.content?.split(PREFIX_PAYMENT_CODE)[1]);
-
-    if (isNaN(paymentId)) {
-      throw new BadRequestException('Error.CanNotGetPaymentIdFromContent');
+    if (paymentTransaction) {
+      throw new BadRequestException('Error.TransactionAlreadyExists');
     }
+    await this.prismaService.$transaction(async (tx) => {
+      await this.prismaService.paymentTransaction.create({
+        data: {
+          id: body.id,
+          gateway: body.gateway,
+          transactionDate: parse(body.transactionDate, 'yyyy-MM-dd HH:mm:ss', new Date()),
+          accountNumber: body.accountNumber,
+          subAccount: body.subAccount,
+          accumulated: body.accumulated,
+          code: body.code,
+          transactionContent: body.content,
+          referenceNumber: body.referenceCode,
+          body: body.description,
+          amountIn,
+          amountOut,
+        },
+      });
 
-    const payment = await this.prismaService.payment.findUnique({
-      where: {
-        id: paymentId,
-      },
-      include: {
-        orders: {
-          include: {
-            items: true,
+      const paymentId = body.code
+        ? Number(body.code.split(PREFIX_PAYMENT_CODE)[1])
+        : Number(body.content?.split(PREFIX_PAYMENT_CODE)[1]);
+
+      if (isNaN(paymentId)) {
+        throw new BadRequestException('Error.CanNotGetPaymentIdFromContent');
+      }
+
+      const payment = await this.prismaService.payment.findUnique({
+        where: {
+          id: paymentId,
+        },
+        include: {
+          orders: {
+            include: {
+              items: true,
+            },
           },
         },
-      },
-    });
+      });
 
-    if (!payment) {
-      throw new BadRequestException('Error.PaymentNotFound');
-    }
+      if (!payment) {
+        throw new BadRequestException('Error.PaymentNotFound');
+      }
 
-    const { orders } = payment;
-    const totalPrice = this._getTotalPrice(orders);
+      const { orders } = payment;
+      const totalPrice = this._getTotalPrice(orders);
 
-    if (totalPrice !== body.transferAmount) {
-      throw new BadRequestException('Error.TotalPriceIsNotEqualToTransferAmount');
-    }
+      if (totalPrice !== body.transferAmount) {
+        throw new BadRequestException('Error.TotalPriceIsNotEqualToTransferAmount');
+      }
 
-    await this.prismaService.$transaction(async (tx) => {
       await tx.payment.update({
         where: {
           id: paymentId,
@@ -78,6 +91,7 @@ export class PaymentRepository {
           status: PaymentStatus.SUCCESS,
         },
       });
+
       await tx.order.updateMany({
         where: {
           id: {
@@ -88,9 +102,9 @@ export class PaymentRepository {
           status: OrderStatus.PENDING_PICKUP,
         },
       });
-    });
 
-    return paymentId;
+      await this.paymentProducer.removeCancelJob(paymentId);
+    });
   }
 
   private _getTotalPrice(orders: OrderIncludeProductSKUSnapshotType[]) {

@@ -7,13 +7,17 @@ import {
   SKUNotBelongToShopException,
 } from 'src/routes/order/order.error';
 import { CreateOrderBodyType, GetListOrderQueryType } from 'src/routes/order/order.model';
+import { OrderProducer } from 'src/routes/order/order.producer';
 import { OrderStatus } from 'src/shared/constants/order.constant';
 import { PaymentStatus } from 'src/shared/constants/payment.constant';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
 @Injectable()
 export class OrderRepository {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly orderProducer: OrderProducer,
+  ) {}
 
   async list({ limit, page, status, userId }: GetListOrderQueryType & { userId: number }) {
     const skip = (page - 1) * limit;
@@ -106,7 +110,7 @@ export class OrderRepository {
       throw SKUNotBelongToShopException;
     }
 
-    const [orders, payment] = await this.prismaService.$transaction(async (tx) => {
+    const orders = await this.prismaService.$transaction(async (tx) => {
       const payment = await tx.payment.create({
         data: {
           status: PaymentStatus.PENDING,
@@ -176,14 +180,12 @@ export class OrderRepository {
       );
 
       const [orders] = await Promise.all([$createOrders, $deleteCartItems, $updateStockOfSku]);
+      await this.orderProducer.addCancelPaymentJob(payment.id);
 
-      return [orders, payment];
+      return orders;
     });
 
-    return {
-      orders,
-      payment,
-    };
+    return orders;
   }
 
   async findById(userId: number, orderId: number) {
