@@ -31,6 +31,7 @@ import { ThrottlerBehindProxyGuard } from 'src/shared/guards/throttler-behind-pr
 import { ScheduleModule } from '@nestjs/schedule';
 import { RemoveRefreshTokenCronjob } from 'src/cronjobs/remove-refresh-token.cronjob';
 import { CacheModule } from '@nestjs/cache-manager';
+import KeyvRedis from '@keyv/redis';
 
 @Module({
   imports: [
@@ -75,8 +76,13 @@ import { CacheModule } from '@nestjs/cache-manager';
       ],
     }),
     ScheduleModule.forRoot(),
-    CacheModule.register({
+    CacheModule.registerAsync({
       isGlobal: true,
+      useFactory: () => {
+        return {
+          stores: [new KeyvRedis('redis://localhost:6379')],
+        };
+      },
     }),
   ],
   controllers: [AppController],
