@@ -26,6 +26,8 @@ import { CartModule } from './routes/cart/cart.module';
 import { OrderModule } from './routes/order/order.module';
 import { PaymentModule } from './routes/payment/payment.module';
 import { BullModule } from '@nestjs/bullmq';
+import { ThrottlerModule } from '@nestjs/throttler';
+import { ThrottlerBehindProxyGuard } from 'src/shared/guards/throttler-behind-proxy.guard';
 
 @Module({
   imports: [
@@ -61,6 +63,14 @@ import { BullModule } from '@nestjs/bullmq';
         port: 6379,
       },
     }),
+    ThrottlerModule.forRoot({
+      throttlers: [
+        {
+          ttl: 60000,
+          limit: 10,
+        },
+      ],
+    }),
   ],
   controllers: [AppController],
   providers: [
@@ -80,6 +90,10 @@ import { BullModule } from '@nestjs/bullmq';
     {
       provide: APP_GUARD,
       useClass: AuthenticationGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerBehindProxyGuard,
     },
   ],
 })

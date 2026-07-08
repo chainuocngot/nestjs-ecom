@@ -1,4 +1,5 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
+import { SkipThrottle } from '@nestjs/throttler';
 import { ZodResponse } from 'nestjs-zod';
 import {
   GetListProductQueryDto,
@@ -9,19 +10,19 @@ import {
 import { ProductService } from 'src/routes/product/product.service';
 import { isPublic } from 'src/shared/decorators/auth.decorator';
 
+@SkipThrottle()
+@isPublic()
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get()
-  @isPublic()
   @ZodResponse({ type: GetListProductResDto })
   list(@Query() query: GetListProductQueryDto) {
     return this.productService.list(query);
   }
 
   @Get(':productId')
-  @isPublic()
   @ZodResponse({ type: GetProductDetailResDto })
   findById(@Param() param: GetProductDetailParamDto) {
     return this.productService.getDetailById(param.productId);
