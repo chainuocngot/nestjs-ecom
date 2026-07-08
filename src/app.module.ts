@@ -25,6 +25,7 @@ import { ProductTranslationModule } from 'src/routes/product/product-translation
 import { CartModule } from './routes/cart/cart.module';
 import { OrderModule } from './routes/order/order.module';
 import { PaymentModule } from './routes/payment/payment.module';
+import { BullModule } from '@nestjs/bullmq';
 
 @Module({
   imports: [
@@ -43,6 +44,8 @@ import { PaymentModule } from './routes/payment/payment.module';
     ProductModule,
     ProductTranslationModule,
     CartModule,
+    OrderModule,
+    PaymentModule,
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
@@ -52,8 +55,12 @@ import { PaymentModule } from './routes/payment/payment.module';
       resolvers: [{ use: QueryResolver, options: ['lang'] }, AcceptLanguageResolver],
       typesOutputPath: path.resolve('src/generated/i18n.generated.ts'),
     }),
-    OrderModule,
-    PaymentModule,
+    BullModule.forRoot({
+      connection: {
+        host: 'localhost',
+        port: 6379,
+      },
+    }),
   ],
   controllers: [AppController],
   providers: [
