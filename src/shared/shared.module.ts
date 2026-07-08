@@ -6,7 +6,7 @@ import { HashingService } from './services/hashing.service';
 import { SharedUserRepository } from 'src/shared/repositories/shared-user.repository';
 import { EmailService } from 'src/shared/services/email.service';
 import { AccessTokenGuard } from 'src/shared/guards/access-token.guard';
-import { ApiKeyGuard } from 'src/shared/guards/api-key.guard';
+import { PaymentApiKeyGuard } from 'src/shared/guards/payment-api-key.guard';
 import { SharedRoleRepository } from 'src/shared/repositories/shared-role.repository';
 
 const sharedServices = [
@@ -17,7 +17,7 @@ const sharedServices = [
   SharedRoleRepository,
   EmailService,
   AccessTokenGuard,
-  ApiKeyGuard,
+  PaymentApiKeyGuard,
 ];
 
 @Global()

@@ -22,6 +22,7 @@ const envConfigSchema = z.object({
   OTP_EXPIRES_IN: z.string(),
   RESEND_API_KEY: z.string(),
   PREFIX_STATIC_ENDPOINT: z.string(),
+  PAYMENT_API_KEY: z.string(),
 });
 
 const parsedEnvConfig = envConfigSchema.safeParse(process.env);

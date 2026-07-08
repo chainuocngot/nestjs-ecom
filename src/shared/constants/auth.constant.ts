@@ -3,7 +3,7 @@ export const REQUEST_USER_KEY = 'user';
 export const AuthType = {
   Bearer: 'Bearer',
   None: 'None',
-  ApiKey: 'ApiKey',
+  PaymentApiKey: 'PaymentApiKey',
 } as const;
 
 export type TypeOfAuthType = (typeof AuthType)[keyof typeof AuthType];

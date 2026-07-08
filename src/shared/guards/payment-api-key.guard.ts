@@ -3,16 +3,16 @@ import { Request } from 'express';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class ApiKeyGuard implements CanActivate {
+export class PaymentApiKeyGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
     const request = context.switchToHttp().getRequest<Request>();
 
-    const xApiKey = request.headers['x-api-key'] as string;
-    if (!xApiKey) {
+    const paymentApiKey = request.headers['payment-api-key'] as string;
+    if (!paymentApiKey) {
       throw new UnauthorizedException('API key is missing');
     }
 
-    if (xApiKey !== process.env.API_KEY_SECRET) {
+    if (paymentApiKey !== process.env.PAYMENT_API_KEY) {
       throw new UnauthorizedException('Invalid API key');
     }
 
