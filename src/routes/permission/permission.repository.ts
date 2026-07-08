@@ -66,6 +66,9 @@ export class PermissionRepository {
         deletedAt: null,
       },
       data: { ...body, updatedById },
+      include: {
+        roles: true,
+      },
     });
   }
 
@@ -78,6 +81,9 @@ export class PermissionRepository {
       data: {
         deletedAt: new Date(),
         deletedById,
+      },
+      include: {
+        roles: true,
       },
     });
   }

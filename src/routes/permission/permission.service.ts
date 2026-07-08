@@ -1,4 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Inject, Injectable } from '@nestjs/common';
+import { type Cache } from 'cache-manager';
 import { PermissionAlreadyExistsException, PermissionNotFoundException } from 'src/routes/permission/permission.error';
 import {
   CreatePermissionBodyType,
@@ -6,11 +8,15 @@ import {
   UpdatePermissionBodyType,
 } from 'src/routes/permission/permission.model';
 import { PermissionRepository } from 'src/routes/permission/permission.repository';
+import { RoleType } from 'src/shared/models/shared-user.model';
 import { isNotFoundPrismaError, isUniqueConstraintPrismaError } from 'src/shared/utils';
 
 @Injectable()
 export class PermissionService {
-  constructor(private readonly permissionRepository: PermissionRepository) {}
+  constructor(
+    private readonly permissionRepository: PermissionRepository,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+  ) {}
 
   list(query: GetListPermissionQueryType) {
     return this.permissionRepository.getListPermission(query);
@@ -50,7 +56,12 @@ export class PermissionService {
     permissionId: number;
   }) {
     try {
-      return await this.permissionRepository.update({ updatedById, body, permissionId });
+      const permission = await this.permissionRepository.update({ updatedById, body, permissionId });
+
+      const { roles } = permission;
+      await this._deletedCachedRole(roles);
+
+      return permission;
     } catch (error) {
       if (isUniqueConstraintPrismaError(error)) {
         throw PermissionAlreadyExistsException;
@@ -66,7 +77,9 @@ export class PermissionService {
 
   async delete(deletedById: number, permissionId: number) {
     try {
-      await this.permissionRepository.delete(deletedById, permissionId);
+      const permission = await this.permissionRepository.delete(deletedById, permissionId);
+      const { roles } = permission;
+      await this._deletedCachedRole(roles);
 
       return {
         message: 'Xoá thành công',
@@ -78,5 +91,14 @@ export class PermissionService {
 
       throw error;
     }
+  }
+
+  _deletedCachedRole(roles: RoleType[]) {
+    return Promise.all(
+      roles.map((role) => {
+        const cachedKey = `role:${role.id}`;
+        return this.cacheManager.del(cachedKey);
+      }),
+    );
   }
 }
