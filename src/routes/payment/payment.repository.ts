@@ -89,6 +89,8 @@ export class PaymentRepository {
         },
       });
     });
+
+    return paymentId;
   }
 
   private _getTotalPrice(orders: OrderIncludeProductSKUSnapshotType[]) {
