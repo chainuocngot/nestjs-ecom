@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
-import { ZodSerializerDto } from 'nestjs-zod';
+import { ZodResponse } from 'nestjs-zod';
 import {
   AddToCartBodyDto,
   CartItemDto,
@@ -18,7 +18,7 @@ export class CartController {
   constructor(private readonly cartService: CartService) {}
 
   @Get()
-  @ZodSerializerDto(GetCartResDto)
+  @ZodResponse({ type: GetCartResDto })
   getCart(@ActiveUser('userId') userId: number, @Query() query: GetListCartItemQueryDto) {
     return this.cartService.getCart({
       query,
@@ -27,13 +27,13 @@ export class CartController {
   }
 
   @Post()
-  @ZodSerializerDto(CartItemDto)
+  @ZodResponse({ type: CartItemDto })
   addToCart(@Body() body: AddToCartBodyDto, @ActiveUser('userId') userId: number) {
     return this.cartService.create(userId, body);
   }
 
   @Put(':cartItemId')
-  @ZodSerializerDto(CartItemDto)
+  @ZodResponse({ type: CartItemDto })
   updateCartItem(
     @ActiveUser('userId') userId: number,
     @Param() param: GetCartItemDetailParamDto,
@@ -47,7 +47,7 @@ export class CartController {
   }
 
   @Post('delete')
-  @ZodSerializerDto(MessageResDto)
+  @ZodResponse({ type: MessageResDto })
   deleteCartItem(@ActiveUser('userId') userId: number, @Body() body: DeleteCartBodyDto) {
     return this.cartService.delete(userId, body);
   }

@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
-import { ZodSerializerDto } from 'nestjs-zod';
+import { ZodResponse } from 'nestjs-zod';
 import {
   CreateBrandBodyDto,
   CreateBrandResDto,
@@ -21,26 +21,26 @@ export class BrandController {
 
   @Get()
   @isPublic()
-  @ZodSerializerDto(GetListBrandResDto)
+  @ZodResponse({ type: GetListBrandResDto })
   list(@Query() query: GetListBrandQueryDto) {
     return this.brandService.list(query);
   }
 
   @Get(':brandId')
   @isPublic()
-  @ZodSerializerDto(GetBrandDetailResDto)
+  @ZodResponse({ type: GetBrandDetailResDto })
   findById(@Param() param: GetBrandDetailParamDto) {
     return this.brandService.findById(param.brandId);
   }
 
   @Post()
-  @ZodSerializerDto(CreateBrandResDto)
+  @ZodResponse({ type: CreateBrandResDto })
   create(@Body() body: CreateBrandBodyDto, @ActiveUser('userId') userId: number) {
     return this.brandService.create(userId, body);
   }
 
   @Patch(':brandId')
-  @ZodSerializerDto(UpdateBrandResDto)
+  @ZodResponse({ type: UpdateBrandResDto })
   update(
     @Param() param: GetBrandDetailParamDto,
     @Body() body: UpdateBrandBodyDto,
@@ -54,7 +54,7 @@ export class BrandController {
   }
 
   @Delete(':brandId')
-  @ZodSerializerDto(MessageResDto)
+  @ZodResponse({ type: MessageResDto })
   delete(@Param() param: GetBrandDetailParamDto, @ActiveUser('userId') userId: number) {
     return this.brandService.delete(userId, param.brandId);
   }
