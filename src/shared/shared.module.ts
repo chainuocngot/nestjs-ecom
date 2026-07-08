@@ -8,6 +8,7 @@ import { EmailService } from 'src/shared/services/email.service';
 import { AccessTokenGuard } from 'src/shared/guards/access-token.guard';
 import { PaymentApiKeyGuard } from 'src/shared/guards/payment-api-key.guard';
 import { SharedRoleRepository } from 'src/shared/repositories/shared-role.repository';
+import { SharedPaymentRepository } from 'src/shared/repositories/shared-payment.repository';
 
 const sharedServices = [
   PrismaService,
@@ -15,6 +16,7 @@ const sharedServices = [
   HashingService,
   SharedUserRepository,
   SharedRoleRepository,
+  SharedPaymentRepository,
   EmailService,
   AccessTokenGuard,
   PaymentApiKeyGuard,
