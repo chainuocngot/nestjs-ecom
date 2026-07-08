@@ -28,6 +28,8 @@ import { PaymentModule } from './routes/payment/payment.module';
 import { BullModule } from '@nestjs/bullmq';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { ThrottlerBehindProxyGuard } from 'src/shared/guards/throttler-behind-proxy.guard';
+import { ScheduleModule } from '@nestjs/schedule';
+import { RemoveRefreshTokenCronjob } from 'src/cronjobs/remove-refresh-token.cronjob';
 
 @Module({
   imports: [
@@ -71,6 +73,7 @@ import { ThrottlerBehindProxyGuard } from 'src/shared/guards/throttler-behind-pr
         },
       ],
     }),
+    ScheduleModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [
@@ -95,6 +98,7 @@ import { ThrottlerBehindProxyGuard } from 'src/shared/guards/throttler-behind-pr
       provide: APP_GUARD,
       useClass: ThrottlerBehindProxyGuard,
     },
+    RemoveRefreshTokenCronjob,
   ],
 })
 export class AppModule {}
