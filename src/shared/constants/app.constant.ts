@@ -12,3 +12,5 @@ export const SortBy = {
 } as const;
 
 export type SortByType = (typeof SortBy)[keyof typeof SortBy];
+
+export const PREFIX_PAYMENT_CODE = 'DH';

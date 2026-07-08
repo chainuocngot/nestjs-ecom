@@ -49,3 +49,12 @@ export const HTTPMethod = {
 } as const
 
 export type HTTPMethod = (typeof HTTPMethod)[keyof typeof HTTPMethod]
+
+
+export const PaymentStatus = {
+  PENDING: 'PENDING',
+  SUCCESS: 'SUCCESS',
+  FAILED: 'FAILED'
+} as const
+
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]

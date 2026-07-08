@@ -38,3 +38,9 @@ export const WebhookPaymentBodySchema = z.object({
   accumulated: z.number().int(),
   referenceCode: z.string(),
 });
+
+export type PaymentType = z.infer<typeof PaymentSchema>;
+
+export type PaymentTransactionType = z.infer<typeof PaymentTransactionSchema>;
+
+export type WebhookPaymentBodyType = z.infer<typeof WebhookPaymentBodySchema>;

@@ -8,6 +8,7 @@ import {
 } from 'src/routes/order/order.error';
 import { CreateOrderBodyType, GetListOrderQueryType } from 'src/routes/order/order.model';
 import { OrderStatus } from 'src/shared/constants/order.constant';
+import { PaymentStatus } from 'src/shared/constants/payment.constant';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
 @Injectable()
@@ -106,7 +107,12 @@ export class OrderRepository {
     }
 
     const orders = await this.prismaService.$transaction(async (tx) => {
-      const orders = await Promise.all(
+      const payment = await tx.payment.create({
+        data: {
+          status: PaymentStatus.PENDING,
+        },
+      });
+      const $createOrders = Promise.all(
         //IMPORTANT: Ở đây sử dụng nhiều làm create thay vì createMany
         //VÌ createMany chỉ tạo được các field là scalar type (ở đây phải sử dụng create vì có field `items` và `products`)
         body.map((item) =>
@@ -117,6 +123,7 @@ export class OrderRepository {
               receiver: item.receiver,
               createdById: userId,
               shopId: item.shopId,
+              paymentId: payment.id,
               items: {
                 create: item.cartItemIds.map((cartItemId) => {
                   const cartItem = cartItemsMap.get(cartItemId)!;
@@ -145,13 +152,30 @@ export class OrderRepository {
         ),
       );
 
-      await tx.cartItem.deleteMany({
+      const $deleteCartItems = tx.cartItem.deleteMany({
         where: {
           id: {
             in: allBodyCartItemIds,
           },
         },
       });
+
+      const $updateStockOfSku = Promise.all(
+        cartItems.map((cartItem) =>
+          tx.sKU.update({
+            where: {
+              id: cartItem.skuId,
+            },
+            data: {
+              stock: {
+                decrement: cartItem.quantity,
+              },
+            },
+          }),
+        ),
+      );
+
+      const [orders] = await Promise.all([$createOrders, $deleteCartItems, $updateStockOfSku]);
 
       return orders;
     });

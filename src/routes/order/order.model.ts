@@ -13,9 +13,11 @@ export const OrderSchema = z.object({
   receiver: z.object({
     name: z.string(),
     phone: z.string(),
+    email: z.string(),
     address: z.string(),
   }),
-  createdById: z.number().int(),
+  paymentId: z.number().int(),
+  createdById: z.number().int().nullable(),
   updatedById: z.number().int().nullable(),
   deletedById: z.number().int().nullable(),
   deletedAt: z.date().nullable(),
@@ -27,12 +29,12 @@ export const ProductSKUSnapshotSchema = z.object({
   id: z.number().int(),
   productName: z.string(),
   skuPrice: z.number(),
-  images: z.array(z.number()),
+  image: z.string(),
   quantity: z.number().int(),
   skuValue: z.string(),
-  productId: z.number().int().optional(),
-  skuId: z.number().int().optional(),
-  orderId: z.number().int().optional(),
+  productId: z.number().int().nullable(),
+  skuId: z.number().int().nullable(),
+  orderId: z.number().int().nullable(),
   productTranslations: z.array(
     ProductTranslationSchema.pick({
       id: true,
@@ -92,6 +94,10 @@ export const GetOrderDetailParamSchema = z
   })
   .strict();
 
+export const OrderIncludeProductSKUSnapshotSchema = OrderSchema.extend({
+  items: z.array(ProductSKUSnapshotSchema),
+});
+
 export type OrderStatusType = z.infer<typeof OrderStatusSchema>;
 
 export type OrderType = z.infer<typeof OrderSchema>;
@@ -111,3 +117,5 @@ export type CreateOrderResType = z.infer<typeof CreateOrderResSchema>;
 export type CancelOrderResType = z.infer<typeof CancelOrderResSchema>;
 
 export type GetOrderDetailParamType = z.infer<typeof GetOrderDetailParamSchema>;
+
+export type OrderIncludeProductSKUSnapshotType = z.infer<typeof OrderIncludeProductSKUSnapshotSchema>;

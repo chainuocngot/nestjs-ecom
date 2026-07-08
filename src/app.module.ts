@@ -24,6 +24,7 @@ import { ProductModule } from './routes/product/product.module';
 import { ProductTranslationModule } from 'src/routes/product/product-translation/product-translation.module';
 import { CartModule } from './routes/cart/cart.module';
 import { OrderModule } from './routes/order/order.module';
+import { PaymentModule } from './routes/payment/payment.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { OrderModule } from './routes/order/order.module';
       typesOutputPath: path.resolve('src/generated/i18n.generated.ts'),
     }),
     OrderModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [
